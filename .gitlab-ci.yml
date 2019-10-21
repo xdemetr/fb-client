@@ -1,0 +1,25 @@
+image: node:alpine
+
+variables:
+  PUBLIC_URL: ./
+
+cache:
+  paths:
+  - node_modules
+
+stages:
+- deploy
+
+pages:
+  stage: deploy
+  script:
+    - yarn install
+    - yarn run build
+    - cp public/index.html public/404.html
+    - mv public _public
+    - mv build public
+  artifacts:
+    paths:
+    - public
+  only:
+    - master # Only run on master branch

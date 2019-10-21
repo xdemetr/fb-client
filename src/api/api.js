@@ -1,0 +1,31 @@
+import axios from 'axios';
+
+//axios.defaults.baseURL = 'http://localhost:5001/api/';
+axios.defaults.baseURL = 'http://node.joomdesign.ru:4000/fb/api/';
+
+export const authAPI = {
+  registration(username, email, password){
+    return axios.post(`users`, {username, email, password})
+  },
+  login(userData){
+    return axios.post(`users/login`, userData)
+  }
+};
+
+export const playerAPI = {
+  getPlayerList(){
+    return axios.get(`players`);
+  },
+  getPlayer(id){
+    return axios.get(`players/${id}`)
+  },
+  addPlayer(player){
+    return axios.post(`players`, player)
+  },
+  updatePlayer(id, data){
+    return axios.put(`players/${id}`, data)
+  },
+  deletePlayer(id){
+    return axios.delete(`players/${id}`)
+  }
+};
