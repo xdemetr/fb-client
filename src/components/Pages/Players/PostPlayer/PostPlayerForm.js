@@ -5,9 +5,6 @@ import {Checkbox, Input, Select} from '../../../Form/Input';
 import Spinner from '../../../Spinner';
 
 const PostPlayerForm = ({handleSubmit, id, player, initialValues}) => {
-
-  console.log('init values',initialValues, id);
-
   if (!initialValues) return <Spinner/>;
 
   return (
