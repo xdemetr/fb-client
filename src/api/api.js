@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //axios.defaults.baseURL = 'http://localhost:5001/api/';
-axios.defaults.baseURL = 'http://node.joomdesign.ru:4000/fb/api/';
+axios.defaults.baseURL = 'https://node.joomdesign.ru/fb/api/';
 
 export const authAPI = {
   registration(username, email, password){
