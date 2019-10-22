@@ -27,7 +27,7 @@ class GeneratorContainer extends React.Component{
       return(
           <div key={id} className="col-sm-6 col-md-3 mb-3" onClick={() => generatorPlayerSelected(player)}>
             <div className={`card p-2 ${selectedClass} ${damageClass}`}>
-            {name}
+              {name}
             </div>
           </div>
       )
@@ -89,8 +89,8 @@ class GeneratorContainer extends React.Component{
 
     const BtnGroup = () => {
       return  <div className="btn-group-lg btn-group">
-            <button className="btn-lg btn btn-primary" onClick={() => onGenerateClick()}>Получить составы</button>
-            <button className="btn-lg btn btn-outline-primary" onClick={() => generatorPlayersReset()}>Сбросить выделение</button>
+        <button className="btn-lg btn btn-primary" onClick={() => onGenerateClick()}>Получить составы</button>
+        <button className="btn-lg btn btn-outline-primary" onClick={() => generatorPlayersReset()}>Сбросить выделение</button>
       </div>
     };
 
@@ -102,12 +102,12 @@ class GeneratorContainer extends React.Component{
           </h1>
 
           <div className="row">
-          {playerList}
+            {playerList}
           </div>
 
-         <BtnGroup/>
+          <BtnGroup/>
 
-         <GeneratorResult result={result} />
+          <GeneratorResult result={result} />
         </div>
     )
   }

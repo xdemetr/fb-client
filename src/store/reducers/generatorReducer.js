@@ -1,9 +1,9 @@
 import {
   GENERATOR_PLAYER_SELECT,
-  GENERATOR_SELECT_RESET,
-  GENERATOR_RUN,
   GENERATOR_RESULT_RESET,
-  GENERATOR_SAVE_FAILURE
+  GENERATOR_RUN,
+  GENERATOR_SAVE_FAILURE,
+  GENERATOR_SELECT_RESET
 } from "../types";
 
 const updateSelected = (state, player) => {
@@ -43,25 +43,25 @@ const generatorReducer = (state = initialState, action) => {
         ...state,
         result: action.payload
       };
-      
+
     case GENERATOR_SELECT_RESET:
       return {
         ...state,
         selected: []
       };
-      
+
     case GENERATOR_RESULT_RESET:
       return {
         ...state,
         result: []
       };
-      
+
     case GENERATOR_SAVE_FAILURE:
       return {
         ...state,
         errors: action.payload
       };
-  
+
     default:
       return state;
   }

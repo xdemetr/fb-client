@@ -2,9 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 const Players = ({list}) => {
-
   const playerList = list.map(({name, image, box, _id: id, handle, damage}) => {
-
     const damageClass = damage ? 'card-muted': '';
 
     return(

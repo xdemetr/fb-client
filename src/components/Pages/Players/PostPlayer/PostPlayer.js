@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, {useEffect} from 'react';
 import PostPlayerForm from './PostPlayerForm';
 import {connect} from 'react-redux';
 import {
@@ -24,7 +24,6 @@ const PostPlayer = ({match: {params: {id}}, postPlayer, updatePlayer, deletePlay
     if (!id) {
       postPlayer(formData);
     } else {
-      console.log('edit');
       updatePlayer(id, formData);
     }
   };
