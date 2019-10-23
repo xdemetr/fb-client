@@ -4,7 +4,11 @@ import {connect} from 'react-redux';
 import {getPlayers} from '../../../store/actions/playerActions';
 import Spinner from '../../Spinner';
 import Error from '../../Error';
-import {getPlayerError, getPlayerList, getPlayerLoading} from '../../../store/selectors/player';
+import {
+  getPlayerErrorReselect,
+  getPlayerListReselect,
+  getPlayerLoadingReselect
+} from '../../../store/selectors/player';
 import {compose} from 'redux';
 import withAuthRedirect from '../../../hoc/withAuthRedirect';
 
@@ -31,9 +35,9 @@ const PlayersContainer = ({getPlayers, list, loading, error}) => {
 };
 
 const mapStateToProps = (state) => ({
-  list: getPlayerList(state),
-  loading: getPlayerLoading(state),
-  error: getPlayerError(state)
+  list: getPlayerListReselect(state),
+  loading: getPlayerLoadingReselect(state),
+  error: getPlayerErrorReselect(state)
 });
 
 export default compose(

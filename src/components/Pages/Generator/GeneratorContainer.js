@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getPlayerList} from '../../../store/selectors/player';
+import {getPlayerListReselect} from '../../../store/selectors/player';
 import {getPlayers} from '../../../store/actions/playerActions';
 import Spinner from '../../Spinner';
 import {generatorPlayerSelected, generatorPlayersReset, generatorRun} from '../../../store/actions/generatorActions';
-import {getSelectedPlayers} from '../../../store/selectors/generator';
+import {getGeneratorResultReselect, getSelectedPlayersReselect} from '../../../store/selectors/generator';
 import GeneratorResult from './GeneratorResult';
 
 class GeneratorContainer extends React.Component{
@@ -14,6 +14,7 @@ class GeneratorContainer extends React.Component{
   }
 
   render() {
+    console.log('generator render');
     const {list, generatorPlayerSelected, generatorPlayersReset, generatorRun, selected, result} = this.props;
 
 
@@ -114,9 +115,9 @@ class GeneratorContainer extends React.Component{
 };
 
 const mapStateToProps = (state) => ({
-  list: getPlayerList(state),
-  selected: getSelectedPlayers(state),
-  result: state.generator.result
+  list: getPlayerListReselect(state),
+  selected: getSelectedPlayersReselect(state),
+  result: getGeneratorResultReselect(state)
 });
 
 export default connect(mapStateToProps, {getPlayers, generatorPlayerSelected, generatorPlayersReset, generatorRun})(GeneratorContainer);

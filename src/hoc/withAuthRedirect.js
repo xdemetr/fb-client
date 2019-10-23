@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getAuth} from '../store/selectors/auth';
+import {getAuthReselect} from '../store/selectors/auth';
 
 const withAuthRedirect = (Component) => {
   class RedirectComponent extends React.Component {
@@ -16,7 +16,7 @@ const withAuthRedirect = (Component) => {
   }
 
   const mapStateToProps = (state) => ({
-    auth: getAuth(state)
+    auth: getAuthReselect(state)
   });
 
   return connect(mapStateToProps, null)(RedirectComponent);
