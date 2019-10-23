@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 import {connect} from 'react-redux';
 import {loginUser} from '../../../store/actions/authActions';
 import {Redirect} from 'react-router-dom';
-import {getAuth} from '../../../store/selectors/auth';
+import {getAuthReselect} from '../../../store/selectors/auth';
 
 const Login = ({loginUser, auth: {isAuth}}) => {
 
@@ -26,7 +26,7 @@ const Login = ({loginUser, auth: {isAuth}}) => {
 };
 
 const mapStateToProps = (state) => ({
-  auth: getAuth(state)
+  auth: getAuthReselect(state)
 });
 
 export default connect(mapStateToProps, {loginUser})(Login);
