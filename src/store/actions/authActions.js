@@ -1,5 +1,5 @@
 import {stopSubmit} from 'redux-form';
-import {AUTH_USER_FAILURE, AUTH_USER_REQUEST, AUTH_USER_SUCCESS, FETCH_USER_SUCCESS, LOGOUT_USER} from '../types';
+import {AUTH_USER_REQUEST, AUTH_USER_SUCCESS, FETCH_USER_SUCCESS, LOGOUT_USER} from '../types';
 import {authAPI} from '../../api/api';
 import jwtDecode from 'jwt-decode';
 import setAuthToken from '../../utils/set-auth-token';

@@ -12,7 +12,8 @@ import {
 import {compose} from 'redux';
 import withAuthRedirect from '../../../hoc/withAuthRedirect';
 
-const PlayersContainer = ({getPlayers, list, loading, error}) => {
+//const PlayersContainer = ({getPlayers, list, loading, error}) => {
+const PlayersContainer = React.memo(({getPlayers, list, loading, error}) => {
 
   useEffect(() => {
     getPlayers()
@@ -32,7 +33,7 @@ const PlayersContainer = ({getPlayers, list, loading, error}) => {
         <Players list={list} />
       </div>
   );
-};
+});
 
 const mapStateToProps = (state) => ({
   list: getPlayerListReselect(state),

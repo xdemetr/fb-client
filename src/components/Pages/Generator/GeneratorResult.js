@@ -1,11 +1,8 @@
 import React from 'react';
 import Team from '../../Team';
 
-const GeneratorResult = ({result}) => {
-
+const GeneratorResult = React.memo(({result}) => {
   if (!result.length > 0) return  null;
-
-  console.log(result);
 
   const genRes = result.map((team, idx) => {
     if (Object.keys(team).length === 0) return  null;
@@ -26,6 +23,6 @@ const GeneratorResult = ({result}) => {
         </div>
       </div>
   );
-};
+});
 
 export default GeneratorResult;

@@ -7,18 +7,17 @@ import {generatorPlayerSelected, generatorPlayersReset, generatorRun} from '../.
 import {getGeneratorResultReselect, getSelectedPlayersReselect} from '../../../store/selectors/generator';
 import GeneratorResult from './GeneratorResult';
 
-class GeneratorContainer extends React.Component{
+class GeneratorContainer extends React.PureComponent{
 
   componentDidMount() {
     this.props.getPlayers();
   }
 
   render() {
-    console.log('generator render');
     const {list, generatorPlayerSelected, generatorPlayersReset, generatorRun, selected, result} = this.props;
 
-
-    if (!list) return <Spinner/>;
+    if (!list.length) return <Spinner/>;
+    //console.log('generator render');
 
     const playerList = list.map((player) => {
       const {_id: id, name, damage} = player;

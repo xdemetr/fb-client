@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Team = ({players, title}) => {
+const Team = React.memo(({players, title}) => {
   const list = players.map(player => {
     return (
         <div className="list-group-item d-flex align-items-center" key={player._id}>
@@ -18,6 +18,6 @@ const Team = ({players, title}) => {
         {list}
       </div>
   );
-};
+});
 
 export default Team;

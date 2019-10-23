@@ -10,8 +10,11 @@ import {
 } from '../../../../store/actions/playerActions';
 import {getPlayerCurrentReselect} from '../../../../store/selectors/player';
 
-const PostPlayer = ({match: {params: {id}}, postPlayer, updatePlayer, deletePlayer, current, getCurrentPlayer, resetCurrentPlayer }) => {
-
+const PostPlayer = React.memo((
+    {match: {params: {id}},
+      postPlayer, updatePlayer, deletePlayer, current,
+      getCurrentPlayer, resetCurrentPlayer }
+) => {
   useEffect(() => {
     if (id) {
       getCurrentPlayer(id);
@@ -50,7 +53,7 @@ const PostPlayer = ({match: {params: {id}}, postPlayer, updatePlayer, deletePlay
         <DeleteButton/>
       </div>
   );
-};
+});
 
 const mapStateToProps = (state) => ({
   current: getPlayerCurrentReselect(state)

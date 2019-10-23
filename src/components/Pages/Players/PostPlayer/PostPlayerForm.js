@@ -4,7 +4,7 @@ import {required} from '../../../../utils/validators';
 import {Checkbox, Input, Select} from '../../../Form/Input';
 import Spinner from '../../../Spinner';
 
-const PostPlayerForm = ({handleSubmit, id, player, initialValues}) => {
+const PostPlayerForm = React.memo(({handleSubmit, initialValues}) => {
   if (!initialValues) return <Spinner/>;
 
   return (
@@ -38,7 +38,7 @@ const PostPlayerForm = ({handleSubmit, id, player, initialValues}) => {
         <button className="btn btn-primary w-100">Сохранить</button>
       </form>
   );
-};
+});
 
 export default reduxForm({
   form: 'post-player',
