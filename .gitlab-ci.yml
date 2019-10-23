@@ -1,7 +1,7 @@
 image: node:alpine
 
 variables:
-  PUBLIC_URL: ./
+  PUBLIC_URL: /
 
 cache:
   paths:
@@ -15,9 +15,10 @@ pages:
   script:
     - yarn install
     - yarn run build
-    - cp public/index.html public/404.html
+    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \; # Compress
     - mv public _public
     - mv build public
+    - cp public/index.html public/404.html
   artifacts:
     paths:
     - public
