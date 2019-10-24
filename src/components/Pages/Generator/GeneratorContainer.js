@@ -17,7 +17,6 @@ class GeneratorContainer extends React.PureComponent{
     const {list, generatorPlayerSelected, generatorPlayersReset, generatorRun, selected, result} = this.props;
 
     if (!list.length) return <Spinner/>;
-    //console.log('generator render');
 
     const playerList = list.map((player) => {
       const {_id: id, name, damage} = player;
@@ -83,8 +82,6 @@ class GeneratorContainer extends React.PureComponent{
       });
 
       generatorRun([team1, team2, team3])
-
-      //console.log(team1, team2, team3);
     };
 
     const BtnGroup = () => {
