@@ -104,11 +104,11 @@ export const updatePlayer = (playerId, playerData, history) => async dispatch =>
   }
 };
 
-export const deletePlayer = (id, history) => async dispatch => {
+export const deletePlayer = (id, history) => async () => {
   try {
     const res = await playerAPI.deletePlayer(id);
     history.push('/players');
-    //console.log(res.data);
+    console.log(res.data);
   }
   catch (e) {
     console.log(e.message)
