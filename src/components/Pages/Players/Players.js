@@ -21,7 +21,7 @@ const Players = React.memo(({list}) => {
               </div>
 
               <div className="card-footer p-0 text-right mt-3">
-                <Link to={`edit-player/${id}`} className="card-link small">изменить</Link>
+                <Link to={`/edit-player/${id}`} className="card-link small">изменить</Link>
               </div>
             </div>
           </div>

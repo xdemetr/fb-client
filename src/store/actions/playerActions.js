@@ -79,33 +79,36 @@ export const getPlayer = playerId => async dispatch => {
   }
 };
 
-export const postPlayer = player => async dispatch => {
+export const postPlayer = (player, history) => async dispatch => {
   dispatch(playerPostRequested());
 
   try {
     const res = await playerAPI.addPlayer(player);
-    dispatch(playerPostSuccess(res.data))
+    dispatch(playerPostSuccess(res.data));
+    history.push('/players');
   }
   catch (e) {
     console.log(e.message);
   }
 };
 
-export const updatePlayer = (playerId, playerData) => async dispatch => {
+export const updatePlayer = (playerId, playerData, history) => async dispatch => {
   dispatch(playerPostRequested());
 
   try {
     const res = await playerAPI.updatePlayer(playerId, playerData);
     dispatch(playerPostSuccess(res.data));
+    history.push('/players');
   } catch (e) {
     console.log(e.message)
   }
 };
 
-export const deletePlayer = id => async dispatch => {
+export const deletePlayer = (id, history) => async dispatch => {
   try {
     const res = await playerAPI.deletePlayer(id);
-    console.log(res.data);
+    history.push('/players');
+    //console.log(res.data);
   }
   catch (e) {
     console.log(e.message)
