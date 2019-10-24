@@ -9,6 +9,8 @@ import {
   updatePlayer
 } from '../../../../store/actions/playerActions';
 import {getPlayerCurrentReselect} from '../../../../store/selectors/player';
+import withAuthRedirect from '../../../../hoc/withAuthRedirect';
+import {compose} from 'redux';
 
 const PostPlayer = React.memo((
     {match: {params: {id}},
@@ -59,4 +61,11 @@ const mapStateToProps = (state) => ({
   current: getPlayerCurrentReselect(state)
 });
 
-export default connect(mapStateToProps, {postPlayer, updatePlayer, deletePlayer, getCurrentPlayer, resetCurrentPlayer})(PostPlayer);
+const mapDispatchToProps = ({
+  postPlayer, updatePlayer, deletePlayer, getCurrentPlayer, resetCurrentPlayer
+});
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(PostPlayer);
