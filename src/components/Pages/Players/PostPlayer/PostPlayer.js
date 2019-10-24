@@ -15,7 +15,7 @@ import {compose} from 'redux';
 const PostPlayer = React.memo((
     {match: {params: {id}},
       postPlayer, updatePlayer, deletePlayer, current,
-      getCurrentPlayer, resetCurrentPlayer }
+      getCurrentPlayer, resetCurrentPlayer, history }
 ) => {
   useEffect(() => {
     if (id) {
@@ -27,9 +27,9 @@ const PostPlayer = React.memo((
 
   const onSubmit = formData => {
     if (!id) {
-      postPlayer(formData);
+      postPlayer(formData, history);
     } else {
-      updatePlayer(id, formData);
+      updatePlayer(id, formData, history);
     }
   };
 
@@ -38,7 +38,7 @@ const PostPlayer = React.memo((
     return (
         <span
             className="btn btn-sm btn-outline-danger w-100 mt-4"
-            onClick={() => deletePlayer(id)}>Удалить</span>
+            onClick={() => deletePlayer(id, history)}>Удалить</span>
     )
   };
 
@@ -51,7 +51,6 @@ const PostPlayer = React.memo((
         <PostPlayerForm
             initialValues={current}
             onSubmit={onSubmit} id={id} player={current}/>
-
         <DeleteButton/>
       </div>
   );
