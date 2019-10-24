@@ -44,7 +44,7 @@ export const loginUser = userData => async dispatch => {
 
   } catch (e) {
     dispatch(stopSubmit('login',
-        {_error: 'Ошибка какая-то...'}
+        {_error: e.response.data.message}
     ));
   }
 };
