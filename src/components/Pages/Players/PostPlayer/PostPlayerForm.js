@@ -21,19 +21,24 @@ const PostPlayerForm = React.memo(({handleSubmit, initialValues}) => {
             validate={[]}
             component={Input} placeholder="Ссылка на фото" name={"image"}/>
 
-        <Field
-            validate={[required]}
-            component={Select} placeholder="Корзина" name={"box"}>
-          <option value="1">Первая</option>
-          <option value="2">Вторая</option>
-          <option value="3">Третья</option>
-        </Field>
-
-        <Field
-            validate={[]}
-            label={"Травма"}
-            id={`damage`}
-            component={Checkbox} placeholder="Травма" name={"damage"}/>
+        <div className="row align-items-center mb-3">
+          <div className="col-md-6">
+            <Field
+                validate={[required]}
+                component={Select} placeholder="Корзина" name={"box"}>
+              <option value="1">Первая</option>
+              <option value="2">Вторая</option>
+              <option value="3">Третья</option>
+            </Field>
+          </div>
+          <div className="col-md-6">
+            <Field
+                validate={[]}
+                label={"Травма"}
+                id={`damage`}
+                component={Checkbox} placeholder="Травма" name={"damage"}/>
+          </div>
+        </div>
 
         <button className="btn btn-primary w-100">Сохранить</button>
       </form>
