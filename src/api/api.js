@@ -29,3 +29,15 @@ export const playerAPI = {
     return axios.delete(`players/${id}`)
   }
 };
+
+export const playdayAPI = {
+  addPlayday(teams) {
+    return axios.post(`/playdays`, teams)
+  },
+  getPlaydays(){
+    return axios.get(`/playdays`)
+  },
+  getPlayday(id){
+    return axios.get(`/playdays/${id}`)
+  }
+};

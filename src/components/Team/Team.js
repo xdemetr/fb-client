@@ -1,6 +1,9 @@
 import React from 'react';
 
 const Team = React.memo(({players, title}) => {
+
+  if (!players.length) return null;
+
   const list = players.map(player => {
     return (
         <div className="list-group-item d-flex align-items-center" key={player._id}>
@@ -13,7 +16,7 @@ const Team = React.memo(({players, title}) => {
   });
 
   return (
-      <div className="list-group-flush">
+      <div className="list-group">
         <div className="list-group-item list-group-item-primary font-weight-bold">{title}</div>
         {list}
       </div>

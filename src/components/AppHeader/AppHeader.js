@@ -36,12 +36,21 @@ const AppHeader = ({auth: {isAuth}, logoutUser}) => {
             <span className="">Футбол в спортзале</span>
           </div>
 
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink to="/generator" className="nav-link">Генератор</NavLink>
-            </li>
-            {navLinks}
-          </ul>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                  aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarResponsive">
+            <ul className="navbar-nav ml-md-auto">
+              <li className="nav-item">
+                <NavLink to="/generator" className="nav-link">Генератор</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/playdays" className="nav-link">Результаты</NavLink>
+              </li>
+              {navLinks}
+            </ul>
+          </div>
         </div>
       </div>
   );

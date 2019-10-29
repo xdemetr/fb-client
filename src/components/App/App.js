@@ -7,6 +7,7 @@ import withSuspense from '../../hoc/withSuspense';
 
 const PlayersContainer = React.lazy(() => import('../Pages/Players/PlayersContainer'));
 const PostPlayer = React.lazy(() => import('../Pages/Players/PostPlayer/PostPlayer'));
+const PlaydaysContainer = React.lazy(() => import('../Pages/Playdays/PlaydaysContainer'));
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
 
             <Route path={`/generator`} render={ () => <GeneratorContainer/> } />
             <Route path={`/players`} render={withSuspense(PlayersContainer)} />
+            <Route path={`/playdays/:id?`} render={withSuspense(PlaydaysContainer)} />
 
             <Route path={"/edit-player/:id"} render={withSuspense(PostPlayer)} />
             <Route path={`/new-player`} render={withSuspense(PostPlayer)} />

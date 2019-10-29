@@ -1,7 +1,8 @@
 import React from 'react';
 import Team from '../../Team';
+import Error from '../../Error/Error';
 
-const GeneratorResult = React.memo(({result}) => {
+const GeneratorResult = React.memo(({result, onSaveResult, errors}) => {
   if (!result.length > 0) return  null;
 
   const genRes = result.map((team, idx) => {
@@ -18,9 +19,15 @@ const GeneratorResult = React.memo(({result}) => {
       <div className="jumbotron mt-3 pt-5 pb-5">
         <h2>Результаты</h2>
 
-        <div className="row">
+        <Error message={errors} />
+
+        <div className="row mb-4">
           {genRes}
         </div>
+
+        <button
+            onClick={onSaveResult}
+            className="btn btn-primary btn-lg">Сохранить</button>
       </div>
   );
 });
