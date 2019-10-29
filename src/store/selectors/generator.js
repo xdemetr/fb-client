@@ -10,3 +10,6 @@ const getGeneratorResult = (state) => {
 
 export const getSelectedPlayersReselect = createSelector(getSelectedPlayers, selected => selected);
 export const getGeneratorResultReselect = createSelector(getGeneratorResult, result => result);
+export const getGeneratorErrors = (state) => {
+  return state.generator.errors
+};

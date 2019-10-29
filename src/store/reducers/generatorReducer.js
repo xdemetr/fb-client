@@ -3,6 +3,8 @@ import {
   GENERATOR_RESULT_RESET,
   GENERATOR_RUN,
   GENERATOR_SAVE_FAILURE,
+  GENERATOR_SAVE_REQUEST,
+  GENERATOR_SAVE_SUCCESS,
   GENERATOR_SELECT_RESET
 } from "../types";
 
@@ -29,7 +31,8 @@ const updateSelected = (state, player) => {
 let initialState = {
   selected: [],
   result: [],
-  errors: {}
+  errors: null,
+  loading: false
 };
 
 const generatorReducer = (state = initialState, action) => {
@@ -47,7 +50,9 @@ const generatorReducer = (state = initialState, action) => {
     case GENERATOR_SELECT_RESET:
       return {
         ...state,
-        selected: []
+        selected: [],
+        result: [],
+        errors: null
       };
 
     case GENERATOR_RESULT_RESET:
@@ -60,6 +65,18 @@ const generatorReducer = (state = initialState, action) => {
       return {
         ...state,
         errors: action.payload
+      };
+
+    case GENERATOR_SAVE_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+
+    case GENERATOR_SAVE_SUCCESS:
+      return {
+        ...state,
+        loading: false
       };
 
     default:

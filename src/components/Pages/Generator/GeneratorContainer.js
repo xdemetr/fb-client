@@ -3,8 +3,17 @@ import {connect} from 'react-redux';
 import {getPlayerListReselect} from '../../../store/selectors/player';
 import {getPlayers} from '../../../store/actions/playerActions';
 import Spinner from '../../Spinner';
-import {generatorPlayerSelected, generatorPlayersReset, generatorRun} from '../../../store/actions/generatorActions';
-import {getGeneratorResultReselect, getSelectedPlayersReselect} from '../../../store/selectors/generator';
+import {
+  generatorPlayerSelected,
+  generatorPlayersReset,
+  generatorRun,
+  generatorSaveResult
+} from '../../../store/actions/generatorActions';
+import {
+  getGeneratorErrors,
+  getGeneratorResultReselect,
+  getSelectedPlayersReselect
+} from '../../../store/selectors/generator';
 import GeneratorResult from './GeneratorResult';
 
 class GeneratorContainer extends React.PureComponent{
@@ -14,7 +23,10 @@ class GeneratorContainer extends React.PureComponent{
   }
 
   render() {
-    const {list, generatorPlayerSelected, generatorPlayersReset, generatorRun, selected, result} = this.props;
+    const {
+      list, selected, result, errors,
+      generatorPlayerSelected, generatorPlayersReset, generatorRun, generatorSaveResult
+    } = this.props;
 
     if (!list.length) return <Spinner/>;
 
@@ -91,6 +103,10 @@ class GeneratorContainer extends React.PureComponent{
       </div>
     };
 
+    const onSaveResult = () => {
+      generatorSaveResult(result);
+    };
+
     return (
         <div className="generator-page">
           <h1 className="d-flex">
@@ -104,7 +120,10 @@ class GeneratorContainer extends React.PureComponent{
 
           <BtnGroup/>
 
-          <GeneratorResult result={result} />
+          <GeneratorResult
+              errors={errors}
+              result={result}
+              onSaveResult={onSaveResult} />
         </div>
     )
   }
@@ -113,7 +132,13 @@ class GeneratorContainer extends React.PureComponent{
 const mapStateToProps = (state) => ({
   list: getPlayerListReselect(state),
   selected: getSelectedPlayersReselect(state),
-  result: getGeneratorResultReselect(state)
+  result: getGeneratorResultReselect(state),
+  errors: getGeneratorErrors(state)
 });
 
-export default connect(mapStateToProps, {getPlayers, generatorPlayerSelected, generatorPlayersReset, generatorRun})(GeneratorContainer);
+const mapDispatchToProps = {
+  getPlayers, generatorRun,
+  generatorPlayerSelected, generatorPlayersReset, generatorSaveResult
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GeneratorContainer);
