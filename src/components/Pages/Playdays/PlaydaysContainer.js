@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
-import {getPlayday, getPlaydays} from '../../../store/actions/playdayActions';
+import {getPlayday, getPlaydays} from '../../../store/actions/playday';
 import {getPlaydayReselect, getPlaydaysLoadingReselect, getPlaydaysReselect} from '../../../store/selectors/playday';
 import PlaydaysList from './PlaydaysList';
 import Spinner from '../../Spinner';
