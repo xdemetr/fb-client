@@ -25,7 +25,7 @@ const userLogout = () => {
 };
 
 export const setCurrentUser = (decoded) => {
-  return{
+  return {
     type: FETCH_USER_SUCCESS,
     payload: decoded
   }

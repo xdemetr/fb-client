@@ -10,12 +10,12 @@ import {
 
 const updateSelected = (state, player) => {
   let newSelected = [];
-  const { selected } = state;
+  const {selected} = state;
   const existPlayer = selected.find((pl) => pl._id === player._id);
 
-  if(existPlayer) {
+  if (existPlayer) {
     const idx = selected.findIndex((pl) => pl._id === existPlayer._id);
-    const newArr = [...selected.slice(0, idx), ...selected.slice(idx+1)];
+    const newArr = [...selected.slice(0, idx), ...selected.slice(idx + 1)];
     newSelected = newArr
   } else {
     const newArr = [...selected, player];

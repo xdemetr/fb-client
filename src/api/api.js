@@ -4,28 +4,28 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://node.joomdesign.ru/fb/api/';
 
 export const authAPI = {
-  registration(username, email, password){
+  registration(username, email, password) {
     return axios.post(`users`, {username, email, password})
   },
-  login(userData){
+  login(userData) {
     return axios.post(`users/login`, userData)
   }
 };
 
 export const playerAPI = {
-  getPlayerList(){
+  getPlayerList() {
     return axios.get(`players`);
   },
-  getPlayer(id){
+  getPlayer(id) {
     return axios.get(`players/${id}`)
   },
-  addPlayer(player){
+  addPlayer(player) {
     return axios.post(`players`, player)
   },
-  updatePlayer(id, data){
+  updatePlayer(id, data) {
     return axios.put(`players/${id}`, data)
   },
-  deletePlayer(id){
+  deletePlayer(id) {
     return axios.delete(`players/${id}`)
   }
 };
@@ -34,10 +34,10 @@ export const playdayAPI = {
   addPlayday(teams) {
     return axios.post(`/playdays`, teams)
   },
-  getPlaydays(){
+  getPlaydays() {
     return axios.get(`/playdays`)
   },
-  getPlayday(id){
+  getPlayday(id) {
     return axios.get(`/playdays/${id}`)
   }
 };

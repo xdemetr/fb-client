@@ -53,8 +53,7 @@ export const generatorSaveResult = (teams) => async dispatch => {
     const res = await playdayAPI.addPlayday(teams);
     dispatch(generatorSaveSuccess());
     console.log(res);
-  }
-  catch (e) {
+  } catch (e) {
     dispatch(generatorSaveError(e.response.data.message));
   }
 };

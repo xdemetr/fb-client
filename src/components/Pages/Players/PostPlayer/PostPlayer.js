@@ -13,9 +13,11 @@ import withAuthRedirect from '../../../../hoc/withAuthRedirect';
 import {compose} from 'redux';
 
 const PostPlayer = React.memo((
-    {match: {params: {id}},
+    {
+      match: {params: {id}},
       postPlayer, updatePlayer, deletePlayer, current,
-      getCurrentPlayer, resetCurrentPlayer, history }
+      getCurrentPlayer, resetCurrentPlayer, history
+    }
 ) => {
   useEffect(() => {
     if (id) {
@@ -42,7 +44,7 @@ const PostPlayer = React.memo((
     )
   };
 
-  const title = id ? 'Редактирование игрока': 'Новый игрок';
+  const title = id ? 'Редактирование игрока' : 'Новый игрок';
 
   return (
       <div className="post-player-page col-md-6 m-auto">

@@ -15,8 +15,9 @@ import {
   getSelectedPlayersReselect
 } from '../../../store/selectors/generator';
 import GeneratorResult from './GeneratorResult';
+import {getAuthReselect} from '../../../store/selectors/auth';
 
-class GeneratorContainer extends React.PureComponent{
+class GeneratorContainer extends React.PureComponent {
 
   componentDidMount() {
     this.props.getPlayers();
@@ -24,6 +25,7 @@ class GeneratorContainer extends React.PureComponent{
 
   render() {
     const {
+      auth,
       list, selected, result, errors,
       generatorPlayerSelected, generatorPlayersReset, generatorRun, generatorSaveResult
     } = this.props;
@@ -33,9 +35,9 @@ class GeneratorContainer extends React.PureComponent{
     const playerList = list.map((player) => {
       const {_id: id, name, damage} = player;
       const selectedClass = selected.find((pl) => pl._id === id) ? 'bg-success text-white' : '';
-      const damageClass = damage ? 'card-muted': '';
+      const damageClass = damage ? 'card-muted' : '';
 
-      return(
+      return (
           <div key={id} className="col-sm-6 col-md-3 mb-3" onClick={() => generatorPlayerSelected(player)}>
             <div className={`card p-2 ${selectedClass} ${damageClass}`}>
               {name}
@@ -58,7 +60,7 @@ class GeneratorContainer extends React.PureComponent{
         return Math.floor(Math.random() * (max - min)) + min;
       };
 
-      const playerToTeam =(team, box1, box2, box3) => {
+      const playerToTeam = (team, box1, box2, box3) => {
         let random = 0;
         let list = box1;
 
@@ -76,11 +78,13 @@ class GeneratorContainer extends React.PureComponent{
         return team;
       };
 
-      let box1 = players.filter((e)=> e.box === 1);
-      let box2 = players.filter((e)=> e.box === 2);
-      let box3 = players.filter((e)=> e.box === 3);
+      let box1 = players.filter((e) => e.box === 1);
+      let box2 = players.filter((e) => e.box === 2);
+      let box3 = players.filter((e) => e.box === 3);
 
-      let team1 = []; let team2 = []; let team3 = [];
+      let team1 = [];
+      let team2 = [];
+      let team3 = [];
 
       players.map(() => {
         team1 = playerToTeam(team1, box1, box2, box3);
@@ -97,9 +101,10 @@ class GeneratorContainer extends React.PureComponent{
     };
 
     const BtnGroup = () => {
-      return  <div className="btn-group-lg btn-group">
+      return <div className="btn-group-lg btn-group">
         <button className="btn-lg btn btn-primary" onClick={() => onGenerateClick()}>Получить составы</button>
-        <button className="btn-lg btn btn-outline-primary" onClick={() => generatorPlayersReset()}>Сбросить выделение</button>
+        <button className="btn-lg btn btn-outline-primary" onClick={() => generatorPlayersReset()}>Сбросить выделение
+        </button>
       </div>
     };
 
@@ -121,9 +126,10 @@ class GeneratorContainer extends React.PureComponent{
           <BtnGroup/>
 
           <GeneratorResult
+              auth={auth}
               errors={errors}
               result={result}
-              onSaveResult={onSaveResult} />
+              onSaveResult={onSaveResult}/>
         </div>
     )
   }
@@ -133,12 +139,13 @@ const mapStateToProps = (state) => ({
   list: getPlayerListReselect(state),
   selected: getSelectedPlayersReselect(state),
   result: getGeneratorResultReselect(state),
-  errors: getGeneratorErrors(state)
+  errors: getGeneratorErrors(state),
+  auth: getAuthReselect(state)
 });
 
 const mapDispatchToProps = {
   getPlayers, generatorRun,
-  generatorPlayerSelected, generatorPlayersReset, generatorSaveResult
+  generatorPlayerSelected, generatorPlayersReset, generatorSaveResult,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GeneratorContainer);
