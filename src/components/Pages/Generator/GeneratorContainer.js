@@ -15,6 +15,7 @@ import {
   getSelectedPlayersReselect
 } from '../../../store/selectors/generator';
 import GeneratorResult from './GeneratorResult';
+import {getAuthReselect} from '../../../store/selectors/auth';
 
 class GeneratorContainer extends React.PureComponent{
 
@@ -24,6 +25,7 @@ class GeneratorContainer extends React.PureComponent{
 
   render() {
     const {
+      auth,
       list, selected, result, errors,
       generatorPlayerSelected, generatorPlayersReset, generatorRun, generatorSaveResult
     } = this.props;
@@ -121,6 +123,7 @@ class GeneratorContainer extends React.PureComponent{
           <BtnGroup/>
 
           <GeneratorResult
+              auth={auth}
               errors={errors}
               result={result}
               onSaveResult={onSaveResult} />
@@ -133,12 +136,13 @@ const mapStateToProps = (state) => ({
   list: getPlayerListReselect(state),
   selected: getSelectedPlayersReselect(state),
   result: getGeneratorResultReselect(state),
-  errors: getGeneratorErrors(state)
+  errors: getGeneratorErrors(state),
+  auth: getAuthReselect(state)
 });
 
 const mapDispatchToProps = {
   getPlayers, generatorRun,
-  generatorPlayerSelected, generatorPlayersReset, generatorSaveResult
+  generatorPlayerSelected, generatorPlayersReset, generatorSaveResult,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GeneratorContainer);
