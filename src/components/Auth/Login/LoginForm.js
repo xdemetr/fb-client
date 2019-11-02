@@ -7,7 +7,7 @@ import Error from '../../Error';
 const LoginForm = ({handleSubmit, error}) => {
   return (
       <form onSubmit={handleSubmit}>
-        <Error message={error} />
+        <Error message={error}/>
         <Field
             validate={[required, email]}
             component={Input} placeholder="Почта" name={"email"}/>

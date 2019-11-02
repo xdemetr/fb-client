@@ -24,13 +24,13 @@ const PlayersContainer = React.memo(({getPlayers, list, loading, error}) => {
   }
 
   if (error) {
-    return <Error message={error} />
+    return <Error message={error}/>
   }
 
   return (
       <div className="players-page">
         <h1>Игроки</h1>
-        <Players list={list} />
+        <Players list={list}/>
       </div>
   );
 });

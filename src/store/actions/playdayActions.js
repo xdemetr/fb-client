@@ -54,8 +54,7 @@ export const getPlaydays = () => async dispatch => {
   try {
     const res = await playdayAPI.getPlaydays();
     dispatch(playdayListLoaded(res.data));
-  }
-  catch (e) {
+  } catch (e) {
     dispatch(playdayListError(e.message));
   }
 };
@@ -66,8 +65,7 @@ export const getPlayday = id => async dispatch => {
   try {
     const res = await playdayAPI.getPlayday(id);
     dispatch(playdayLoaded(res.data));
-  }
-  catch (e) {
+  } catch (e) {
     dispatch(playdayError(e.message))
   }
 };

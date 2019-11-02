@@ -9,7 +9,7 @@ const PlaydaysDetails = ({playday}) => {
 
   const teamList = playday.teams.map((team, idx) => (
           <div className="col-md-4 mt-3 mt-md-0" key={idx}>
-            <Team players={team} title={`Команда ${idx+1}`} />
+            <Team players={team} title={`Команда ${idx + 1}`}/>
           </div>
       )
   );

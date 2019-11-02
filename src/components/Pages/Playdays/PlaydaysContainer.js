@@ -16,9 +16,9 @@ const PlaydaysContainer = ({getPlaydays, getPlayday, list, loading, error, curre
 
   if (loading) return <Spinner/>;
 
-  if (error) return <Error message={error} />;
+  if (error) return <Error message={error}/>;
 
-  return(
+  return (
       <div className="playdays-page">
         <h1>Результаты</h1>
 

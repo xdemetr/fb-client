@@ -6,31 +6,31 @@ const FormControl = ({input, meta, child, element, ...props}) => {
   return (
       <div className={`form-group ${hasError ? 'has-danger' : ''}`}>
         {props.children}
-        {hasError && <div className="invalid-feedback">{meta.error}</div> }
+        {hasError && <div className="invalid-feedback">{meta.error}</div>}
       </div>
   )
 };
 
-export const Input  = (props) => {
+export const Input = (props) => {
   const {input, meta, child, element, ...restProps} = props;
 
   const hasError = meta.touched && meta.error;
 
-  return(
+  return (
       <FormControl {...props}>
         <input {...input} {...restProps}
-               className={`form-control ${hasError ? 'is-invalid' : ''}` }  />
+               className={`form-control ${hasError ? 'is-invalid' : ''}`}/>
       </FormControl>
   )
 };
 
-export const Select  = (props) => {
+export const Select = (props) => {
   const {input, meta, child, element, ...restProps} = props;
   const hasError = meta.touched && meta.error;
 
-  return(
+  return (
       <FormControl {...props}>
-        <select className={`form-control ${hasError ? 'is-invalid' : ''}` }
+        <select className={`form-control ${hasError ? 'is-invalid' : ''}`}
                 {...input} {...restProps}>
           {props.children}
         </select>
@@ -38,15 +38,15 @@ export const Select  = (props) => {
   )
 };
 
-export const Checkbox  = (props) => {
+export const Checkbox = (props) => {
   const {input, meta, child, element, ...restProps} = props;
 
-  return(
+  return (
       <FormControl {...props}>
         <div className={`custom-control custom-checkbox`}>
           <input {...input}
                  checked={input.value}
-                 type="checkbox" className="custom-control-input" id={restProps.id} />
+                 type="checkbox" className="custom-control-input" id={restProps.id}/>
           <label className={`custom-control-label`} htmlFor={restProps.id}>{restProps.label}</label>
         </div>
       </FormControl>

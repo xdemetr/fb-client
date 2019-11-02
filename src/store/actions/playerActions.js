@@ -61,8 +61,7 @@ export const getPlayers = () => async dispatch => {
   try {
     const res = await playerAPI.getPlayerList();
     dispatch(playerListLoaded(res.data));
-  }
-  catch (e) {
+  } catch (e) {
     dispatch(playerListError(e.message));
   }
 };
@@ -73,8 +72,7 @@ export const getPlayer = playerId => async dispatch => {
   try {
     const res = await playerAPI.getPlayer(playerId);
     dispatch(playerLoaded(res.data))
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e.message)
   }
 };
@@ -86,8 +84,7 @@ export const postPlayer = (player, history) => async dispatch => {
     const res = await playerAPI.addPlayer(player);
     dispatch(playerPostSuccess(res.data));
     history.push('/players');
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e.message);
   }
 };
@@ -109,8 +106,7 @@ export const deletePlayer = (id, history) => async () => {
     const res = await playerAPI.deletePlayer(id);
     history.push('/players');
     console.log(res.data);
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e.message)
   }
 };
@@ -119,8 +115,7 @@ export const getCurrentPlayer = id => async dispatch => {
   try {
     const res = await playerAPI.getPlayer(id);
     dispatch(playerPostSuccess(res.data));
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e.message)
   }
 };

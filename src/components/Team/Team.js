@@ -9,7 +9,7 @@ const Team = React.memo(({players, title}) => {
         <div className="list-group-item d-flex align-items-center" key={player._id}>
           <img
               className="rounded-circle"
-              src={player.image} alt={player.name} width="32" />
+              src={player.image} alt={player.name} width="32"/>
           <span className="ml-2">{player.name}</span>
         </div>
     )
