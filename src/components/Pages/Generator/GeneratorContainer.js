@@ -1,21 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {getPlayerListReselect} from '../../../store/selectors/player';
-import {getPlayers} from '../../../store/actions/playerActions';
 import Spinner from '../../Spinner';
+import GeneratorResult from './GeneratorResult';
+import {getAuthReselect} from '../../../store/selectors/auth';
 import {
   generatorPlayerSelected,
   generatorPlayersReset,
   generatorRun,
   generatorSaveResult
-} from '../../../store/actions/generatorActions';
+} from '../../../store/actions/generator';
 import {
   getGeneratorErrors,
   getGeneratorResultReselect,
   getSelectedPlayersReselect
 } from '../../../store/selectors/generator';
-import GeneratorResult from './GeneratorResult';
-import {getAuthReselect} from '../../../store/selectors/auth';
+import {getPlayers} from '../../../store/actions/player';
 
 class GeneratorContainer extends React.PureComponent {
 
@@ -30,7 +30,7 @@ class GeneratorContainer extends React.PureComponent {
       generatorPlayerSelected, generatorPlayersReset, generatorRun, generatorSaveResult
     } = this.props;
 
-    if (!list.length) return <Spinner/>;
+    if (!list) return <Spinner/>;
 
     const playerList = list.map((player) => {
       const {_id: id, name, damage} = player;
@@ -38,7 +38,7 @@ class GeneratorContainer extends React.PureComponent {
       const damageClass = damage ? 'card-muted' : '';
 
       return (
-          <div key={id} className="col-sm-6 col-md-3 mb-3" onClick={() => generatorPlayerSelected(player)}>
+          <div key={id} className="col-6 col-md-3 mb-3" onClick={() => generatorPlayerSelected(player)}>
             <div className={`card p-2 ${selectedClass} ${damageClass}`}>
               {name}
             </div>

@@ -7,7 +7,7 @@ import {
   postPlayer,
   resetCurrentPlayer,
   updatePlayer
-} from '../../../../store/actions/playerActions';
+} from '../../../../store/actions/player';
 import {getPlayerCurrentReselect} from '../../../../store/selectors/player';
 import withAuthRedirect from '../../../../hoc/withAuthRedirect';
 import {compose} from 'redux';
