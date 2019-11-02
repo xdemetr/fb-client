@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logoutUser} from '../../store/actions/authActions';
 import logo from './logo.svg';
+import cnames from 'classnames';
 
 const AppHeader = ({auth: {isAuth}, logoutUser}) => {
 
@@ -28,19 +29,26 @@ const AppHeader = ({auth: {isAuth}, logoutUser}) => {
 
   const navLinks = isAuth ? authLInks : guestLinks;
 
+  const [showNavBar, setNavbarVisible] = useState(false);
+  const onNavbarToggle = () => {
+    setNavbarVisible(!showNavBar)
+  };
+
   return (
       <div className="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div className="container">
           <div className="navbar-brand d-flex align-items-center">
-            <img src={logo} alt="logo" className="mr-2" height="48" />
+            <img src={logo} alt="logo" className="mr-2" height="48"/>
             <span className="">Футбол в спортзале</span>
           </div>
 
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                  aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+          <button
+              className="navbar-toggler"
+              onClick={onNavbarToggle}
+              type="button"><span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarResponsive">
+
+          <div className={cnames('collapse navbar-collapse', {'show': showNavBar})}>
             <ul className="navbar-nav ml-md-auto">
               <li className="nav-item">
                 <NavLink to="/generator" className="nav-link">Генератор</NavLink>
@@ -60,4 +68,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps,{logoutUser})(AppHeader);
+export default connect(mapStateToProps, {logoutUser})(AppHeader);
