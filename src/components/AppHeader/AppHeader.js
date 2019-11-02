@@ -4,25 +4,34 @@ import {connect} from 'react-redux';
 import {logoutUser} from '../../store/actions/authActions';
 import logo from './logo.svg';
 import cnames from 'classnames';
+import {
+  ROUTE_GENERATOR,
+  ROUTE_HOME,
+  ROUTE_LOGIN,
+  ROUTE_NEW_PLAYER,
+  ROUTE_PLAYDAYS,
+  ROUTE_PLAYERS
+} from '../../const/Routes';
+import {getAuthReselect} from '../../store/selectors/auth';
 
 const AppHeader = ({auth: {isAuth}, logoutUser}) => {
 
   const guestLinks = (
       <li className="nav-item">
-        <NavLink to="/login" className="nav-link">Войти</NavLink>
+        <NavLink to={ROUTE_LOGIN} className="nav-link">Войти</NavLink>
       </li>
   );
 
   const authLInks = (
       <>
         <li className="nav-item">
-          <NavLink to="/players" className="nav-link">Игроки</NavLink>
+          <NavLink to={ROUTE_PLAYERS} className="nav-link">Игроки</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/new-player" className="nav-link">Добавить игрока</NavLink>
+          <NavLink to={ROUTE_NEW_PLAYER} className="nav-link">Добавить игрока</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/" className="nav-link" onClick={() => logoutUser()}>Выход</NavLink>
+          <NavLink to={ROUTE_HOME} className="nav-link" onClick={() => logoutUser()}>Выход</NavLink>
         </li>
       </>
   );
@@ -51,10 +60,10 @@ const AppHeader = ({auth: {isAuth}, logoutUser}) => {
           <div className={cnames('collapse navbar-collapse', {'show': showNavBar})}>
             <ul className="navbar-nav ml-md-auto">
               <li className="nav-item">
-                <NavLink to="/generator" className="nav-link">Генератор</NavLink>
+                <NavLink to={ROUTE_GENERATOR} className="nav-link">Генератор</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/playdays" className="nav-link">Результаты</NavLink>
+                <NavLink to={ROUTE_PLAYDAYS} className="nav-link">Результаты</NavLink>
               </li>
               {navLinks}
             </ul>
@@ -65,7 +74,7 @@ const AppHeader = ({auth: {isAuth}, logoutUser}) => {
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: getAuthReselect(state)
 });
 
 export default connect(mapStateToProps, {logoutUser})(AppHeader);

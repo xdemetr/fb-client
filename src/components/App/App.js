@@ -4,6 +4,15 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import {Login} from '../Auth';
 import {GeneratorContainer} from '../Pages';
 import withSuspense from '../../hoc/withSuspense';
+import {
+  ROUTE_EDIT_PLAYER,
+  ROUTE_GENERATOR,
+  ROUTE_HOME,
+  ROUTE_LOGIN,
+  ROUTE_NEW_PLAYER,
+  ROUTE_PLAYDAYS,
+  ROUTE_PLAYERS
+} from '../../const/Routes';
 
 const PlayersContainer = React.lazy(() => import('../Pages/Players/PlayersContainer'));
 const PostPlayer = React.lazy(() => import('../Pages/Players/PostPlayer/PostPlayer'));
@@ -16,16 +25,16 @@ const App = () => {
 
         <div className="container">
           <Switch>
-            <Route path={`/login`} render={ () => <Login/> } />
+            <Route path={ROUTE_LOGIN} render={() => <Login/>}/>
 
-            <Route path={`/generator`} render={ () => <GeneratorContainer/> } />
-            <Route path={`/players`} render={withSuspense(PlayersContainer)} />
-            <Route path={`/playdays/:id?`} render={withSuspense(PlaydaysContainer)} />
+            <Route path={ROUTE_GENERATOR} render={() => <GeneratorContainer/>}/>
+            <Route path={ROUTE_PLAYERS} render={withSuspense(PlayersContainer)}/>
+            <Route path={`${ROUTE_PLAYDAYS}:id?`} render={withSuspense(PlaydaysContainer)}/>
 
-            <Route path={"/edit-player/:id"} render={withSuspense(PostPlayer)} />
-            <Route path={`/new-player`} render={withSuspense(PostPlayer)} />
+            <Route path={`${ROUTE_EDIT_PLAYER}:id`} render={withSuspense(PostPlayer)}/>
+            <Route path={ROUTE_NEW_PLAYER} render={withSuspense(PostPlayer)}/>
 
-            <Redirect from={`/`} to={`/generator`} />
+            <Redirect from={ROUTE_HOME} to={ROUTE_GENERATOR}/>
           </Switch>
         </div>
       </div>
