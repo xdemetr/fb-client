@@ -1,11 +1,9 @@
 import React from 'react';
-import {Field, reduxForm, InjectedFormProps} from 'redux-form';
+import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import {required} from '../../../../utils/validators';
 import {Checkbox, Input, Select} from '../../../Form/Input';
-import Spinner from '../../../Spinner';
 
-const PostPlayerForm: React.FC<InjectedFormProps> = ({handleSubmit, initialValues}) => {
-  if (!initialValues) return <Spinner/>;
+const PostPlayerForm: React.FC<InjectedFormProps> = ({handleSubmit}) => {
 
   return (
       <form onSubmit={handleSubmit}>
