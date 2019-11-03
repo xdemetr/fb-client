@@ -1,7 +1,12 @@
 import React from 'react';
-import Team from '../../Team';
+import IPlayday from '../../../types/interface/IPlayday';
+import Team from '../../Team/Team';
 
-const PlaydaysDetails = ({playday}) => {
+interface Props {
+  playday: IPlayday | null
+}
+
+const PlaydaysDetails:React.FC<Props> = ({playday}) => {
 
   if (!playday) return null;
 

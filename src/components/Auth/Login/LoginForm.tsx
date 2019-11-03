@@ -1,10 +1,14 @@
 import React from 'react';
-import {Field, reduxForm} from 'redux-form';
+import {Field, reduxForm, InjectedFormProps} from 'redux-form';
 import {Input} from '../../Form/Input';
 import {email, required} from '../../../utils/validators';
 import Error from '../../Error';
 
-const LoginForm = ({handleSubmit, error}) => {
+interface Props extends InjectedFormProps {
+  error: string
+}
+
+const LoginForm: React.FC<Props> = ({handleSubmit, error}) => {
   return (
       <form onSubmit={handleSubmit}>
         <Error message={error}/>
@@ -23,4 +27,4 @@ const LoginForm = ({handleSubmit, error}) => {
 
 export default reduxForm({
   form: 'login'
-})(LoginForm);
+})(React.memo(LoginForm));

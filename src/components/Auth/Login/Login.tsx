@@ -37,4 +37,4 @@ const mapStateToProps = (state: AppState) => ({
   auth: getAuthReselect(state)
 });
 
-export default connect(mapStateToProps, {loginUser})(Login);
+export default connect(mapStateToProps, {loginUser})(React.memo(Login));

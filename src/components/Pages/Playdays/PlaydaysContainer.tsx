@@ -7,8 +7,20 @@ import PlaydaysList from './PlaydaysList';
 import Spinner from '../../Spinner';
 import Error from '../../Error/Error';
 import PlaydaysDetails from './PlaydaysDetails';
+import IPlayday from '../../../types/interface/IPlayday';
+import {AppState} from '../../../store/store';
 
-const PlaydaysContainer = ({getPlaydays, getPlayday, list, loading, error, current, match: {params: {id}}}) => {
+interface Props {
+  getPlaydays: () => void
+  getPlayday: (id: string) => void
+  list: Array<{ _id: string, name: string }>
+  loading: boolean
+  error?: string
+  current: IPlayday | null
+  match: any
+}
+
+const PlaydaysContainer: React.FC<Props> = ({getPlaydays, getPlayday, list, loading, error, current, match: {params: {id}}}) => {
   useEffect(() => {
     getPlaydays();
     getPlayday(id)
@@ -36,7 +48,7 @@ const PlaydaysContainer = ({getPlaydays, getPlayday, list, loading, error, curre
   )
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppState) => ({
   list: getPlaydaysReselect(state),
   loading: getPlaydaysLoadingReselect(state),
   current: getPlaydayReselect(state)

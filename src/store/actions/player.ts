@@ -101,6 +101,7 @@ export const deletePlayer = (id: string, history: any) => async () => {
 };
 
 export const getCurrentPlayer = (id: string) => async (dispatch: Dispatch<AppActions>) => {
+  dispatch(playerPostRequested());
   try {
     const res = await playerAPI.getPlayer(id);
     dispatch(playerPostSuccess(res.data));
