@@ -2,7 +2,6 @@ import React from 'react';
 import AppHeader from '../AppHeader';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Login} from '../Auth';
-import {GeneratorContainer} from '../Pages';
 import withSuspense from '../../hoc/withSuspense';
 import {
   ROUTE_EDIT_PLAYER,
@@ -13,6 +12,7 @@ import {
   ROUTE_PLAYDAYS,
   ROUTE_PLAYERS
 } from '../../const/Routes';
+import GeneratorContainer from '../Pages/Generator/GeneratorContainer';
 
 const PlayersContainer = React.lazy((): any => import('../Pages/Players/PlayersContainer'));
 const PostPlayer = React.lazy((): any => import('../Pages/Players/PostPlayer/PostPlayer'));

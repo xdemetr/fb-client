@@ -1,7 +1,7 @@
 import React from 'react';
-import Team from '../../Team';
 import Error from '../../Error/Error';
 import ITeam from '../../../types/interface/ITeam';
+import Team from '../../Team/Team';
 
 interface Props {
   result: ITeam[]

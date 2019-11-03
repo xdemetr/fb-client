@@ -6,7 +6,7 @@ import {
   FETCH_PLAYERS_SUCCESS,
   FETCH_PLAYER_FAILURE,
   FETCH_POST_PLAYER_SUCCESS,
-  PlayerActionTypes
+  PlayerActionTypes, FETCH_POST_PLAYER_REQUEST
 } from '../../types/playerActions';
 import IPlayer from '../../types/interface/IPlayer';
 
@@ -76,13 +76,13 @@ const playerReducer = (
         error: action.error
       }
     }
-      //
-      // case FETCH_POST_PLAYER_REQUEST: {
-      //   return {
-      //     ...state,
-      //     loading: true
-      //   }
-      // }
+
+    case FETCH_POST_PLAYER_REQUEST: {
+      return {
+        ...state,
+        loading: true
+      }
+    }
 
     case FETCH_POST_PLAYER_SUCCESS: {
       return {

@@ -1,10 +1,10 @@
 import React from 'react';
-import {Field, reduxForm} from 'redux-form';
+import {Field, reduxForm, InjectedFormProps} from 'redux-form';
 import {required} from '../../../../utils/validators';
 import {Checkbox, Input, Select} from '../../../Form/Input';
 import Spinner from '../../../Spinner';
 
-const PostPlayerForm = React.memo(({handleSubmit, initialValues}) => {
+const PostPlayerForm: React.FC<InjectedFormProps> = ({handleSubmit, initialValues}) => {
   if (!initialValues) return <Spinner/>;
 
   return (
@@ -43,9 +43,9 @@ const PostPlayerForm = React.memo(({handleSubmit, initialValues}) => {
         <button className="btn btn-primary w-100">Сохранить</button>
       </form>
   );
-});
+};
 
 export default reduxForm({
   form: 'post-player',
   enableReinitialize: true
-})(PostPlayerForm);
+})(React.memo(PostPlayerForm));

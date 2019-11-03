@@ -2,7 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {ROUTE_PLAYDAYS} from '../../../const/Routes';
 
-const PlaydaysList = ({list, current}) => {
+interface Props {
+  list: Array<{ _id: string, name: string }>
+  current: string
+}
+
+const PlaydaysList: React.FC<Props> = ({list, current}) => {
 
   if (!list.length) return null;
 

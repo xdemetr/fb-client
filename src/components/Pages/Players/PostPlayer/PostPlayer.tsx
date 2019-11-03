@@ -8,15 +8,29 @@ import {
   resetCurrentPlayer,
   updatePlayer
 } from '../../../../store/actions/player';
-import {getPlayerCurrentReselect} from '../../../../store/selectors/player';
+import {getPlayerCurrentReselect, getPlayerLoadingReselect} from '../../../../store/selectors/player';
 import withAuthRedirect from '../../../../hoc/withAuthRedirect';
 import {compose} from 'redux';
+import {AppState} from '../../../../store/store';
+import Spinner from '../../../Spinner';
 
-const PostPlayer = React.memo((
+interface Props {
+  history: any
+  postPlayer: (formData: any, history: any) => void
+  updatePlayer: (id: string, formData: any, history: any) => void
+  deletePlayer: (id: string, history: any) => void
+  current: any
+  getCurrentPlayer: (id: string) => void
+  resetCurrentPlayer: () => void
+  match: any
+  loading: boolean
+}
+
+const PostPlayer: React.FC<Props> = (
     {
       match: {params: {id}},
       postPlayer, updatePlayer, deletePlayer, current,
-      getCurrentPlayer, resetCurrentPlayer, history
+      getCurrentPlayer, resetCurrentPlayer, history, loading
     }
 ) => {
   useEffect(() => {
@@ -27,7 +41,7 @@ const PostPlayer = React.memo((
     }
   }, [getCurrentPlayer, resetCurrentPlayer, id]);
 
-  const onSubmit = formData => {
+  const onSubmit = (formData: any) => {
     if (!id) {
       postPlayer(formData, history);
     } else {
@@ -46,20 +60,24 @@ const PostPlayer = React.memo((
 
   const title = id ? 'Редактирование игрока' : 'Новый игрок';
 
+  if (loading) return <Spinner/>;
+
   return (
       <div className="post-player-page col-md-6 m-auto">
         <h1>{title}</h1>
 
         <PostPlayerForm
             initialValues={current}
-            onSubmit={onSubmit} id={id} player={current}/>
+            onSubmit={onSubmit}
+        />
         <DeleteButton/>
       </div>
   );
-});
+};
 
-const mapStateToProps = (state) => ({
-  current: getPlayerCurrentReselect(state)
+const mapStateToProps = (state: AppState) => ({
+  current: getPlayerCurrentReselect(state),
+  loading: getPlayerLoadingReselect(state)
 });
 
 const mapDispatchToProps = ({
@@ -69,4 +87,4 @@ const mapDispatchToProps = ({
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     withAuthRedirect
-)(PostPlayer);
+)(React.memo(PostPlayer));
