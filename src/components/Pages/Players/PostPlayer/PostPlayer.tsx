@@ -23,7 +23,7 @@ interface Props {
   getCurrentPlayer: (id: string) => void
   resetCurrentPlayer: () => void
   match: any
-  loading: boolean
+  loading?: boolean
 }
 
 const PostPlayer: React.FC<Props> = (

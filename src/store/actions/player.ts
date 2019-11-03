@@ -11,6 +11,7 @@ import {AppActions} from '../../types';
 import IPlayer from '../../types/interface/IPlayer';
 import {playerAPI} from '../../api/api';
 import {Dispatch} from 'react';
+import {DEFAULT_PLAYER_IMAGE} from '../../const/Vars';
 
 const playerListRequested = (): AppActions => ({
   type: FETCH_PLAYERS_REQUEST
@@ -70,6 +71,9 @@ export const postPlayer = (player: IPlayer, history: any) => async (dispatch: Di
   dispatch(playerPostRequested());
 
   try {
+    if (!player.image) {
+      player.image = DEFAULT_PLAYER_IMAGE
+    }
     const res = await playerAPI.addPlayer(player);
     dispatch(playerPostSuccess(res.data));
     history.push('/players');
@@ -82,6 +86,10 @@ export const updatePlayer = (playerId: string, playerData: IPlayer, history: any
   dispatch(playerPostRequested());
 
   try {
+    if (!playerData.image) {
+      playerData.image = DEFAULT_PLAYER_IMAGE
+    }
+
     const res = await playerAPI.updatePlayer(playerId, playerData);
     dispatch(playerPostSuccess(res.data));
     history.push('/players');
