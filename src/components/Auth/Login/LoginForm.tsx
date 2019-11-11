@@ -1,30 +1,51 @@
 import React from 'react';
-import {Field, reduxForm, InjectedFormProps} from 'redux-form';
-import {Input} from '../../Form/Input';
-import {email, required} from '../../../utils/validators';
-import Error from '../../Error';
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
+import InputField from '../../Form/InputField';
 
-interface Props extends InjectedFormProps {
-  error: string
+interface Props {
+  onSubmit: (formData: { email: string, password: string }) => void
 }
 
-const LoginForm: React.FC<Props> = ({handleSubmit, error}) => {
+const LoginForm: React.FC<Props> = ({onSubmit}) => {
+  const loginFormOptions = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    onSubmit: values => {
+      onSubmit(values)
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email('Эл.почта указана неверно').required('Обязательное поле'),
+      password: Yup.string().required('Обязательное поле')
+    })
+  });
+
+  const {handleSubmit, handleBlur, handleChange, touched, errors, values} = loginFormOptions;
+
   return (
       <form onSubmit={handleSubmit}>
-        <Error message={error}/>
-        <Field
-            validate={[required, email]}
-            component={Input} placeholder="Почта" name={"email"}/>
 
-        <Field
-            validate={[required]}
-            component={Input} placeholder="Пассворд" name={"password"} type="password"/>
+        <InputField
+            placeholder="Эл.почта"
+            name={"email"} type="email"
+            onBlur={handleBlur} onChange={handleChange}
+            value={values.email} touch={touched.email} error={errors.email}
+        />
 
-        <button className="btn btn-primary w-100">GO</button>
+        <InputField
+            placeholder="Пассворд"
+            name={"password"} type="password"
+            onBlur={handleBlur} onChange={handleChange}
+            value={values.password} touch={touched.password} error={errors.password}
+        />
+
+        <div className="mt-2">
+          <button type="submit" className="btn btn-primary w-100">GO</button>
+        </div>
       </form>
-  );
+  )
 };
 
-export default reduxForm({
-  form: 'login'
-})(React.memo(LoginForm));
+export default React.memo(LoginForm);

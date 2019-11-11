@@ -40,7 +40,8 @@ const authReducer = (
         ...state,
         user: action.userData,
         isAuth: true,
-        loading: false
+        loading: false,
+        error: ''
       };
     }
 

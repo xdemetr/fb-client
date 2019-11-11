@@ -5,15 +5,17 @@ import {Redirect} from 'react-router-dom';
 import {getAuthReselect} from '../../../store/selectors/auth';
 import {loginUser} from '../../../store/actions/auth';
 import {AppState} from '../../../store/store';
+import Error from '../../Error/Error';
 
 interface Props {
   auth: {
-    isAuth: boolean
+    isAuth: boolean,
+    error?: string
   }
   loginUser: (formData: any) => void
 }
 
-const Login: React.FC<Props> = ({loginUser, auth: {isAuth}}) => {
+const Login: React.FC<Props> = ({loginUser, auth: {isAuth, error}}) => {
 
   const onSubmit = (formData: any) => {
     loginUser(formData);
@@ -27,6 +29,8 @@ const Login: React.FC<Props> = ({loginUser, auth: {isAuth}}) => {
       <div className="login-page">
         <div className="col-md-6 m-auto">
           <h1>Войти</h1>
+
+          <Error message={error}/>
           <LoginForm onSubmit={onSubmit}/>
         </div>
       </div>

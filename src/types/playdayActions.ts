@@ -8,6 +8,9 @@ export const FETCH_PLAYDAY_REQUEST = 'FETCH_PLAYDAY_REQUEST';
 export const FETCH_PLAYDAY_SUCCESS = 'FETCH_PLAYDAY_SUCCESS';
 export const FETCH_PLAYDAY_FAILURE = 'FETCH_PLAYDAY_FAILURE';
 
+export const FETCH_POST_PLAYDAY_REQUEST = 'FETCH_POST_PLAYDAY_REQUEST';
+export const FETCH_POST_PLAYDAY_SUCCESS = 'FETCH_POST_PLAYDAY_SUCCESS';
+
 interface playdayListRequested {
   type: typeof FETCH_PLAYDAYS_REQUEST
 }
@@ -36,6 +39,15 @@ interface playdayError {
   error: string
 }
 
+interface playdayPostRequested {
+  type: typeof FETCH_POST_PLAYDAY_REQUEST
+}
+
+interface playdayPostSuccess {
+  type: typeof FETCH_POST_PLAYDAY_SUCCESS,
+  playday: IPlayday | null
+}
+
 export type PlaydayActionTypes =
     | playdayListRequested
     | playdayListLoaded
@@ -43,3 +55,5 @@ export type PlaydayActionTypes =
     | playdayRequested
     | playdayLoaded
     | playdayError
+    | playdayPostRequested
+    | playdayPostSuccess
