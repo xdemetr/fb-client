@@ -4,6 +4,7 @@ import {
   FETCH_PLAYDAYS_FAILURE,
   FETCH_PLAYDAYS_REQUEST,
   FETCH_PLAYDAYS_SUCCESS,
+  FETCH_POST_PLAYDAY_REQUEST, FETCH_POST_PLAYDAY_SUCCESS,
   PlaydayActionTypes
 } from '../../types/playdayActions';
 import IPlayday from '../../types/interface/IPlayday';
@@ -62,6 +63,20 @@ const playdayReducer = (
         ...state,
         current: action.current,
         loading: false
+      }
+    }
+
+    case FETCH_POST_PLAYDAY_REQUEST: {
+      return {
+        ...state,
+        loading: true
+      }
+    }
+
+    case FETCH_POST_PLAYDAY_SUCCESS: {
+      return {
+        ...state,
+        current: action.playday
       }
     }
 

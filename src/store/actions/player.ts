@@ -118,6 +118,18 @@ export const getCurrentPlayer = (id: string) => async (dispatch: Dispatch<AppAct
   }
 };
 
+export const getPlayerByHandle = (handle: string) => async (dispatch: Dispatch<AppActions>) => {
+  dispatch(playerRequested());
+
+  try {
+    const res = await playerAPI.getPlayerByHandle(handle);
+    dispatch(playerLoaded(res.data))
+  }
+  catch (e) {
+    console.log(e);
+  }
+};
+
 export const resetCurrentPlayer = () => (dispatch: Dispatch<AppActions>) => {
   dispatch(playerPostSuccess(null));
 };

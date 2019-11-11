@@ -32,6 +32,9 @@ export const playerAPI = {
   getPlayer(id: string): Promise<any> {
     return axios.get(`players/${id}`)
   },
+  getPlayerByHandle(handle: string): Promise<any> {
+    return axios.get(`players/handle/${handle}`)
+  },
   addPlayer(player: IPlayer): Promise<any> {
     return axios.post(`players`, player)
   },
@@ -52,5 +55,8 @@ export const playdayAPI = {
   },
   getPlayday(id:string):Promise<any> {
     return axios.get(`/playdays/${id}`)
-  }
+  },
+  updatePlayday(id: string, data: any): Promise<any> {
+    return axios.put(`playdays/${id}`, data)
+  },
 };

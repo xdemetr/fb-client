@@ -5,6 +5,8 @@ import {
   FETCH_PLAYDAYS_FAILURE,
   FETCH_PLAYDAYS_REQUEST,
   FETCH_PLAYDAYS_SUCCESS,
+  FETCH_POST_PLAYDAY_REQUEST,
+  FETCH_POST_PLAYDAY_SUCCESS,
 } from '../../types/playdayActions';
 import {playdayAPI} from '../../api/api';
 import IPlayday from '../../types/interface/IPlayday';
@@ -39,6 +41,15 @@ const playdayError = (error: string): AppActions => ({
   error
 });
 
+const playdayPostRequested = (): AppActions => ({
+  type: FETCH_POST_PLAYDAY_REQUEST
+});
+
+const playdayPostSuccess = (playday: IPlayday | null): AppActions => ({
+  type: FETCH_POST_PLAYDAY_SUCCESS,
+  playday
+});
+
 export const getPlaydays = () => async (dispatch: Dispatch<AppActions>) => {
   dispatch(playdayListRequested());
   try {
@@ -57,5 +68,18 @@ export const getPlayday = (id: string) => async (dispatch: Dispatch<AppActions>)
     dispatch(playdayLoaded(res.data));
   } catch (e) {
     dispatch(playdayError(e.message))
+  }
+};
+
+export const updatePlayday = (id: string, playdayData: any, history: any) => async (dispatch: Dispatch<AppActions>) => {
+  dispatch(playdayPostRequested());
+
+  try {
+    const res = await playdayAPI.updatePlayday(id, playdayData);
+    dispatch(playdayPostSuccess(res.data));
+    // TODO: доделать редирект.
+    history.push(`/playdays/${id}`);
+  } catch (e) {
+    console.log(e)
   }
 };
