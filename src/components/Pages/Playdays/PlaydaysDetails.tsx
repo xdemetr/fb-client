@@ -5,10 +5,11 @@ import {Link} from 'react-router-dom';
 import {ROUTE_EDIT_PLAYDAY} from '../../../const/Routes';
 
 interface Props {
-  playday: IPlayday | null
+  playday: IPlayday | null,
+  auth: boolean
 }
 
-const PlaydaysDetails: React.FC<Props> = ({playday}) => {
+const PlaydaysDetails: React.FC<Props> = ({playday, auth}) => {
 
   if (!playday) return null;
 
@@ -19,15 +20,25 @@ const PlaydaysDetails: React.FC<Props> = ({playday}) => {
       )
   );
 
+  const EditLink = () => {
+    return (
+        <Link
+            className="btn btn-primary mb-3"
+            to={`${ROUTE_EDIT_PLAYDAY}${playday.name}`}>
+          Редактировать
+        </Link>
+    )
+  };
+
+  const editLink = auth ? <EditLink/> : null;
+
   return (
       <div className={`playdays-details`}>
         <h2 className="d-flex">
           {playday.name}
         </h2>
 
-        <Link
-            className="btn btn-primary mb-3"
-            to={`${ROUTE_EDIT_PLAYDAY}${playday.name}`}>Редактировать</Link>
+        {editLink}
 
         <div className="row">
           {teamList}

@@ -9,6 +9,7 @@ import Error from '../../Error/Error';
 import PlaydaysDetails from './PlaydaysDetails';
 import IPlayday from '../../../types/interface/IPlayday';
 import {AppState} from '../../../store/store';
+import {getAuthReselect} from '../../../store/selectors/auth';
 
 interface Props {
   getPlaydays: () => void
@@ -17,10 +18,19 @@ interface Props {
   loading: boolean
   error?: string
   current: IPlayday | null
-  match: any
+  match: any,
+  auth: {
+    isAuth: boolean
+  }
 }
 
-const PlaydaysContainer: React.FC<Props> = ({getPlaydays, getPlayday, list, loading, error, current, match: {params: {id}}}) => {
+const PlaydaysContainer: React.FC<Props> = (
+    {
+      getPlaydays, getPlayday, list, loading,
+      error, current, match: {params: {id}},
+      auth: {isAuth}
+    }
+) => {
   useEffect(() => {
     getPlaydays();
     getPlayday(id)
@@ -40,10 +50,9 @@ const PlaydaysContainer: React.FC<Props> = ({getPlaydays, getPlayday, list, load
           </div>
 
           <div className="col-md-9 order-0 order-md-1">
-            <PlaydaysDetails playday={current}/>
+            <PlaydaysDetails playday={current} auth={isAuth}/>
           </div>
         </div>
-
       </div>
   )
 };
@@ -51,7 +60,8 @@ const PlaydaysContainer: React.FC<Props> = ({getPlaydays, getPlayday, list, load
 const mapStateToProps = (state: AppState) => ({
   list: getPlaydaysReselect(state),
   loading: getPlaydaysLoadingReselect(state),
-  current: getPlaydayReselect(state)
+  current: getPlaydayReselect(state),
+  auth: getAuthReselect(state)
 });
 
 export default compose(
