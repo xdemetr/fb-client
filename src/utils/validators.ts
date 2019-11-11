@@ -3,7 +3,7 @@ const required = (value:string) => {
   return 'Обязательное поле';
 };
 
-const number = (value:string) => value && isNaN(Number(value)) ? 'Must be a number' : undefined;
+const number = (value:string) => value && isNaN(Number(value)) ? 'Должно быть целым числом' : undefined;
 const positiveNumber = (value:string) => value && (isNaN(Number(value)) || Number(value) <= 0) ? 'Must be a positive' +
     ' number' : undefined;
 
