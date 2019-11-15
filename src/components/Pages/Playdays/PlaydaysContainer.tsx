@@ -10,15 +10,20 @@ import PlaydaysDetails from './PlaydaysDetails';
 import IPlayday from '../../../types/interface/IPlayday';
 import {AppState} from '../../../store/store';
 import {getAuthReselect} from '../../../store/selectors/auth';
+import IPlaydayList from '../../../types/interface/IPlaydayList';
 
 interface Props {
   getPlaydays: () => void
   getPlayday: (id: string) => void
-  list: Array<{ _id: string, name: string }>
+  list: IPlaydayList[]
   loading: boolean
   error?: string
   current: IPlayday | null
-  match: any,
+  match: {
+    params: {
+      id: string | ''
+    }
+  },
   auth: {
     isAuth: boolean
   }
@@ -33,7 +38,9 @@ const PlaydaysContainer: React.FC<Props> = (
 ) => {
   useEffect(() => {
     getPlaydays();
-    getPlayday(id)
+    if (id) {
+      getPlayday(id)
+    }
   }, [getPlaydays, getPlayday, id]);
 
   if (loading) return <Spinner/>;

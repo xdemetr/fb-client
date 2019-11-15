@@ -12,12 +12,13 @@ import {playdayAPI} from '../../api/api';
 import IPlayday from '../../types/interface/IPlayday';
 import {AppActions} from '../../types';
 import {Dispatch} from 'react';
+import IPlaydayList from '../../types/interface/IPlaydayList';
 
 const playdayListRequested = (): AppActions => ({
   type: FETCH_PLAYDAYS_REQUEST
 });
 
-const playdayListLoaded = (playdays: IPlayday[]): AppActions => ({
+const playdayListLoaded = (playdays: IPlaydayList[]): AppActions => ({
   type: FETCH_PLAYDAYS_SUCCESS,
   playdays
 });
@@ -45,9 +46,9 @@ const playdayPostRequested = (): AppActions => ({
   type: FETCH_POST_PLAYDAY_REQUEST
 });
 
-const playdayPostSuccess = (playday: IPlayday | null): AppActions => ({
+const playdayPostSuccess = (current: IPlayday): AppActions => ({
   type: FETCH_POST_PLAYDAY_SUCCESS,
-  playday
+  current
 });
 
 export const getPlaydays = () => async (dispatch: Dispatch<AppActions>) => {
@@ -71,14 +72,13 @@ export const getPlayday = (id: string) => async (dispatch: Dispatch<AppActions>)
   }
 };
 
-export const updatePlayday = (id: string, playdayData: any, history: any) => async (dispatch: Dispatch<AppActions>) => {
+export const updatePlayday = (id: string, name: string, playdayData: any, history: any) => async (dispatch: Dispatch<AppActions>) => {
   dispatch(playdayPostRequested());
 
   try {
     const res = await playdayAPI.updatePlayday(id, playdayData);
     dispatch(playdayPostSuccess(res.data));
-    // TODO: доделать редирект.
-    history.push(`/playdays/${id}`);
+    history.push(`/playdays/${name}`);
   } catch (e) {
     console.log(e)
   }

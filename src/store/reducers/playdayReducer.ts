@@ -8,9 +8,10 @@ import {
   PlaydayActionTypes
 } from '../../types/playdayActions';
 import IPlayday from '../../types/interface/IPlayday';
+import IPlaydayList from '../../types/interface/IPlaydayList';
 
 interface playdayReducerState {
-  list: Array<{ _id: string, name: string }>,
+  list: IPlaydayList[],
   current: IPlayday | null,
   loading: boolean,
   error: string
@@ -76,7 +77,8 @@ const playdayReducer = (
     case FETCH_POST_PLAYDAY_SUCCESS: {
       return {
         ...state,
-        current: action.playday
+        current: action.current,
+        loading: false
       }
     }
 
