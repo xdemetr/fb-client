@@ -45,7 +45,7 @@ interface playdayPostRequested {
 
 interface playdayPostSuccess {
   type: typeof FETCH_POST_PLAYDAY_SUCCESS,
-  playday: IPlayday | null
+  current: IPlayday | null
 }
 
 export type PlaydayActionTypes =

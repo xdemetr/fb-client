@@ -1,5 +1,7 @@
 import axios from 'axios';
 import IPlayer from '../types/interface/IPlayer';
+import IPlaydayList from '../types/interface/IPlaydayList';
+import IPlayday from '../types/interface/IPlayday';
 
 //axios.defaults.baseURL = 'http://localhost:5001/fb/api/';
 axios.defaults.baseURL = 'https://node.joomdesign.ru/fb/api/';
@@ -47,16 +49,16 @@ export const playerAPI = {
 };
 
 export const playdayAPI = {
-  addPlayday(teams:any):Promise<any> {
+  addPlayday(teams: any): Promise<{ data: IPlayday }> {
     return axios.post(`/playdays`, teams)
   },
-  getPlaydays():Promise<any> {
+  getPlaydays(): Promise<{data: IPlaydayList[]}> {
     return axios.get(`/playdays`)
   },
-  getPlayday(id:string):Promise<any> {
+  getPlayday(id: string): Promise<{ data: IPlayday }> {
     return axios.get(`/playdays/${id}`)
   },
-  updatePlayday(id: string, data: any): Promise<any> {
+  updatePlayday(id: string, data: any): Promise<{ data: IPlayday }> {
     return axios.put(`playdays/${id}`, data)
   },
 };

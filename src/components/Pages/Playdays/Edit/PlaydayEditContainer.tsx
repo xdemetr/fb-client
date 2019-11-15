@@ -13,9 +13,17 @@ interface Props {
   current: IPlayday | null
   match: any
   getPlayday: (id: string) => void
-  updatePlayday: (id: string, data: any, history: any) => void
-  size?: number,
+  updatePlayday: (id: string, name: string, data: any, history: any) => void
+  size?: number
   history: any
+}
+
+interface PropsFormData {
+  id: string
+  name: string
+  res1: number
+  res2: number
+  res3?: number
 }
 
 const PlaydayEditContainer: React.FC<Props> = (
@@ -32,6 +40,8 @@ const PlaydayEditContainer: React.FC<Props> = (
 
   if (!current) return <Spinner/>;
 
+  const {_id: currentId, name} = current;
+
   const teamList = current.teams.map((team, idx) => (
           <div className="col-md-4 mt-3 mt-md-0" key={idx}>
             <Team players={team} title={`Команда ${idx + 1}`}/>
@@ -39,13 +49,13 @@ const PlaydayEditContainer: React.FC<Props> = (
       )
   );
 
-  const onSubmit = (formData: any) => {
-    updatePlayday(current._id, Object.values(formData), history)
+  const onSubmit = (formData: PropsFormData) => {
+    updatePlayday(currentId, name, Object.values(formData), history)
   };
 
   return (
       <div className={`playday-edit-container`}>
-        <h1>{current.name}</h1>
+        <h1>{name}</h1>
 
         <PlaydayEditForm
             onSubmit={onSubmit}
