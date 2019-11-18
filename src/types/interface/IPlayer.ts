@@ -1,5 +1,3 @@
-import IPlayday from './IPlayday';
-
 export default interface IPlayer {
   _id: string
   name: string
