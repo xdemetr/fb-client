@@ -1,12 +1,3 @@
-import {
-  FETCH_PLAYER_REQUEST,
-  FETCH_PLAYER_SUCCESS,
-  FETCH_PLAYERS_FAILURE,
-  FETCH_PLAYERS_REQUEST,
-  FETCH_PLAYERS_SUCCESS,
-  FETCH_POST_PLAYER_REQUEST,
-  FETCH_POST_PLAYER_SUCCESS
-} from '../../types/playerActions';
 import {AppActions} from '../../types';
 import IPlayer from '../../types/interface/IPlayer';
 import {playerAPI} from '../../api/api';
@@ -14,34 +5,34 @@ import {Dispatch} from 'react';
 import {DEFAULT_PLAYER_IMAGE} from '../../const/Vars';
 
 const playerListRequested = (): AppActions => ({
-  type: FETCH_PLAYERS_REQUEST
+  type: 'FETCH_PLAYERS_REQUEST'
 });
 
 const playerListLoaded = (players: IPlayer[]): AppActions => ({
-  type: FETCH_PLAYERS_SUCCESS,
+  type: 'FETCH_PLAYERS_SUCCESS',
   players
 });
 
 const playerListError = (error: string): AppActions => ({
-  type: FETCH_PLAYERS_FAILURE,
+  type: 'FETCH_PLAYERS_FAILURE',
   error
 });
 
 const playerRequested = (): AppActions => ({
-  type: FETCH_PLAYER_REQUEST
+  type: 'FETCH_PLAYER_REQUEST'
 });
 
 const playerLoaded = (player: IPlayer): AppActions => ({
-  type: FETCH_PLAYER_SUCCESS,
+  type: 'FETCH_PLAYER_SUCCESS',
   player
 });
 
 const playerPostRequested = (): AppActions => ({
-  type: FETCH_POST_PLAYER_REQUEST
+  type: 'FETCH_POST_PLAYER_REQUEST'
 });
 
 const playerPostSuccess = (player: IPlayer | null): AppActions => ({
-  type: FETCH_POST_PLAYER_SUCCESS,
+  type: 'FETCH_POST_PLAYER_SUCCESS',
   player
 });
 

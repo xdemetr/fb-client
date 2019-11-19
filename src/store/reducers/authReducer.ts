@@ -1,11 +1,4 @@
-import {
-  AUTH_USER_FAILURE,
-  AUTH_USER_REQUEST,
-  AUTH_USER_SUCCESS,
-  AuthActionTypes,
-  FETCH_USER_SUCCESS,
-  LOGOUT_USER
-} from '../../types/authActions';
+import {AuthActionTypes} from '../../types/authActions';
 import ITokenJWT from '../../types/interface/ITokenJWT';
 
 interface authReducerState {
@@ -27,15 +20,13 @@ const authReducer = (
     action: AuthActionTypes
 ): authReducerState => {
   switch (action.type) {
-
-    case AUTH_USER_REQUEST: {
+    case 'AUTH_USER_REQUEST':
       return {
         ...state,
         loading: true
-      }
-    }
+      };
 
-    case AUTH_USER_SUCCESS: {
+    case 'AUTH_USER_SUCCESS':
       return {
         ...state,
         user: action.userData,
@@ -43,36 +34,32 @@ const authReducer = (
         loading: false,
         error: ''
       };
-    }
 
-    case FETCH_USER_SUCCESS: {
+    case 'FETCH_USER_SUCCESS':
       return {
         ...state,
         user: action.decoded,
         isAuth: true,
         loading: false
-      }
-    }
+      };
 
-    case AUTH_USER_FAILURE: {
+    case 'AUTH_USER_FAILURE':
       return {
         ...state,
         error: action.error,
         loading: false
-      }
-    }
+      };
 
-    case LOGOUT_USER: {
+    case 'LOGOUT_USER':
       return {
         ...state,
         user: null,
         isAuth: false,
         loading: false
-      }
-    }
+      };
 
     default:
-      return state;
+      return state
   }
 };
 
