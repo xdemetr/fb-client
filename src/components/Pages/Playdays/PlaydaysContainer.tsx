@@ -4,7 +4,7 @@ import {compose} from 'redux';
 import {getPlayday, getPlaydays} from '../../../store/actions/playday';
 import {getPlaydayReselect, getPlaydaysLoadingReselect, getPlaydaysReselect} from '../../../store/selectors/playday';
 import PlaydaysList from './PlaydaysList';
-import Spinner from '../../Spinner';
+import Spinner from '../../Spinner/Spinner';
 import Error from '../../Error/Error';
 import PlaydaysDetails from './PlaydaysDetails';
 import IPlayday from '../../../types/interface/IPlayday';
@@ -12,7 +12,7 @@ import {AppState} from '../../../store/store';
 import {getAuthReselect} from '../../../store/selectors/auth';
 import IPlaydayList from '../../../types/interface/IPlaydayList';
 
-interface Props {
+type Props = {
   getPlaydays: () => void
   getPlayday: (id: string) => void
   list: IPlaydayList[]

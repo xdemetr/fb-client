@@ -5,11 +5,11 @@ import IPlayday from '../../../../types/interface/IPlayday';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {getPlayday, updatePlayday} from '../../../../store/actions/playday';
-import Spinner from '../../../Spinner';
+import Spinner from '../../../Spinner/Spinner';
 import Team from '../../../Team/Team';
 import PlaydayEditForm from './PlaydayEditForm';
 
-interface Props {
+type Props = {
   current: IPlayday | null
   match: any
   getPlayday: (id: string) => void
@@ -18,7 +18,7 @@ interface Props {
   history: any
 }
 
-interface PropsFormData {
+type PropsFormData = {
   id: string
   name: string
   res1: number

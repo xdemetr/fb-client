@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {ROUTE_PLAYDAYS} from '../../../../const/Routes';
 
-interface Props {
+type Props = {
   playdays: Array<{ _id: string, name: string, result: number }> | null
 }
 

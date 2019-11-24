@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {ROUTE_EDIT_PLAYER, ROUTE_PLAYERS} from '../../../const/Routes';
 import IPlayer from '../../../types/interface/IPlayer';
 
-interface Props {
+type Props = {
   list: IPlayer[]
 }
 

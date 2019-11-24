@@ -1,20 +1,20 @@
 import axios from 'axios';
 import IPlayer from '../types/interface/IPlayer';
-import IPlaydayList from '../types/interface/IPlaydayList';
 import IPlayday from '../types/interface/IPlayday';
+import IPlaydayList from '../types/interface/IPlaydayList';
 
 //axios.defaults.baseURL = 'http://localhost:5001/fb/api/';
 axios.defaults.baseURL = 'https://node.joomdesign.ru/fb/api/';
 
-interface authResolve {
+type authResolve = {
   data: {
-    success: boolean,
+    success: boolean
     token: string
   }
 }
 
-interface authLogin {
-  email: string,
+type authLogin = {
+  email: string
   password: string
 }
 

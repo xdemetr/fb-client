@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Players from './Players';
 import {connect} from 'react-redux';
 import {getPlayers} from '../../../store/actions/player';
-import Spinner from '../../Spinner';
+import Spinner from '../../Spinner/Spinner';
 import Error from '../../Error';
 import {
   getPlayerErrorReselect,
@@ -14,10 +14,10 @@ import withAuthRedirect from '../../../hoc/withAuthRedirect';
 import IPlayer from '../../../types/interface/IPlayer';
 import {AppState} from '../../../store/store';
 
-interface Props {
-  list: IPlayer[],
-  loading: boolean,
-  error: string,
+type Props = {
+  list: IPlayer[]
+  loading: boolean
+  error: string
   getPlayers: () => void
 }
 

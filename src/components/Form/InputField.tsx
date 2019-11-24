@@ -1,26 +1,27 @@
 import React from 'react';
+import cnames from 'classnames';
 
-interface InputProps {
+type Props = {
   name: string
   type: string
   onBlur: any
   onChange: any
   value: string
-  touch?: boolean
-  error?: string
+  touch?: any
+  error?: any
   placeholder?: string
 }
 
-const InputField: React.FC<InputProps> = ({onBlur, onChange, touch, error, value, name, type, placeholder}) => {
+const InputField: React.FC<Props> = ({onBlur, onChange, touch, error, value, name, type, placeholder}) => {
   return (
-      <div className={`form-group ${touch && error ? 'has-danger' : ''}`}>
+      <div className={cnames('form-group', {'has-danger': touch && error})}>
         <input
             name={name}
             onChange={onChange}
             value={value}
             onBlur={onBlur}
             type={type}
-            className={`form-control ${touch && error ? 'is-invalid' : ''}`}
+            className={cnames('form-control', {'is-invalid': touch && error})}
             placeholder={placeholder}
         />
         {touch && error && <span className="invalid-feedback">{error}</span>}

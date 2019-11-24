@@ -6,20 +6,26 @@ import {getAuthReselect} from '../../../store/selectors/auth';
 import {loginUser} from '../../../store/actions/auth';
 import {AppState} from '../../../store/store';
 import Error from '../../Error/Error';
+import Spinner from '../../Spinner/Spinner';
 
-interface Props {
+type Props = {
   auth: {
-    isAuth: boolean,
+    isAuth: boolean
     error?: string
+    loading: boolean
   }
-  loginUser: (formData: any) => void
+  loginUser: (formData: { email: string, password: string }) => void
 }
 
-const Login: React.FC<Props> = ({loginUser, auth: {isAuth, error}}) => {
+const Login: React.FC<Props> = ({loginUser, auth: {isAuth, error, loading}}) => {
 
-  const onSubmit = (formData: any) => {
+  const onSubmit = (formData: { email: string, password: string }) => {
     loginUser(formData);
   };
+
+  if (loading) {
+    return <Spinner/>;
+  }
 
   if (isAuth) {
     return <Redirect to="/"/>

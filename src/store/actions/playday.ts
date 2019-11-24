@@ -1,13 +1,3 @@
-import {
-  FETCH_PLAYDAY_FAILURE,
-  FETCH_PLAYDAY_REQUEST,
-  FETCH_PLAYDAY_SUCCESS,
-  FETCH_PLAYDAYS_FAILURE,
-  FETCH_PLAYDAYS_REQUEST,
-  FETCH_PLAYDAYS_SUCCESS,
-  FETCH_POST_PLAYDAY_REQUEST,
-  FETCH_POST_PLAYDAY_SUCCESS,
-} from '../../types/playdayActions';
 import {playdayAPI} from '../../api/api';
 import IPlayday from '../../types/interface/IPlayday';
 import {AppActions} from '../../types';
@@ -15,39 +5,39 @@ import {Dispatch} from 'react';
 import IPlaydayList from '../../types/interface/IPlaydayList';
 
 const playdayListRequested = (): AppActions => ({
-  type: FETCH_PLAYDAYS_REQUEST
+  type: 'FETCH_PLAYDAYS_REQUEST'
 });
 
 const playdayListLoaded = (playdays: IPlaydayList[]): AppActions => ({
-  type: FETCH_PLAYDAYS_SUCCESS,
+  type: 'FETCH_PLAYDAYS_SUCCESS',
   playdays
 });
 
 const playdayListError = (error: string): AppActions => ({
-  type: FETCH_PLAYDAYS_FAILURE,
+  type: 'FETCH_PLAYDAYS_FAILURE',
   error
 });
 
 const playdayRequested = (): AppActions => ({
-  type: FETCH_PLAYDAY_REQUEST
+  type: 'FETCH_PLAYDAY_REQUEST'
 });
 
 const playdayLoaded = (current: IPlayday): AppActions => ({
-  type: FETCH_PLAYDAY_SUCCESS,
+  type: 'FETCH_PLAYDAY_SUCCESS',
   current
 });
 
 const playdayError = (error: string): AppActions => ({
-  type: FETCH_PLAYDAY_FAILURE,
+  type: 'FETCH_PLAYDAY_FAILURE',
   error
 });
 
 const playdayPostRequested = (): AppActions => ({
-  type: FETCH_POST_PLAYDAY_REQUEST
+  type: 'FETCH_POST_PLAYDAY_REQUEST'
 });
 
 const playdayPostSuccess = (current: IPlayday): AppActions => ({
-  type: FETCH_POST_PLAYDAY_SUCCESS,
+  type: 'FETCH_POST_PLAYDAY_SUCCESS',
   current
 });
 
