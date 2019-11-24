@@ -15,10 +15,10 @@ import {getAuthReselect} from '../../store/selectors/auth';
 import {logoutUser} from '../../store/actions/auth';
 import {AppState} from '../../store/store';
 
-interface Props {
+type Props = {
   auth: {
     isAuth?: boolean
-  },
+  }
   logoutUser: () => void
 }
 

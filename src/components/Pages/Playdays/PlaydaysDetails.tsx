@@ -4,7 +4,7 @@ import Team from '../../Team/Team';
 import {Link} from 'react-router-dom';
 import {ROUTE_EDIT_PLAYDAY} from '../../../const/Routes';
 
-interface Props {
+type Props = {
   playday: IPlayday | null,
   auth: boolean
 }

@@ -22,7 +22,7 @@ const updateSelected = (state: any, player: IPlayer) => {
   }
 };
 
-interface generatorReducerState {
+type generatorReducerState = {
   selected: IPlayer[],
   result: ITeam[],
   error: string,

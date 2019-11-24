@@ -2,7 +2,7 @@ import {PlaydayActionTypes} from '../../types/playdayActions';
 import IPlayday from '../../types/interface/IPlayday';
 import IPlaydayList from '../../types/interface/IPlaydayList';
 
-interface playdayReducerState {
+type playdayReducerState = {
   list: IPlaydayList[],
   current: IPlayday | null,
   loading: boolean,

@@ -3,7 +3,7 @@ import Error from '../../Error/Error';
 import ITeam from '../../../types/interface/ITeam';
 import Team from '../../Team/Team';
 
-interface Props {
+type Props = {
   result: ITeam[]
   errors?: string
   auth: {

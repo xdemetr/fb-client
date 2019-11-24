@@ -6,12 +6,12 @@ import {getAuthReselect} from '../../../store/selectors/auth';
 import {loginUser} from '../../../store/actions/auth';
 import {AppState} from '../../../store/store';
 import Error from '../../Error/Error';
-import Spinner from '../../Spinner';
+import Spinner from '../../Spinner/Spinner';
 
-interface Props {
+type Props = {
   auth: {
-    isAuth: boolean,
-    error?: string,
+    isAuth: boolean
+    error?: string
     loading: boolean
   }
   loginUser: (formData: { email: string, password: string }) => void

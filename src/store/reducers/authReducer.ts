@@ -1,7 +1,7 @@
 import {AuthActionTypes} from '../../types/authActions';
 import ITokenJWT from '../../types/interface/ITokenJWT';
 
-interface authReducerState {
+type authReducerState = {
   isAuth: boolean,
   user: ITokenJWT | null,
   loading: boolean,

@@ -4,7 +4,6 @@ import {required} from '../../../../utils/validators';
 import {Checkbox, Input, Select} from '../../../Form/Input';
 
 const PostPlayerForm: React.FC<InjectedFormProps> = ({handleSubmit}) => {
-
   return (
       <form onSubmit={handleSubmit}>
         <Field

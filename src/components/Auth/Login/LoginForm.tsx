@@ -3,7 +3,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import InputField from '../../Form/InputField';
 
-interface Props {
+type Props = {
   onSubmit: (formData: { email: string, password: string }) => void
 }
 

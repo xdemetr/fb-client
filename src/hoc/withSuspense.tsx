@@ -1,9 +1,9 @@
 import React from 'react';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/Spinner/Spinner';
 
-const withSuspense = (Component) => {
+const withSuspense = (Component:any) => {
 
-  return (props) => {
+  return (props:any) => {
     return <React.Suspense fallback={<Spinner/>}>
       <Component {...props} />
     </React.Suspense>

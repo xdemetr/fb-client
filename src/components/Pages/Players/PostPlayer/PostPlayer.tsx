@@ -12,9 +12,9 @@ import {getPlayerCurrentReselect, getPlayerLoadingReselect} from '../../../../st
 import withAuthRedirect from '../../../../hoc/withAuthRedirect';
 import {compose} from 'redux';
 import {AppState} from '../../../../store/store';
-import Spinner from '../../../Spinner';
+import Spinner from '../../../Spinner/Spinner';
 
-interface Props {
+type Props = {
   history: any
   postPlayer: (formData: any, history: any) => void
   updatePlayer: (id: string, formData: any, history: any) => void

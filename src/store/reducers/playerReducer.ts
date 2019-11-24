@@ -1,7 +1,7 @@
 import {PlayerActionTypes} from '../../types/playerActions';
 import IPlayer from '../../types/interface/IPlayer';
 
-interface playerReducerState {
+type playerReducerState = {
   list: IPlayer[],
   current: IPlayer | null,
   selected: IPlayer[],

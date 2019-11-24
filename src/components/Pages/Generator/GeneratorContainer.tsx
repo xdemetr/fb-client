@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getPlayerListReselect} from '../../../store/selectors/player';
-import Spinner from '../../Spinner';
+import Spinner from '../../Spinner/Spinner';
 import GeneratorResult from './GeneratorResult';
 import {getAuthReselect} from '../../../store/selectors/auth';
 import {
@@ -20,8 +20,10 @@ import {AppState} from '../../../store/store';
 import IPlayer from '../../../types/interface/IPlayer';
 import ITeam from '../../../types/interface/ITeam';
 
-interface Props {
-  auth: any
+type Props = {
+  auth: {
+    isAuth: boolean
+  }
   list: IPlayer[]
   selected: IPlayer[]
   result: ITeam[]

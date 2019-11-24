@@ -2,9 +2,10 @@ import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getAuthReselect} from '../store/selectors/auth';
+import {AppState} from '../store/store';
 
-const withAuthRedirect = (Component) => {
-  class RedirectComponent extends React.Component {
+const withAuthRedirect = (Component:any) => {
+  class RedirectComponent extends React.Component<{auth: {isAuth: boolean}}> {
 
     render() {
       const {isAuth} = this.props.auth;
@@ -15,11 +16,11 @@ const withAuthRedirect = (Component) => {
     }
   }
 
-  const mapStateToProps = (state) => ({
+  const mapStateToProps = (state: AppState) => ({
     auth: getAuthReselect(state)
   });
 
-  return connect(mapStateToProps, null)(RedirectComponent);
+  return connect(mapStateToProps, {})(RedirectComponent);
 };
 
 export default withAuthRedirect;

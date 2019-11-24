@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {ROUTE_PLAYDAYS} from '../../../const/Routes';
+import cnames from 'classnames';
 
-interface Props {
+type Props = {
   list: Array<{ _id: string, name: string }>
   current: string
 }
@@ -12,13 +13,11 @@ const PlaydaysList: React.FC<Props> = ({list, current}) => {
   if (!list.length) return null;
 
   const items = list.map(({_id, name}) => {
-
-    const activeClass = name === current ? 'active' : '';
-
     return (
         <Link
             to={`${ROUTE_PLAYDAYS}${name}`}
-            className={`list-group-item list-group-item-action ${activeClass}`} key={_id}>
+            className={cnames('list-group-item list-group-item-action', {'active': name === current})}
+            key={_id}>
           {name}
         </Link>
     )

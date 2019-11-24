@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {AppState} from '../../../../store/store';
 import {getPlayerByHandle} from '../../../../store/actions/player';
 import {getPlayerCurrentReselect, getPlayerLoadingReselect} from '../../../../store/selectors/player';
-import Spinner from '../../../Spinner';
+import Spinner from '../../../Spinner/Spinner';
 import PlayerPlaydayList from './PlayerPlaydayList';
 
 interface Props extends IPlayer {
@@ -23,7 +23,6 @@ const PlayerView: React.FC<Props> = (
       loading
     }
 ) => {
-
   useEffect(() => {
     getPlayerByHandle(handle)
   }, [getPlayerByHandle, handle]);
