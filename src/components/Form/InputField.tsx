@@ -3,7 +3,7 @@ import cnames from 'classnames';
 
 type Props = {
   name: string
-  type?: 'text' | 'password' | 'email' | 'checkbox' | 'select'
+  type?: 'password' | 'email' | 'checkbox' | 'select' | 'text'
   handleBlur?: (e: any) => void
   handleChange?: (e: any) => void
   values?: any
@@ -47,21 +47,21 @@ const Checkbox: React.FC<Props> = ({name, handleChange, values, handleBlur, type
 
 const Select: React.FC<Props> = ({name, handleChange, values, handleBlur, touched, errors, children}) => {
   return (
-        <select
-            id={name}
-            name={name}
-            onChange={handleChange}
-            value={values[name]}
-            onBlur={handleBlur}
-            className={cnames('form-control ', {'is-invalid': touched[name] && errors[name]})}
-        >
-          {children}
-        </select>
+      <select
+          id={name}
+          name={name}
+          onChange={handleChange}
+          value={values[name]}
+          onBlur={handleBlur}
+          className={cnames('form-control ', {'is-invalid': touched[name] && errors[name]})}
+      >
+        {children}
+      </select>
   )
 };
 
 const InputField: React.FC<Props> = (props) => {
-  const {name, type, ...rest} = props;
+  const {name, type = 'text', ...rest} = props;
 
   let renderInput;
 

@@ -26,8 +26,8 @@ const LoginForm: React.FC<Props> = ({onSubmit}) => {
 
   return (
       <form onSubmit={handleSubmit}>
-        <InputField placeholder="Эл.почта" name={"email"} type="email" {...props} />
-        <InputField placeholder="Пассворд" name={"password"} type="password" {...props} />
+        <InputField placeholder="Эл.почта" name="email" type="email" {...props} />
+        <InputField placeholder="Пассворд" name="password" type="password" {...props} />
 
         <div className="mt-2">
           <button type="submit" className="btn btn-primary w-100">GO</button>

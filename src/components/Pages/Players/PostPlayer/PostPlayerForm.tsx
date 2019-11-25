@@ -33,11 +33,11 @@ const PostPlayerForm: React.FC<Props> = ({onSubmit, current}) => {
 
   return (
       <form onSubmit={handleSubmit}>
-        <InputField placeholder="Имя" name="name" type="text" {...props} />
+        <InputField placeholder="Имя" name="name" {...props} />
 
-        <InputField placeholder="Логин" name="handle" type="text" {...props} />
+        <InputField placeholder="Логин" name="handle" {...props} />
 
-        <InputField placeholder="Ссылка на фото" name="image" type="text" {...props} />
+        <InputField placeholder="Ссылка на фото" name="image" {...props} />
 
         <div className="row align-items-center mb-3">
           <div className="col-md-6">
