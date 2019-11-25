@@ -23,7 +23,7 @@ const PlaydayEditForm: React.FC<Props> = ({onSubmit, current}) => {
     })
   });
 
-  const {handleSubmit, handleBlur, handleChange, touched, errors, values} = loginFormOptions;
+  const {handleSubmit, ...props} = loginFormOptions;
 
   if (!current) return null;
 
@@ -35,9 +35,7 @@ const PlaydayEditForm: React.FC<Props> = ({onSubmit, current}) => {
               <InputField
                   placeholder="Голы"
                   name={"res1"} type="text"
-                  onBlur={handleBlur} onChange={handleChange}
-                  value={values.res1}
-                  touch={touched.res1} error={errors.res1}
+                  {...props}
               />
             </div>
 
@@ -45,9 +43,7 @@ const PlaydayEditForm: React.FC<Props> = ({onSubmit, current}) => {
               <InputField
                   placeholder="Голы"
                   name={"res2"} type="text"
-                  onBlur={handleBlur} onChange={handleChange}
-                  value={values.res2}
-                  touch={touched.res2} error={errors.res2}
+                  {...props}
               />
             </div>
           </div>

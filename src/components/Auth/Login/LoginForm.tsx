@@ -22,24 +22,12 @@ const LoginForm: React.FC<Props> = ({onSubmit}) => {
     })
   });
 
-  const {handleSubmit, handleBlur, handleChange, touched, errors, values} = loginFormOptions;
+  const {handleSubmit, ...props} = loginFormOptions;
 
   return (
       <form onSubmit={handleSubmit}>
-
-        <InputField
-            placeholder="Эл.почта"
-            name={"email"} type="email"
-            onBlur={handleBlur} onChange={handleChange}
-            value={values.email} touch={touched.email} error={errors.email}
-        />
-
-        <InputField
-            placeholder="Пассворд"
-            name={"password"} type="password"
-            onBlur={handleBlur} onChange={handleChange}
-            value={values.password} touch={touched.password} error={errors.password}
-        />
+        <InputField placeholder="Эл.почта" name={"email"} type="email" {...props} />
+        <InputField placeholder="Пассворд" name={"password"} type="password" {...props} />
 
         <div className="mt-2">
           <button type="submit" className="btn btn-primary w-100">GO</button>
