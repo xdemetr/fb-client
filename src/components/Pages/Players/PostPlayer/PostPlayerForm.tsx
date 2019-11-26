@@ -1,39 +1,54 @@
 import React from 'react';
-import {Field, InjectedFormProps, reduxForm} from 'redux-form';
-import {required} from '../../../../utils/validators';
-import {Checkbox, Input, Select} from '../../../Form/Input';
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
+import IPlayer from '../../../../types/interface/IPlayer';
+import InputField from '../../../Form/InputField';
 
-const PostPlayerForm: React.FC<InjectedFormProps> = ({handleSubmit}) => {
+type Props = {
+  onSubmit: (formData: any) => void,
+  current: IPlayer
+}
+
+const PostPlayerForm: React.FC<Props> = ({onSubmit, current}) => {
+  const loginFormOptions = useFormik({
+    initialValues: {
+      name: current ? current.name : '',
+      handle: current ? current.handle : '',
+      image: current ? current.image : '',
+      box: current ? current.box : 1,
+      damage: current ? current.damage : false
+    },
+    onSubmit: values => {
+      onSubmit(values)
+    },
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required('Обязательное поле'),
+      handle: Yup.string().required('Обязательное поле'),
+      box: Yup.string().required('Обязательное поле'),
+      image: Yup.string().required('Обязательное поле')
+    })
+  });
+
+  const {handleSubmit, ...props} = loginFormOptions;
+
   return (
       <form onSubmit={handleSubmit}>
-        <Field
-            validate={[required]}
-            component={Input} placeholder="Имя" name={"name"}/>
+        <InputField placeholder="Имя" name="name" {...props} />
 
-        <Field
-            validate={[required]}
-            component={Input} placeholder="Логин" name={"handle"}/>
+        <InputField placeholder="Логин" name="handle" {...props} />
 
-        <Field
-            validate={[]}
-            component={Input} placeholder="Ссылка на фото" name={"image"}/>
+        <InputField placeholder="Ссылка на фото" name="image" {...props} />
 
         <div className="row align-items-center mb-3">
           <div className="col-md-6">
-            <Field
-                validate={[required]}
-                component={Select} placeholder="Корзина" name={"box"}>
+            <InputField name="box" type="select" label="Корзина" {...props}>
               <option value="1">Первая</option>
               <option value="2">Вторая</option>
               <option value="3">Третья</option>
-            </Field>
+            </InputField>
           </div>
           <div className="col-md-6">
-            <Field
-                validate={[]}
-                label={"Травма"}
-                id={`damage`}
-                component={Checkbox} placeholder="Травма" name={"damage"}/>
+            <InputField name="damage" type="checkbox" label="Травма" {...props} />
           </div>
         </div>
 
@@ -42,7 +57,4 @@ const PostPlayerForm: React.FC<InjectedFormProps> = ({handleSubmit}) => {
   );
 };
 
-export default reduxForm({
-  form: 'post-player',
-  enableReinitialize: true
-})(React.memo(PostPlayerForm));
+export default React.memo(PostPlayerForm);

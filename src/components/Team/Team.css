@@ -1,0 +1,46 @@
+.team .team-player__image {
+  border: 4px solid transparent;
+}
+
+.team .list-group-item-primary {
+  color: var(--white);
+}
+
+.team .badge {
+  height: 24px;
+  line-height: 25px;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 100%;
+  text-align: center;
+  background: var(--white);
+  color: var(--dark);
+}
+
+/***/
+
+.team_color_blue .list-group-item-primary {
+  background: var(--blue);
+}
+
+.team_color_blue .team-player__image {
+  border-color: var(--blue);
+}
+
+.team_color_blue a {
+  color: var(--blue);;
+}
+
+/***/
+
+.team_color_red .list-group-item-primary {
+  background: var(--red);
+}
+
+.team_color_red .team-player__image {
+  border-color: var(--red);;
+}
+
+.team_color_red a {
+  color: var(--red);;
+}

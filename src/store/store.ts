@@ -1,7 +1,6 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import authReducer from './reducers/authReducer';
 import thunk, {ThunkMiddleware} from "redux-thunk";
-import {reducer as formReducer} from 'redux-form';
 import playerReducer from './reducers/playerReducer';
 import generatorReducer from './reducers/generatorReducer';
 import playdayReducer from './reducers/playdayReducer';
@@ -18,7 +17,6 @@ let reducers = combineReducers({
   player: playerReducer,
   generator: generatorReducer,
   playday: playdayReducer,
-  form: formReducer
 });
 
 //const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

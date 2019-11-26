@@ -41,6 +41,8 @@ const PostPlayer: React.FC<Props> = (
     }
   }, [getCurrentPlayer, resetCurrentPlayer, id]);
 
+  //if (!current && id) return <Spinner/>;
+
   const onSubmit = (formData: any) => {
     if (!id) {
       postPlayer(formData, history);
@@ -67,8 +69,8 @@ const PostPlayer: React.FC<Props> = (
         <h1>{title}</h1>
 
         <PostPlayerForm
-            initialValues={current}
             onSubmit={onSubmit}
+            current={current}
         />
         <DeleteButton/>
       </div>
