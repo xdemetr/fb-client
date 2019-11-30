@@ -44,3 +44,19 @@
 .team_color_red a {
   color: var(--red);;
 }
+
+.team_color_white .list-group-item-primary {
+  background: var(--white);
+  color: var(--primary);
+}
+
+/***/
+
+.team_view_compact .list-group-item-primary {
+  flex-grow: 1;
+}
+
+.team_view_compact .list-group-item.team__player {
+  padding-top: .3rem;
+  padding-bottom: .3rem;
+}

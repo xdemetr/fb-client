@@ -37,6 +37,16 @@ type playdayPostSuccess = {
   current: IPlayday | null
 }
 
+type playdayRemovePlayer = {
+  type: 'PLAYDAY_PLAYER_REMOVE',
+  data: any
+}
+
+type playdayAddPlayer = {
+  type: 'PLAYDAY_PLAYER_ADD',
+  data: any
+}
+
 export type PlaydayActionTypes =
     | playdayListRequested
     | playdayListLoaded
@@ -46,3 +56,5 @@ export type PlaydayActionTypes =
     | playdayError
     | playdayPostRequested
     | playdayPostSuccess
+    | playdayRemovePlayer
+    | playdayAddPlayer
