@@ -9,7 +9,7 @@ const getPlaydaysLoading = (state: AppState) => {
   return state.playday.loading
 };
 
-const getPlayday = (state: AppState) => {
+export const getPlayday = (state: AppState) => {
   return state.playday.current
 };
 

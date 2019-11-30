@@ -36,6 +36,11 @@ const playerPostSuccess = (player: IPlayer | null): AppActions => ({
   player
 });
 
+const playersSetFree = (players: IPlayer[]): AppActions => ({
+  type: 'SET_FREE_PLAYERS',
+  players
+});
+
 export const getPlayers = () => async (dispatch: Dispatch<AppActions>) => {
   dispatch(playerListRequested());
 
@@ -56,6 +61,10 @@ export const getPlayer = (playerId: string) => async (dispatch: Dispatch<AppActi
   } catch (e) {
     console.log(e.message)
   }
+};
+
+export const setFreePlayers = (players: IPlayer[]) => (dispatch: Dispatch<AppActions>) => {
+  dispatch(playersSetFree(players));
 };
 
 export const postPlayer = (player: IPlayer, history: any) => async (dispatch: Dispatch<AppActions>) => {
@@ -115,8 +124,7 @@ export const getPlayerByHandle = (handle: string) => async (dispatch: Dispatch<A
   try {
     const res = await playerAPI.getPlayerByHandle(handle);
     dispatch(playerLoaded(res.data))
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e);
   }
 };

@@ -37,6 +37,11 @@ type playerPostSuccess = {
   player: IPlayer | null
 }
 
+type playersSetFree = {
+  type: 'SET_FREE_PLAYERS',
+  players: IPlayer[]
+}
+
 export type PlayerActionTypes =
     | playerListRequested
     | playerListLoaded
@@ -46,3 +51,4 @@ export type PlayerActionTypes =
     | playerError
     | playerPostRequested
     | playerPostSuccess
+    | playersSetFree

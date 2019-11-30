@@ -16,9 +16,10 @@ const PlaydaysDetails: React.FC<Props> = ({playday, auth}) => {
   const teamList = playday.teams.map((team, idx) => (
           <div className="col-md-4 mt-3 mt-md-0" key={idx}>
             <Team
-                players={team} title={`Команда ${idx + 1}`}
+                players={team}
                 goals={playday.goals[idx]}
                 color={idx}
+                view="compact"
             />
           </div>
       )

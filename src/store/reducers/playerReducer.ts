@@ -5,6 +5,7 @@ type playerReducerState = {
   list: IPlayer[],
   current: IPlayer | null,
   selected: IPlayer[],
+  freePlayers: IPlayer[],
   loading: boolean,
   error: string
 }
@@ -13,6 +14,7 @@ const playerReducerDefaultState: playerReducerState = {
   list: [],
   current: null,
   selected: [],
+  freePlayers: [],
   loading: false,
   error: ''
 };
@@ -74,6 +76,12 @@ const playerReducer = (
         ...state,
         loading: false,
         current: action.player
+      };
+
+    case 'SET_FREE_PLAYERS':
+      return {
+        ...state,
+        freePlayers: action.players
       };
 
     default:

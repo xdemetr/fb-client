@@ -24,8 +24,7 @@ const PostPlayerForm: React.FC<Props> = ({onSubmit, current}) => {
     validationSchema: Yup.object().shape({
       name: Yup.string().required('Обязательное поле'),
       handle: Yup.string().required('Обязательное поле'),
-      box: Yup.string().required('Обязательное поле'),
-      image: Yup.string().required('Обязательное поле')
+      box: Yup.string().required('Обязательное поле')
     })
   });
 
