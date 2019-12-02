@@ -13,6 +13,7 @@ import IPlayer from '../../../../types/interface/IPlayer';
 import PlaydayAddPlayer from './PlaydayAddPlayer';
 import {getPlayer, getPlayers} from '../../../../store/actions/player';
 import {getPlayerFreeListReselect} from '../../../../store/selectors/player';
+import withAuthRedirect from '../../../../hoc/withAuthRedirect';
 
 type Props = {
   getPlayday: (id: string) => void
@@ -108,5 +109,6 @@ const mapDispatchToProps = {
 };
 
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps)
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
 )(PlaydayEditContainer);
