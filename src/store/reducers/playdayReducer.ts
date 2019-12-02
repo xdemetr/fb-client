@@ -2,27 +2,14 @@ import {PlaydayActionTypes} from '../../types/playdayActions';
 import IPlayday from '../../types/interface/IPlayday';
 import IPlaydayList from '../../types/interface/IPlaydayList';
 import IPlayer from '../../types/interface/IPlayer';
+import { newTeams } from '../../utils/newTeams';
 
 const updateExistPlayday = (state: any, data: { player: IPlayer, team: string }) => {
-  const newTeams = state.current.teams.map((team: any, idx: any) => {
-    if (idx === data.team) {
-      const existPlayer: IPlayer = team.find((pl: IPlayer) => pl._id === data.player._id);
-
-      if (existPlayer) {
-        const idx = team.findIndex((pl: IPlayer) => pl._id === existPlayer._id);
-        team = [...team.slice(0, idx), ...team.slice(idx + 1)];
-      } else {
-        team = [...team, data.player]
-      }
-    }
-    return team
-  });
-
   return {
     ...state,
     current: {
       ...state.current,
-      teams: newTeams
+      teams: newTeams(state.current.teams, data.team, data.player)
     }
   }
 };
