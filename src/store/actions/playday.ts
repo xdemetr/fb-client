@@ -4,6 +4,7 @@ import {AppActions} from '../../types';
 import {Dispatch} from 'react';
 import IPlaydayList from '../../types/interface/IPlaydayList';
 import IPlayer from '../../types/interface/IPlayer';
+import {newTeams} from '../../utils/newTeams';
 
 const playdayListRequested = (): AppActions => ({
   type: 'FETCH_PLAYDAYS_REQUEST'
@@ -55,24 +56,10 @@ export const playdayUpdateTeams = (
     dispatch(playdayPlayerRemove(player.data, teamNumber));
     const {teams} = current;
 
-    const newTeams = teams.map((team: any, idx: any) => {
-      if (idx === parseInt(teamNumber)) {
-        const exPlayer: IPlayer = team.find((pl: IPlayer) => pl._id === player.data._id);
-
-        if (exPlayer) {
-          const existPlayerIdx = team.findIndex((pl: IPlayer) => pl._id === exPlayer._id);
-          team = [...team.slice(0, existPlayerIdx), ...team.slice(existPlayerIdx + 1)];
-        } else {
-          team = [...team, player.data]
-        }
-      }
-      return team
-    });
-
-    let newPd = {...current, teams: newTeams};
+    const newPlayday = {...current, teams: newTeams(teams, teamNumber, player.data)};
 
     try {
-      const res = await playdayAPI.updatePlayday(newPd._id, newPd);
+      const res = await playdayAPI.updatePlayday(newPlayday._id, newPlayday);
       dispatch(playdayPostSuccess(res.data));
     } catch (e) {
       console.log(e)
@@ -107,13 +94,11 @@ export const updatePlayday = (id: string, name: string, playdayData: any, histor
   dispatch(playdayPostRequested());
 
   try {
-    console.log('start update', playdayData);
-
     const res = await playdayAPI.updatePlayday(id, playdayData);
     dispatch(playdayPostSuccess(res.data));
 
     if (history) {
-      history.push(`/playdays/${name}`);
+      history.push(`/playdays/${id}`);
     }
   } catch (e) {
     console.log(e)

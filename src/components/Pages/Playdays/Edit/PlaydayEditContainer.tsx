@@ -13,6 +13,8 @@ import IPlayer from '../../../../types/interface/IPlayer';
 import PlaydayAddPlayer from './PlaydayAddPlayer';
 import {getPlayer, getPlayers} from '../../../../store/actions/player';
 import {getPlayerFreeListReselect} from '../../../../store/selectors/player';
+import withAuthRedirect from '../../../../hoc/withAuthRedirect';
+import PlaydayTitle from './PlaydayTitle';
 
 type Props = {
   getPlayday: (id: string) => void
@@ -54,16 +56,22 @@ const PlaydayEditContainer: React.FC<Props> = (
 
   const {_id: currentId, name} = current;
 
-  const onDeletePlayer = (data: IPlayer, team: any) => {
-    playdayUpdateTeams(data._id, team, current)
+  const onDeletePlayer = (data: IPlayer, teamNumber: string) => {
+    playdayUpdateTeams(data._id, teamNumber, current)
   };
 
-  const onAddPlayerToTeam = (data: IPlayer, team: any) => {
-    playdayUpdateTeams(Object.values(data)[0], team, current)
+  const onAddPlayerToTeam = (data: IPlayer, teamNumber: string) => {
+    playdayUpdateTeams(Object.values(data)[0], teamNumber, current)
   };
 
   const onSubmit = (formData: PropsFormData) => {
     updatePlayday(currentId, name, {goals: Object.values(formData)}, history)
+  };
+
+  const onTitleEdit = (formData: PropsFormData) => {
+    if (name !== formData.name) {
+      updatePlayday(currentId, name, {name: formData.name});
+    }
   };
 
   const teamList = current.teams.map((team, idx) => (
@@ -82,7 +90,7 @@ const PlaydayEditContainer: React.FC<Props> = (
 
   return (
       <div className="playday-edit-container">
-        <h1>{name}</h1>
+        <PlaydayTitle current={current} onSubmit={onTitleEdit}/>
 
         <PlaydayEditForm
             onSubmit={onSubmit}
@@ -108,5 +116,6 @@ const mapDispatchToProps = {
 };
 
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps)
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
 )(PlaydayEditContainer);

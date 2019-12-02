@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import IPlayer from '../../../../types/interface/IPlayer';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {AppState} from '../../../../store/store';
@@ -7,8 +6,9 @@ import {getPlayerByHandle} from '../../../../store/actions/player';
 import {getPlayerCurrentReselect, getPlayerLoadingReselect} from '../../../../store/selectors/player';
 import Spinner from '../../../Spinner/Spinner';
 import PlayerPlaydayList from './PlayerPlaydayList';
+import IPlayer from '../../../../types/interface/IPlayer';
 
-interface Props extends IPlayer {
+type Props = {
   match: any
   getPlayerByHandle: (handle: string) => void
   current: IPlayer | null

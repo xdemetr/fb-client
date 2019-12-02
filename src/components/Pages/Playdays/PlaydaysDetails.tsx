@@ -29,7 +29,7 @@ const PlaydaysDetails: React.FC<Props> = ({playday, auth}) => {
     return (
         <Link
             className="btn btn-primary mb-3"
-            to={`${ROUTE_EDIT_PLAYDAY}${playday.name}`}>
+            to={`${ROUTE_EDIT_PLAYDAY}${playday._id}`}>
           Редактировать
         </Link>
     )
