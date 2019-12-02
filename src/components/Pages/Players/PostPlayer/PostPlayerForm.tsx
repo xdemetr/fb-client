@@ -5,7 +5,13 @@ import IPlayer from '../../../../types/interface/IPlayer';
 import InputField from '../../../Form/InputField';
 
 type Props = {
-  onSubmit: (formData: any) => void,
+  onSubmit: (formData: {
+    name: string
+    handle: string
+    image?: string
+    box?: number
+    damage?: boolean
+  }) => void,
   current: IPlayer
 }
 

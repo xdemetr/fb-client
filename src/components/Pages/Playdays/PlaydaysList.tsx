@@ -15,8 +15,8 @@ const PlaydaysList: React.FC<Props> = ({list, current}) => {
   const items = list.map(({_id, name}) => {
     return (
         <Link
-            to={`${ROUTE_PLAYDAYS}${name}`}
-            className={cnames('list-group-item list-group-item-action', {'active': name === current})}
+            to={`${ROUTE_PLAYDAYS}${_id}`}
+            className={cnames('list-group-item list-group-item-action', {'active': _id === current})}
             key={_id}>
           {name}
         </Link>

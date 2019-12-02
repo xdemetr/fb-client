@@ -41,8 +41,6 @@ const PostPlayer: React.FC<Props> = (
     }
   }, [getCurrentPlayer, resetCurrentPlayer, id]);
 
-  //if (!current && id) return <Spinner/>;
-
   const onSubmit = (formData: any) => {
     if (!id) {
       postPlayer(formData, history);

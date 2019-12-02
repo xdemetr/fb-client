@@ -98,7 +98,7 @@ export const updatePlayday = (id: string, name: string, playdayData: any, histor
     dispatch(playdayPostSuccess(res.data));
 
     if (history) {
-      history.push(`/playdays/${name}`);
+      history.push(`/playdays/${id}`);
     }
   } catch (e) {
     console.log(e)

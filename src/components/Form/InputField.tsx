@@ -11,9 +11,11 @@ type Props = {
   errors?: any
   placeholder?: string
   label?: string
+  autoFocus?: any
+  autoComplete?: string
 }
 
-const Input: React.FC<Props> = ({name, handleChange, values, handleBlur, type, touched, errors, placeholder}) => {
+const Input: React.FC<Props> = ({name, handleChange, values, handleBlur, type, touched, errors, placeholder, autoFocus, autoComplete = 'false'}) => {
   return (
       <input
           name={name}
@@ -23,6 +25,8 @@ const Input: React.FC<Props> = ({name, handleChange, values, handleBlur, type, t
           type={type}
           className={cnames('form-control', {'is-invalid': touched[name] && errors[name]})}
           placeholder={placeholder}
+          autoFocus={autoFocus}
+          autoComplete={autoComplete}
       />
   )
 };
