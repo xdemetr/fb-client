@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {ROUTE_PLAYDAYS} from '../../../../const/Routes';
-import { IPlayerPlayday } from '../../../../types/interface/IPlayer';
+import {IPlayerPlayday} from '../../../../types/interface/IPlayer';
 
 type Props = {
-  playdays: Array<IPlayerPlayday>
+  playdays: IPlayerPlayday[]
 }
 
 const PlayerPlaydayList: React.FC<Props> = ({playdays}) => {
