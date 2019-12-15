@@ -2,6 +2,7 @@ import React from 'react';
 import IPlayer from '../../../../types/interface/IPlayer';
 import {useFormik} from 'formik';
 import InputField from '../../../Form/InputField';
+import Button from '../../../general/Button/Button';
 
 type Props = {
   id: number
@@ -35,7 +36,7 @@ const PlaydayAddPlayer: React.FC<Props> = ({players, id, onSubmit}) => {
             </InputField>
           </div>
           <div className="col-md-4">
-            <button className="btn btn-outline-info w-100 mt-1 mt-md-0" type="submit">Добавить</button>
+            <Button type={'submit'} mod={'outline-info'} className="mt-1 mt-md-0" wide={true}>Добавить</Button>
           </div>
         </form>
 

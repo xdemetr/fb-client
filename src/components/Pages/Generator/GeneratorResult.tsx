@@ -2,6 +2,7 @@ import React from 'react';
 import Error from '../../Error/Error';
 import ITeam from '../../../types/interface/ITeam';
 import Team from '../../Team/Team';
+import Button from '../../general/Button/Button';
 
 type Props = {
   result: ITeam[]
@@ -27,12 +28,7 @@ const GeneratorResult: React.FC<Props> = ({result, onSaveResult, errors, auth: {
 
   const SaveButton = () => {
     if (!isAuth) return null;
-
-    return (
-        <button
-            onClick={onSaveResult}
-            className="btn btn-primary btn-lg">Сохранить</button>
-    )
+    return <Button onClick={onSaveResult}>Сохранить</Button>
   };
 
 

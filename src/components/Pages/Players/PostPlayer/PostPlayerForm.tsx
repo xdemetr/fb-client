@@ -3,6 +3,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import IPlayer from '../../../../types/interface/IPlayer';
 import InputField from '../../../Form/InputField';
+import Button from '../../../general/Button/Button';
 
 type Props = {
   onSubmit: (formData: {
@@ -56,8 +57,7 @@ const PostPlayerForm: React.FC<Props> = ({onSubmit, current}) => {
             <InputField name="damage" type="checkbox" label="Травма" {...props} />
           </div>
         </div>
-
-        <button className="btn btn-primary w-100">Сохранить</button>
+        <Button type={'submit'} wide={true}>Сохранить</Button>
       </form>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import InputField from '../../Form/InputField';
+import Button from '../../general/Button/Button';
 
 type Props = {
   onSubmit: (formData: { email: string, password: string }) => void
@@ -30,7 +31,7 @@ const LoginForm: React.FC<Props> = ({onSubmit}) => {
         <InputField placeholder="Пассворд" name="password" type="password" {...props} />
 
         <div className="mt-2">
-          <button type="submit" className="btn btn-primary w-100">GO</button>
+          <Button wide={true}>GO</Button>
         </div>
       </form>
   )

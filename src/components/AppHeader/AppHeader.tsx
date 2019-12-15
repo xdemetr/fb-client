@@ -14,6 +14,7 @@ import {
 import {getAuthReselect} from '../../store/selectors/auth';
 import {logoutUser} from '../../store/actions/auth';
 import {AppState} from '../../store/store';
+import Button from '../general/Button/Button';
 
 type Props = {
   auth: {
@@ -59,11 +60,9 @@ const AppHeader: React.FC<Props> = ({auth: {isAuth}, logoutUser}) => {
             <span className="">Футбол в спортзале</span>
           </div>
 
-          <button
-              className="navbar-toggler"
-              onClick={onNavbarToggle}
-              type="button"><span className="navbar-toggler-icon"></span>
-          </button>
+          <Button className="navbar-toggler" onClick={onNavbarToggle}>
+            <span className="navbar-toggler-icon"></span>
+          </Button>
 
           <div className={cnames('collapse navbar-collapse', {'show': showNavBar})}>
             <ul className="navbar-nav ml-md-auto">

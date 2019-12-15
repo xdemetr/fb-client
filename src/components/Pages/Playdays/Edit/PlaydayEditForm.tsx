@@ -3,6 +3,7 @@ import {useFormik} from 'formik';
 import InputField from '../../../Form/InputField';
 import * as Yup from 'yup';
 import IPlayday from '../../../../types/interface/IPlayday';
+import Button from '../../../general/Button/Button';
 
 type Props = {
   onSubmit: (formData: any) => void
@@ -43,7 +44,7 @@ const PlaydayEditForm: React.FC<Props> = ({onSubmit, current}) => {
 
           <div className="row">
             <div className="col-12 text-center">
-              <button className="btn btn-primary">Сохранить</button>
+              <Button>Сохранить</Button>
             </div>
           </div>
         </form>

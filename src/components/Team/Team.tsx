@@ -3,6 +3,7 @@ import IPlayer from '../../types/interface/IPlayer';
 import {Link} from 'react-router-dom';
 import {ROUTE_PLAYERS} from '../../const/Routes';
 import './Team.css';
+import Button from '../general/Button/Button';
 
 type Props = {
   players: IPlayer[]
@@ -33,11 +34,10 @@ const Team: React.FC<Props> = ({players, goals, color, deletePlayerFromTeam, aut
     const DeleteButton = () => {
       if (!auth) return null;
 
-      return (
-          <button
-              className="btn btn-sm btn-outline-danger ml-auto"
-              onClick={() => deletePlayerFromTeam(player, color)}>X</button>
-      )
+      return <Button
+          mod={'outline-danger'}
+          className="ml-auto btn-sm"
+          onClick={() => deletePlayerFromTeam(player, color)}>X</Button>
     };
 
     return (
