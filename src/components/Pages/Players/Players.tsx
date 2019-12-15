@@ -2,18 +2,29 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {ROUTE_EDIT_PLAYER, ROUTE_PLAYERS} from '../../../const/Routes';
 import IPlayer from '../../../types/interface/IPlayer';
+import cn from 'classnames';
 
 type Props = {
-  list: IPlayer[]
+  list: IPlayer[],
+  auth?: boolean
 }
 
-const Players: React.FC<Props> = ({list}) => {
+const Players: React.FC<Props> = ({list, auth}) => {
   const playerList = list.map(({name, image, box, _id: id, handle, damage}) => {
-    const damageClass = damage ? 'card-muted' : '';
+
+    const EditButton = () => {
+      if (!auth) return null;
+
+      return (
+          <div className="card-footer p-0 text-right mt-3">
+            <Link to={`${ROUTE_EDIT_PLAYER}${id}`} className="card-link small">изменить</Link>
+          </div>
+      )
+    };
 
     return (
         <div className="col-sm-3 mb-4" key={id}>
-          <div className={`card bg-light ${damageClass}`}>
+          <div className={cn('card bg-light', {'card-muted': damage})}>
             <div className="card-body">
               <div className="d-flex align-items-center">
                 <img
@@ -26,9 +37,7 @@ const Players: React.FC<Props> = ({list}) => {
                 <span className="badge badge-pill badge-info ml-auto">{box}</span>
               </div>
 
-              <div className="card-footer p-0 text-right mt-3">
-                <Link to={`${ROUTE_EDIT_PLAYER}${id}`} className="card-link small">изменить</Link>
-              </div>
+              <EditButton/>
             </div>
           </div>
         </div>
