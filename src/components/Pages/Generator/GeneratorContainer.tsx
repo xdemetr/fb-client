@@ -19,6 +19,7 @@ import {getPlayers} from '../../../store/actions/player';
 import {AppState} from '../../../store/store';
 import IPlayer from '../../../types/interface/IPlayer';
 import ITeam from '../../../types/interface/ITeam';
+import Button from '../../general/Button/Button';
 
 type Props = {
   auth: {
@@ -45,7 +46,7 @@ const GeneratorContainer: React.FC<Props> = (
 
   useEffect(() => {
     getPlayers()
-  },  [getPlayers]);
+  }, [getPlayers]);
 
   if (!list) return <Spinner/>;
 
@@ -70,9 +71,8 @@ const GeneratorContainer: React.FC<Props> = (
 
   const BtnGroup = () => {
     return <div className="btn-group-lg btn-group">
-      <button className="btn-lg btn btn-primary" onClick={() => onGenerateClick()}>Получить составы</button>
-      <button className="btn-lg btn btn-outline-primary" onClick={() => generatorPlayersReset()}>Сбросить выделение
-      </button>
+      <Button onClick={onGenerateClick}>Получить составы</Button>
+      <Button mod={'outline-primary'} onClick={generatorPlayersReset}>Сбросить</Button>
     </div>
   };
 
@@ -109,9 +109,9 @@ const GeneratorContainer: React.FC<Props> = (
     let box2 = players.filter((e) => e.box === 2);
     let box3 = players.filter((e) => e.box === 3);
 
-    let team1:IPlayer[] = [];
-    let team2:IPlayer[] = [];
-    let team3:IPlayer[] = [];
+    let team1: IPlayer[] = [];
+    let team2: IPlayer[] = [];
+    let team3: IPlayer[] = [];
 
     players.map(() => {
       team1 = playerToTeam(team1, box1, box2, box3);

@@ -4,24 +4,21 @@ import {connect} from 'react-redux';
 import {getPlayers} from '../../../store/actions/player';
 import Spinner from '../../Spinner/Spinner';
 import Error from '../../Error';
-import {
-  getPlayerErrorReselect,
-  getPlayerListReselect,
-  getPlayerLoadingReselect
-} from '../../../store/selectors/player';
+import {getPlayerErrorReselect, getPlayerListReselect, getPlayerLoadingReselect} from '../../../store/selectors/player';
 import {compose} from 'redux';
-import withAuthRedirect from '../../../hoc/withAuthRedirect';
 import IPlayer from '../../../types/interface/IPlayer';
 import {AppState} from '../../../store/store';
+import {getAuthReselect} from '../../../store/selectors/auth';
 
 type Props = {
   list: IPlayer[]
   loading: boolean
   error: string
   getPlayers: () => void
+  auth: { isAuth?: boolean }
 }
 
-const PlayersContainer: React.FC<Props> = ({getPlayers, list, loading, error}) => {
+const PlayersContainer: React.FC<Props> = ({getPlayers, list, loading, error, auth: {isAuth}}) => {
 
   useEffect(() => {
     getPlayers()
@@ -38,7 +35,7 @@ const PlayersContainer: React.FC<Props> = ({getPlayers, list, loading, error}) =
   return (
       <div className="players-page">
         <h1>Игроки</h1>
-        <Players list={list}/>
+        <Players list={list} auth={isAuth}/>
       </div>
   );
 };
@@ -46,10 +43,10 @@ const PlayersContainer: React.FC<Props> = ({getPlayers, list, loading, error}) =
 const mapStateToProps = (state: AppState) => ({
   list: getPlayerListReselect(state),
   loading: getPlayerLoadingReselect(state),
-  error: getPlayerErrorReselect(state)
+  error: getPlayerErrorReselect(state),
+  auth: getAuthReselect(state)
 });
 
 export default compose(
-    connect(mapStateToProps, {getPlayers}),
-    withAuthRedirect
+    connect(mapStateToProps, {getPlayers})
 )(React.memo(PlayersContainer))

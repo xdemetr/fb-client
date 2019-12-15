@@ -14,6 +14,7 @@ import {
 import {getAuthReselect} from '../../store/selectors/auth';
 import {logoutUser} from '../../store/actions/auth';
 import {AppState} from '../../store/store';
+import Button from '../general/Button/Button';
 
 type Props = {
   auth: {
@@ -22,29 +23,46 @@ type Props = {
   logoutUser: () => void
 }
 
+
 const AppHeader: React.FC<Props> = ({auth: {isAuth}, logoutUser}) => {
+  const links = [
+    {
+      link: ROUTE_GENERATOR, label: 'Гереатор', access: 'all'
+    },
+    {
+      link: ROUTE_PLAYDAYS, label: 'Результаты', access: 'all'
+    },
+    {
+      link: ROUTE_PLAYERS, label: 'Игроки', access: 'all'
+    },
+    {
+      link: ROUTE_NEW_PLAYER, label: 'Добавить игрока', access: 'auth'
+    },
+    {
+      link: ROUTE_LOGIN, label: 'Войти', access: 'guest'
+    },
+    {
+      link: ROUTE_HOME, label: 'Выйти', access: 'auth', action: () => logoutUser()
+    }
+  ];
 
-  const guestLinks = (
-      <li className="nav-item">
-        <NavLink to={ROUTE_LOGIN} className="nav-link">Войти</NavLink>
-      </li>
-  );
+  const guestLinks = links.filter(el => (el.access === 'guest' || el.access === 'all')).map(link => {
+    return (
+        <li className="nav-item">
+          <NavLink to={link.link} className="nav-link">{link.label}</NavLink>
+        </li>
+    )
+  });
 
-  const authLInks = (
-      <>
+  const authLinks = links.filter(el => (el.access === 'auth' || el.access === 'all')).map(link => {
+    return (
         <li className="nav-item">
-          <NavLink to={ROUTE_PLAYERS} className="nav-link">Игроки</NavLink>
+          <NavLink to={link.link} className="nav-link" onClick={link.action}>{link.label}</NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink to={ROUTE_NEW_PLAYER} className="nav-link">Добавить игрока</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to={ROUTE_HOME} className="nav-link" onClick={() => logoutUser()}>Выход</NavLink>
-        </li>
-      </>
-  );
+    )
+  });
 
-  const navLinks = isAuth ? authLInks : guestLinks;
+  const navLinks = isAuth ? authLinks : guestLinks;
 
   const [showNavBar, setNavbarVisible] = useState(false);
   const onNavbarToggle = () => {
@@ -59,20 +77,12 @@ const AppHeader: React.FC<Props> = ({auth: {isAuth}, logoutUser}) => {
             <span className="">Футбол в спортзале</span>
           </div>
 
-          <button
-              className="navbar-toggler"
-              onClick={onNavbarToggle}
-              type="button"><span className="navbar-toggler-icon"></span>
-          </button>
+          <Button className="navbar-toggler" onClick={onNavbarToggle}>
+            <span className="navbar-toggler-icon"></span>
+          </Button>
 
           <div className={cnames('collapse navbar-collapse', {'show': showNavBar})}>
             <ul className="navbar-nav ml-md-auto">
-              <li className="nav-item">
-                <NavLink to={ROUTE_GENERATOR} className="nav-link">Генератор</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to={ROUTE_PLAYDAYS} className="nav-link">Результаты</NavLink>
-              </li>
               {navLinks}
             </ul>
           </div>
