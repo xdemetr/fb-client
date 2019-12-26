@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {ROUTE_EDIT_PLAYER, ROUTE_PLAYERS} from '../../../const/Routes';
 import IPlayer from '../../../types/interface/IPlayer';
 import cn from 'classnames';
+import {TXT_EDIT} from '../../../const/Vars';
 
 type Props = {
   list: IPlayer[],
@@ -17,7 +18,7 @@ const Players: React.FC<Props> = ({list, auth}) => {
 
       return (
           <div className="card-footer p-0 text-right mt-3">
-            <Link to={`${ROUTE_EDIT_PLAYER}${id}`} className="card-link small">изменить</Link>
+            <Link to={`${ROUTE_EDIT_PLAYER}${id}`} className="card-link small">{TXT_EDIT}</Link>
           </div>
       )
     };

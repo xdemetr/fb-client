@@ -3,6 +3,7 @@ import IPlayday from '../../../../types/interface/IPlayday';
 import {useFormik} from 'formik';
 import InputField from '../../../Form/InputField';
 import * as Yup from 'yup';
+import {TXT_FIELD_REQUIRED, TXT_LABEL_NAME} from '../../../../const/Vars';
 
 type Props = {
   current: IPlayday,
@@ -21,7 +22,7 @@ const PlaydayTitle: React.FC<Props> = ({current, onSubmit}) => {
       setEditTitle(!showEditTitle);
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('Обязательное поле')
+      name: Yup.string().required(TXT_FIELD_REQUIRED)
     })
   });
 
@@ -37,7 +38,7 @@ const PlaydayTitle: React.FC<Props> = ({current, onSubmit}) => {
         <form onSubmit={handleSubmit}>
           <InputField
               name="name" autoFocus
-              placeholder="Название игрового дня"
+              placeholder={TXT_LABEL_NAME}
               {...props}
               handleBlur={handleSubmit}
           />

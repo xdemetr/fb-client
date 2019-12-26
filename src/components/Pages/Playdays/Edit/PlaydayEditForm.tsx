@@ -4,6 +4,7 @@ import InputField from '../../../Form/InputField';
 import * as Yup from 'yup';
 import IPlayday from '../../../../types/interface/IPlayday';
 import Button from '../../../general/Button/Button';
+import {TXT_GOALS, TXT_SAVE} from '../../../../const/Vars';
 
 type Props = {
   onSubmit: (formData: any) => void
@@ -34,17 +35,17 @@ const PlaydayEditForm: React.FC<Props> = ({onSubmit, current}) => {
         <form className={`playday-edit-form mb-3`} onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-md-4 mt-3 mt-md-0">
-              <InputField placeholder="Голы" name="res1" {...props} autoComplete="off"/>
+              <InputField placeholder={TXT_GOALS} name="res1" {...props} autoComplete="off"/>
             </div>
 
             <div className="col-md-4 mt-3 mt-md-0">
-              <InputField placeholder="Голы" name="res2" {...props} autoComplete="off"/>
+              <InputField placeholder={TXT_GOALS} name="res2" {...props} autoComplete="off"/>
             </div>
           </div>
 
           <div className="row">
             <div className="col-12 text-center">
-              <Button>Сохранить</Button>
+              <Button>{TXT_SAVE}</Button>
             </div>
           </div>
         </form>

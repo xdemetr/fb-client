@@ -3,6 +3,7 @@ import Error from '../../Error/Error';
 import ITeam from '../../../types/interface/ITeam';
 import Team from '../../Team/Team';
 import Button from '../../general/Button/Button';
+import {TXT_RESULTS, TXT_SAVE} from '../../../const/Vars';
 
 type Props = {
   result: ITeam[]
@@ -28,13 +29,13 @@ const GeneratorResult: React.FC<Props> = ({result, onSaveResult, errors, auth: {
 
   const SaveButton = () => {
     if (!isAuth) return null;
-    return <Button onClick={onSaveResult}>Сохранить</Button>
+    return <Button onClick={onSaveResult}>{TXT_SAVE}</Button>
   };
 
 
   return (
       <div className="jumbotron mt-3 pt-5 pb-5">
-        <h2>Результаты</h2>
+        <h2>{TXT_RESULTS}</h2>
 
         <Error message={errors}/>
 

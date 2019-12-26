@@ -7,6 +7,7 @@ import {getPlayerCurrentReselect, getPlayerLoadingReselect} from '../../../../st
 import Spinner from '../../../Spinner/Spinner';
 import PlayerPlaydayList from './PlayerPlaydayList';
 import IPlayer from '../../../../types/interface/IPlayer';
+import {TXT_LABEL_BOX} from '../../../../const/Vars';
 
 type Props = {
   match: any
@@ -36,7 +37,7 @@ const PlayerView: React.FC<Props> = (
       <div className="player-view card">
         <div className="card-header d-flex align-items-center">
           <h1>{name}</h1>
-          <span className="ml-auto badge-success badge badge-pill" title="Корзина">{box}</span>
+          <span className="ml-auto badge-success badge badge-pill" title={TXT_LABEL_BOX}>{box}</span>
         </div>
 
         <div className="card-body d-flex">

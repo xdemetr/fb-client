@@ -13,6 +13,7 @@ import withAuthRedirect from '../../../../hoc/withAuthRedirect';
 import {compose} from 'redux';
 import {AppState} from '../../../../store/store';
 import Spinner from '../../../Spinner/Spinner';
+import {TXT_DELETE, TXT_PAGE_ADD_PLAYER, TXT_PAGE_EDIT_PLAYER} from '../../../../const/Vars';
 
 type Props = {
   history: any
@@ -54,11 +55,11 @@ const PostPlayer: React.FC<Props> = (
     return (
         <span
             className="btn btn-sm btn-outline-danger w-100 mt-4"
-            onClick={() => deletePlayer(id, history)}>Удалить</span>
+            onClick={() => deletePlayer(id, history)}>{TXT_DELETE}</span>
     )
   };
 
-  const title = id ? 'Редактирование игрока' : 'Новый игрок';
+  const title = id ? TXT_PAGE_EDIT_PLAYER : TXT_PAGE_ADD_PLAYER;
 
   if (loading) return <Spinner/>;
 

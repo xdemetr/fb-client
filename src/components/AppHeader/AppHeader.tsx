@@ -15,6 +15,15 @@ import {getAuthReselect} from '../../store/selectors/auth';
 import {logoutUser} from '../../store/actions/auth';
 import {AppState} from '../../store/store';
 import Button from '../general/Button/Button';
+import {
+  TXT_ADD_PLAYER,
+  TXT_GENERATOR,
+  TXT_LOGIN,
+  TXT_LOGOUT,
+  TXT_PLAYERS,
+  TXT_RESULTS,
+  TXT_SITENAME
+} from '../../const/Vars';
 
 type Props = {
   auth: {
@@ -27,22 +36,22 @@ type Props = {
 const AppHeader: React.FC<Props> = ({auth: {isAuth}, logoutUser}) => {
   const links = [
     {
-      link: ROUTE_GENERATOR, label: 'Гереатор', access: 'all'
+      link: ROUTE_GENERATOR, label: TXT_GENERATOR, access: 'all'
     },
     {
-      link: ROUTE_PLAYDAYS, label: 'Результаты', access: 'all'
+      link: ROUTE_PLAYDAYS, label: TXT_RESULTS, access: 'all'
     },
     {
-      link: ROUTE_PLAYERS, label: 'Игроки', access: 'all'
+      link: ROUTE_PLAYERS, label: TXT_PLAYERS, access: 'all'
     },
     {
-      link: ROUTE_NEW_PLAYER, label: 'Добавить игрока', access: 'auth'
+      link: ROUTE_NEW_PLAYER, label: TXT_ADD_PLAYER, access: 'auth'
     },
     {
-      link: ROUTE_LOGIN, label: 'Войти', access: 'guest'
+      link: ROUTE_LOGIN, label: TXT_LOGIN, access: 'guest'
     },
     {
-      link: ROUTE_HOME, label: 'Выйти', access: 'auth', action: () => logoutUser()
+      link: ROUTE_HOME, label: TXT_LOGOUT, access: 'auth', action: () => logoutUser()
     }
   ];
 
@@ -74,7 +83,7 @@ const AppHeader: React.FC<Props> = ({auth: {isAuth}, logoutUser}) => {
         <div className="container">
           <div className="navbar-brand d-flex align-items-center">
             <img src={logo} alt="logo" className="mr-2" height="48"/>
-            <span className="">Футбол в спортзале</span>
+            <span>{TXT_SITENAME}</span>
           </div>
 
           <Button className="navbar-toggler" onClick={onNavbarToggle}>

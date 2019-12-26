@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {ROUTE_PLAYERS} from '../../const/Routes';
 import './Team.css';
 import Button from '../general/Button/Button';
+import {TXT_DELETE} from '../../const/Vars';
 
 type Props = {
   players: IPlayer[]
@@ -37,7 +38,7 @@ const Team: React.FC<Props> = ({players, goals, color, deletePlayerFromTeam, aut
       return <Button
           mod={'outline-danger'}
           className="ml-auto btn-sm"
-          onClick={() => deletePlayerFromTeam(player, color)}>X</Button>
+          onClick={() => deletePlayerFromTeam(player, color)} title={TXT_DELETE}>X</Button>
     };
 
     return (

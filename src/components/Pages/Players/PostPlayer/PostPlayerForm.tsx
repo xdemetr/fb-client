@@ -4,6 +4,15 @@ import * as Yup from 'yup';
 import IPlayer from '../../../../types/interface/IPlayer';
 import InputField from '../../../Form/InputField';
 import Button from '../../../general/Button/Button';
+import {
+  TXT_FIELD_REQUIRED,
+  TXT_LABEL_BOX,
+  TXT_LABEL_BOX_1, TXT_LABEL_BOX_2, TXT_LABEL_BOX_3,
+  TXT_LABEL_DAMAGE,
+  TXT_LABEL_IMAGE, TXT_LABEL_LOGIN,
+  TXT_LABEL_NAME,
+  TXT_SAVE
+} from '../../../../const/Vars';
 
 type Props = {
   onSubmit: (formData: {
@@ -29,9 +38,9 @@ const PostPlayerForm: React.FC<Props> = ({onSubmit, current}) => {
       onSubmit(values)
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('Обязательное поле'),
-      handle: Yup.string().required('Обязательное поле'),
-      box: Yup.string().required('Обязательное поле')
+      name: Yup.string().required(TXT_FIELD_REQUIRED),
+      handle: Yup.string().required(TXT_FIELD_REQUIRED),
+      box: Yup.string().required(TXT_FIELD_REQUIRED)
     })
   });
 
@@ -39,25 +48,25 @@ const PostPlayerForm: React.FC<Props> = ({onSubmit, current}) => {
 
   return (
       <form onSubmit={handleSubmit}>
-        <InputField placeholder="Имя" name="name" {...props} />
+        <InputField placeholder={TXT_LABEL_NAME} name="name" {...props} />
 
-        <InputField placeholder="Логин" name="handle" {...props} />
+        <InputField placeholder={TXT_LABEL_LOGIN} name="handle" {...props} />
 
-        <InputField placeholder="Ссылка на фото" name="image" {...props} />
+        <InputField placeholder={TXT_LABEL_IMAGE} name="image" {...props} />
 
         <div className="row align-items-center mb-3">
           <div className="col-md-6">
-            <InputField name="box" type="select" label="Корзина" {...props}>
-              <option value="1">Первая</option>
-              <option value="2">Вторая</option>
-              <option value="3">Третья</option>
+            <InputField name="box" type="select" label={TXT_LABEL_BOX} {...props}>
+              <option value="1">{TXT_LABEL_BOX_1}</option>
+              <option value="2">{TXT_LABEL_BOX_2}</option>
+              <option value="3">{TXT_LABEL_BOX_3}</option>
             </InputField>
           </div>
           <div className="col-md-6">
-            <InputField name="damage" type="checkbox" label="Травма" {...props} />
+            <InputField name="damage" type="checkbox" label={TXT_LABEL_DAMAGE} {...props} />
           </div>
         </div>
-        <Button type={'submit'} wide={true}>Сохранить</Button>
+        <Button type={'submit'} wide={true}>{TXT_SAVE}</Button>
       </form>
   );
 };
