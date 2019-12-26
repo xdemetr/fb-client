@@ -3,6 +3,7 @@ import IPlayer from '../../../../types/interface/IPlayer';
 import {useFormik} from 'formik';
 import InputField from '../../../Form/InputField';
 import Button from '../../../general/Button/Button';
+import {TXT_ADD, TXT_SELECT} from '../../../../const/Vars';
 
 type Props = {
   id: number
@@ -31,12 +32,12 @@ const PlaydayAddPlayer: React.FC<Props> = ({players, id, onSubmit}) => {
         <form className="row" onSubmit={handleSubmit}>
           <div className="col-md-8">
             <InputField name={`select_team_${id}`} type="select" {...props}>
-              <option defaultValue={''}>Выбрать игрока</option>
+              <option defaultValue={''}>{TXT_SELECT}</option>
               {options}
             </InputField>
           </div>
           <div className="col-md-4">
-            <Button type={'submit'} mod={'outline-info'} className="mt-1 mt-md-0" wide={true}>Добавить</Button>
+            <Button type={'submit'} mod={'outline-info'} className="mt-1 mt-md-0" wide={true}>{TXT_ADD}</Button>
           </div>
         </form>
 

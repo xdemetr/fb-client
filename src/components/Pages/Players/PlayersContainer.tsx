@@ -9,6 +9,7 @@ import {compose} from 'redux';
 import IPlayer from '../../../types/interface/IPlayer';
 import {AppState} from '../../../store/store';
 import {getAuthReselect} from '../../../store/selectors/auth';
+import {TXT_PAGE_PLAYERS} from '../../../const/Vars';
 
 type Props = {
   list: IPlayer[]
@@ -34,7 +35,7 @@ const PlayersContainer: React.FC<Props> = ({getPlayers, list, loading, error, au
 
   return (
       <div className="players-page">
-        <h1>Игроки</h1>
+        <h1>{TXT_PAGE_PLAYERS}</h1>
         <Players list={list} auth={isAuth}/>
       </div>
   );

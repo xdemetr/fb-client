@@ -20,6 +20,7 @@ import {AppState} from '../../../store/store';
 import IPlayer from '../../../types/interface/IPlayer';
 import ITeam from '../../../types/interface/ITeam';
 import Button from '../../general/Button/Button';
+import {TXT_PAGE_GENERATOR} from '../../../const/Vars';
 
 type Props = {
   auth: {
@@ -130,7 +131,7 @@ const GeneratorContainer: React.FC<Props> = (
   return (
       <div className="generator-page">
         <h1 className="d-flex">
-          Генератор
+          {TXT_PAGE_GENERATOR}
           <SelectedCount/>
         </h1>
 

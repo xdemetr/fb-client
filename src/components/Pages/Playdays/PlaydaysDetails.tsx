@@ -3,6 +3,7 @@ import IPlayday from '../../../types/interface/IPlayday';
 import Team from '../../Team/Team';
 import {Link} from 'react-router-dom';
 import {ROUTE_EDIT_PLAYDAY} from '../../../const/Routes';
+import {TXT_EDIT} from '../../../const/Vars';
 
 type Props = {
   playday: IPlayday | null,
@@ -30,7 +31,7 @@ const PlaydaysDetails: React.FC<Props> = ({playday, auth}) => {
         <Link
             className="btn btn-primary mb-3"
             to={`${ROUTE_EDIT_PLAYDAY}${playday._id}`}>
-          Редактировать
+          {TXT_EDIT}
         </Link>
     )
   };

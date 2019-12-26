@@ -7,6 +7,7 @@ import {loginUser} from '../../../store/actions/auth';
 import {AppState} from '../../../store/store';
 import Error from '../../Error/Error';
 import Spinner from '../../Spinner/Spinner';
+import {TXT_PAGE_LOGIN} from '../../../const/Vars';
 
 type Props = {
   auth: {
@@ -34,7 +35,7 @@ const Login: React.FC<Props> = ({loginUser, auth: {isAuth, error, loading}}) => 
   return (
       <div className="login-page">
         <div className="col-md-6 m-auto">
-          <h1>Войти</h1>
+          <h1>{TXT_PAGE_LOGIN}</h1>
 
           <Error message={error}/>
           <LoginForm onSubmit={onSubmit}/>

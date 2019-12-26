@@ -8,6 +8,7 @@ type Props = {
   href?: string
   wide?: boolean
   onClick?: () => void
+  title?: string
   props?: any
 }
 
@@ -15,6 +16,7 @@ const Button: React.FC<Props> = (
     {
       type,
       mod,
+      title,
       href,
       wide,
       className,
@@ -31,6 +33,7 @@ const Button: React.FC<Props> = (
           href={href}
           type={type}
           onClick={onClick}
+          title={title}
           className={cn(
               'btn',
               mod && `btn-${mod}`,
