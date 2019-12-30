@@ -1,45 +1,45 @@
-import {GeneratorActionTypes} from '../../types/generatorActions';
+import { GeneratorActionTypes } from '../../types/generatorActions';
 import IPlayer from '../../types/interface/IPlayer';
 import ITeam from '../../types/interface/ITeam';
 
 const updateSelected = (state: any, player: IPlayer) => {
   let newSelected = [];
-  const {selected} = state;
+  const { selected } = state;
   const existPlayer = selected.find((pl: IPlayer) => pl._id === player._id);
 
   if (existPlayer) {
     const idx = selected.findIndex((pl: IPlayer) => pl._id === existPlayer._id);
     const newArr = [...selected.slice(0, idx), ...selected.slice(idx + 1)];
-    newSelected = newArr
+    newSelected = newArr;
   } else {
     const newArr = [...selected, player];
-    newSelected = newArr
+    newSelected = newArr;
   }
 
   return {
     ...state,
-    selected: newSelected
-  }
+    selected: newSelected,
+  };
 };
 
-type generatorReducerState = {
-  selected: IPlayer[],
-  result: ITeam[],
-  error: string,
-  loading: boolean
+interface IGeneratorReducerState {
+  error: string;
+  loading: boolean;
+  result: ITeam[];
+  selected: IPlayer[];
 }
 
-const generatorReducerDefaultState: generatorReducerState = {
-  selected: [],
-  result: [],
+const generatorReducerDefaultState: IGeneratorReducerState = {
   error: '',
-  loading: false
+  loading: false,
+  result: [],
+  selected: [],
 };
 
 const generatorReducer = (
-    state = generatorReducerDefaultState,
-    action: GeneratorActionTypes
-): generatorReducerState => {
+  state = generatorReducerDefaultState,
+  action: GeneratorActionTypes,
+): IGeneratorReducerState => {
 
   switch (action.type) {
     case 'GENERATOR_PLAYER_SELECT':
@@ -48,33 +48,33 @@ const generatorReducer = (
     case 'GENERATOR_RUN':
       return {
         ...state,
-        result: action.teams
+        result: action.teams,
       };
 
     case 'GENERATOR_SELECT_RESET':
       return {
         ...state,
-        selected: [],
+        error: '',
         result: [],
-        error: ''
+        selected: [],
       };
 
     case 'GENERATOR_SAVE_FAILURE':
       return {
         ...state,
-        error: action.error
+        error: action.error,
       };
 
     case 'GENERATOR_SAVE_REQUEST':
       return {
         ...state,
-        loading: true
+        loading: true,
       };
 
     case 'GENERATOR_SAVE_SUCCESS':
       return {
         ...state,
-        loading: false
+        loading: false,
       };
 
     default:

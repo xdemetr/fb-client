@@ -1,24 +1,28 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import * as actions from '../../../store/actions/auth';
 import LoginForm from './LoginForm';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
-import {getAuthReselect} from '../../../store/selectors/auth';
-import {loginUser} from '../../../store/actions/auth';
-import {AppState} from '../../../store/store';
+
+import { getAuthReselect } from '../../../store/selectors/auth';
+import { AppState } from '../../../store/store';
+
 import Error from '../../Error/Error';
 import Spinner from '../../Spinner/Spinner';
-import {TXT_PAGE_LOGIN} from '../../../const/Vars';
 
-type Props = {
+import { TXT_PAGE_LOGIN } from '../../../const/Vars';
+
+interface IProps {
   auth: {
-    isAuth: boolean
-    error?: string
-    loading: boolean
-  }
-  loginUser: (formData: { email: string, password: string }) => void
+    isAuth: boolean;
+    error?: string;
+    loading: boolean;
+  };
+  loginUser: (formData: { email: string, password: string }) => void;
 }
 
-const Login: React.FC<Props> = ({loginUser, auth: {isAuth, error, loading}}) => {
+const Login: React.FC<IProps> = ({ loginUser, auth: { isAuth, error, loading } }) => {
 
   const onSubmit = (formData: { email: string, password: string }) => {
     loginUser(formData);
@@ -29,23 +33,26 @@ const Login: React.FC<Props> = ({loginUser, auth: {isAuth, error, loading}}) => 
   }
 
   if (isAuth) {
-    return <Redirect to="/"/>
+    return <Redirect to="/"/>;
   }
 
   return (
-      <div className="login-page">
-        <div className="col-md-6 m-auto">
-          <h1>{TXT_PAGE_LOGIN}</h1>
+    <div className="login-page">
+      <div className="col-md-6 m-auto">
+        <h1>{TXT_PAGE_LOGIN}</h1>
 
-          <Error message={error}/>
-          <LoginForm onSubmit={onSubmit}/>
-        </div>
+        <Error message={error}/>
+        <LoginForm onSubmit={onSubmit}/>
       </div>
+    </div>
   );
 };
 
 const mapStateToProps = (state: AppState) => ({
-  auth: getAuthReselect(state)
+  auth: getAuthReselect(state),
 });
 
-export default connect(mapStateToProps, {loginUser})(React.memo(Login));
+export default connect(
+  mapStateToProps,
+  { loginUser: actions.loginUser },
+)(React.memo(Login));

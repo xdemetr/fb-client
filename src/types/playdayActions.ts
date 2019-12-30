@@ -1,60 +1,65 @@
 import IPlayday from './interface/IPlayday';
 
-type playdayListRequested = {
-  type: 'FETCH_PLAYDAYS_REQUEST'
+interface IPdShort {
+  _id: string;
+  name: string;
 }
 
-type playdayListLoaded = {
-  type: 'FETCH_PLAYDAYS_SUCCESS',
-  playdays: Array<{ _id: string, name: string }>
+interface IPlaydayListRequested {
+  type: 'FETCH_PLAYDAYS_REQUEST';
 }
 
-type playdayListError = {
-  type: 'FETCH_PLAYDAYS_FAILURE',
-  error: string
+interface IPlaydayListLoaded {
+  type: 'FETCH_PLAYDAYS_SUCCESS';
+  playdays: IPdShort[];
 }
 
-type playdayRequested = {
-  type: 'FETCH_PLAYDAY_REQUEST'
+interface IPlaydayListError {
+  type: 'FETCH_PLAYDAYS_FAILURE';
+  error: string;
 }
 
-type playdayLoaded = {
-  type: 'FETCH_PLAYDAY_SUCCESS',
-  current: IPlayday
+interface IPlaydayRequested {
+  type: 'FETCH_PLAYDAY_REQUEST';
 }
 
-type playdayError = {
-  type: 'FETCH_PLAYDAY_FAILURE',
-  error: string
+interface IPlaydayLoaded {
+  type: 'FETCH_PLAYDAY_SUCCESS';
+  current: IPlayday;
 }
 
-type playdayPostRequested = {
-  type: 'FETCH_POST_PLAYDAY_REQUEST'
+interface IPlaydayError {
+  type: 'FETCH_PLAYDAY_FAILURE';
+  error: string;
 }
 
-type playdayPostSuccess = {
-  type: 'FETCH_POST_PLAYDAY_SUCCESS',
-  current: IPlayday | null
+interface IPlaydayPostRequested {
+  type: 'FETCH_POST_PLAYDAY_REQUEST';
 }
 
-type playdayRemovePlayer = {
-  type: 'PLAYDAY_PLAYER_REMOVE',
-  data: any
+interface IPlaydayPostSuccess {
+  type: 'FETCH_POST_PLAYDAY_SUCCESS';
+  current: IPlayday | null;
 }
 
-type playdayAddPlayer = {
-  type: 'PLAYDAY_PLAYER_ADD',
-  data: any
+interface IPlaydayRemovePlayer {
+  type: 'PLAYDAY_PLAYER_REMOVE';
+  data: any;
+}
+
+interface IPlaydayAddPlayer {
+  type: 'PLAYDAY_PLAYER_ADD';
+  data: any;
 }
 
 export type PlaydayActionTypes =
-    | playdayListRequested
-    | playdayListLoaded
-    | playdayListError
-    | playdayRequested
-    | playdayLoaded
-    | playdayError
-    | playdayPostRequested
-    | playdayPostSuccess
-    | playdayRemovePlayer
-    | playdayAddPlayer
+  | IPlaydayListRequested
+  | IPlaydayListLoaded
+  | IPlaydayListError
+  | IPlaydayRequested
+  | IPlaydayLoaded
+  | IPlaydayError
+  | IPlaydayPostRequested
+  | IPlaydayPostSuccess
+  | IPlaydayRemovePlayer
+  | IPlaydayAddPlayer;

@@ -1,17 +1,19 @@
 import React from 'react';
 
-type Props = {
-  message?: string
+interface IProps {
+  message?: string;
 }
 
-const Error: React.FC<Props> = ({message}) => {
+const Error: React.FC<IProps> = ({ message }) => {
 
-  if (!message) return null;
+  if (!message) {
+    return null;
+  }
 
   return (
-      <div className="alert alert-danger">
-        {message}
-      </div>
+    <div className="alert alert-danger">
+      {message}
+    </div>
   );
 };
 

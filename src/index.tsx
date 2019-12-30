@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
-import {BrowserRouter} from 'react-router-dom';
-import setAuthToken from './utils/set-auth-token';
+
 import JwtDecode from 'jwt-decode';
-import ITokenJWT from './types/interface/ITokenJWT';
-import {logoutUser, setCurrentUser} from './store/actions/auth';
+import setAuthToken from './utils/set-auth-token';
+
+import { logoutUser, setCurrentUser } from './store/actions/auth';
 import store from './store/store';
+import ITokenJWT from './types/interface/ITokenJWT';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -24,9 +27,10 @@ if (localStorage.jwtToken) {
 }
 
 ReactDOM.render(
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Provider store={store}>
-        <App/>
-      </Provider>
-    </BrowserRouter>
-    , document.getElementById('root'));
+  // tslint:disable-next-line:jsx-wrap-multiline
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  </BrowserRouter>,
+  document.getElementById('root'));

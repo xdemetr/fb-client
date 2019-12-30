@@ -1,5 +1,5 @@
-import {createSelector} from 'reselect';
-import {AppState} from '../store';
+import { createSelector } from 'reselect';
+import { AppState } from '../store';
 
 const getAuth = (state: AppState) => {
   return state.auth;

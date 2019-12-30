@@ -1,31 +1,31 @@
 import ITokenJWT from './interface/ITokenJWT';
 
-type userRequested = {
-  type: 'AUTH_USER_REQUEST'
+interface IUserRequested {
+  type: 'AUTH_USER_REQUEST';
 }
 
-type userLoaded = {
-  type: 'AUTH_USER_SUCCESS',
-  userData: ITokenJWT
+interface IUserLoaded {
+  type: 'AUTH_USER_SUCCESS';
+  userData: ITokenJWT;
 }
 
-type userLogout = {
-  type: 'LOGOUT_USER'
+interface IUserLogout {
+  type: 'LOGOUT_USER';
 }
 
-type userError = {
-  type: 'AUTH_USER_FAILURE',
-  error: string
+interface IUserError {
+  type: 'AUTH_USER_FAILURE';
+  error: string;
 }
 
-type setCurrentUser = {
-  type: 'FETCH_USER_SUCCESS',
-  decoded: ITokenJWT
+interface ISetCurrentUser {
+  type: 'FETCH_USER_SUCCESS';
+  decoded: ITokenJWT;
 }
 
 export type AuthActionTypes =
-    | userRequested
-    | userLoaded
-    | userError
-    | userLogout
-    | setCurrentUser
+  | IUserRequested
+  | IUserLoaded
+  | IUserError
+  | IUserLogout
+  | ISetCurrentUser;
