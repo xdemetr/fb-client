@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import * as actions from '../../../../store/actions/player';
-import { getPlayerCurrentReselect, getPlayerLoadingReselect } from '../../../../store/selectors/player';
-import { AppState } from '../../../../store/store';
+import * as actions from 'store/actions/player';
+import { getPlayerCurrentReselect, getPlayerLoadingReselect } from 'store/selectors/player';
+import { AppState } from 'store/store';
 
-import Spinner from '../../../Spinner/Spinner';
+import Spinner from 'components/Spinner';
 import PostPlayerForm from './PostPlayerForm';
 
-import { TXT_DELETE, TXT_PAGE_ADD_PLAYER, TXT_PAGE_EDIT_PLAYER } from '../../../../const/Vars';
-import withAuthRedirect from '../../../../hoc/withAuthRedirect';
+import { TXT_DELETE, TXT_PAGE_ADD_PLAYER, TXT_PAGE_EDIT_PLAYER } from 'const/Vars';
+import withAuthRedirect from 'hoc/withAuthRedirect';
 
 interface IProps {
   history: any;

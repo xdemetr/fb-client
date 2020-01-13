@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { useFormik } from 'formik';
-import InputField from '../../../Form/InputField';
-import Button from '../../../general/Button/Button';
 
-import { TXT_ADD, TXT_SELECT } from '../../../../const/Vars';
-import IPlayer from '../../../../types/interface/IPlayer';
+import InputField from 'components/Form/InputField';
+import Button from 'components/general/Button';
+
+import { TXT_ADD, TXT_SELECT } from 'const/Vars';
+import IPlayer from 'types/interface/IPlayer';
 
 interface IProps {
   id: number;

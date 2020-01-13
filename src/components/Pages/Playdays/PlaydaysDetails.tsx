@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Team from '../../Team/Team';
+import Team from 'components/Team';
 
 import { Link } from 'react-router-dom';
-import { ROUTE_EDIT_PLAYDAY } from '../../../const/Routes';
-import { TXT_EDIT } from '../../../const/Vars';
-import IPlayday from '../../../types/interface/IPlayday';
+
+import { ROUTE_EDIT_PLAYDAY } from 'const/Routes';
+import { TXT_EDIT } from 'const/Vars';
+import IPlayday from 'types/interface/IPlayday';
 
 interface IProps {
   playday: IPlayday | null;

@@ -2,8 +2,8 @@ import React from 'react';
 
 import cnames from 'classnames';
 
+import { ROUTE_PLAYDAYS } from 'const/Routes';
 import { Link } from 'react-router-dom';
-import { ROUTE_PLAYDAYS } from '../../../const/Routes';
 
 interface IListItem {
   _id: string;

@@ -1,22 +1,22 @@
 import React, { useEffect } from 'react';
 
-import * as generatorActions from '../../../store/actions/generator';
-import * as playerActions from '../../../store/actions/player';
+import * as generatorActions from 'store/actions/generator';
+import * as playerActions from 'store/actions/player';
 
 import { connect } from 'react-redux';
-import { getAuthReselect } from '../../../store/selectors/auth';
-import { getGeneratorErrors, getGeneratorResultReselect, getSelectedPlayersReselect } from '../../../store/selectors/generator';
-import { getPlayerListReselect } from '../../../store/selectors/player';
-import { AppState } from '../../../store/store';
+import { getAuthReselect } from 'store/selectors/auth';
+import { getGeneratorErrors, getGeneratorResultReselect, getSelectedPlayersReselect } from 'store/selectors/generator';
+import { getPlayerListReselect } from 'store/selectors/player';
+import { AppState } from 'store/store';
 
-import Button from '../../general/Button/Button';
-import Spinner from '../../Spinner/Spinner';
+import Button from 'components/general/Button';
+import Spinner from 'components/Spinner';
 import GeneratorResult from './GeneratorResult';
 
-import IPlayer from '../../../types/interface/IPlayer';
-import ITeam from '../../../types/interface/ITeam';
+import IPlayer from 'types/interface/IPlayer';
+import ITeam from 'types/interface/ITeam';
 
-import { TXT_GENERATOR_GET_TEAMS, TXT_PAGE_GENERATOR, TXT_RESET } from '../../../const/Vars';
+import { TXT_GENERATOR_GET_TEAMS, TXT_PAGE_GENERATOR, TXT_RESET } from 'const/Vars';
 
 interface IProps {
   auth: {

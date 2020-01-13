@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import * as actions from '../../store/actions/auth';
+import * as actions from 'store/actions/auth';
 
 import cnames from 'classnames';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { getAuthReselect } from '../../store/selectors/auth';
-import { AppState } from '../../store/store';
+import { getAuthReselect } from 'store/selectors/auth';
+import { AppState } from 'store/store';
 
-import Button from '../general/Button/Button';
+import Button from 'components/general/Button';
 import logo from './logo.svg';
 
 import {
@@ -18,7 +18,7 @@ import {
   ROUTE_NEW_PLAYER,
   ROUTE_PLAYDAYS,
   ROUTE_PLAYERS,
-} from '../../const/Routes';
+} from 'const/Routes';
 import {
   TXT_ADD_PLAYER,
   TXT_GENERATOR,
@@ -27,7 +27,7 @@ import {
   TXT_PLAYERS,
   TXT_RESULTS,
   TXT_SITENAME,
-} from '../../const/Vars';
+} from 'const/Vars';
 
 interface IProps {
   auth: {

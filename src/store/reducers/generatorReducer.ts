@@ -1,6 +1,6 @@
-import { GeneratorActionTypes } from '../../types/generatorActions';
-import IPlayer from '../../types/interface/IPlayer';
-import ITeam from '../../types/interface/ITeam';
+import { GeneratorActionTypes } from 'types/generatorActions';
+import IPlayer from 'types/interface/IPlayer';
+import ITeam from 'types/interface/ITeam';
 
 const updateSelected = (state: any, player: IPlayer) => {
   let newSelected = [];

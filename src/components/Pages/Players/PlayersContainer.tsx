@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import * as actions from '../../../store/actions/player';
-import { getAuthReselect } from '../../../store/selectors/auth';
-import { getPlayerErrorReselect, getPlayerListReselect, getPlayerLoadingReselect } from '../../../store/selectors/player';
-import { AppState } from '../../../store/store';
+import * as actions from 'store/actions/player';
+import { getAuthReselect } from 'store/selectors/auth';
+import { getPlayerErrorReselect, getPlayerListReselect, getPlayerLoadingReselect } from 'store/selectors/player';
+import { AppState } from 'store/store';
 
-import Error from '../../Error';
-import Spinner from '../../Spinner/Spinner';
+import Error from 'components/Error';
+import Spinner from 'components/Spinner';
 import Players from './Players';
 
-import { TXT_PAGE_PLAYERS } from '../../../const/Vars';
-import IPlayer from '../../../types/interface/IPlayer';
+import { TXT_PAGE_PLAYERS } from 'const/Vars';
+import IPlayer from 'types/interface/IPlayer';
 
 interface IProps {
   list: IPlayer[];

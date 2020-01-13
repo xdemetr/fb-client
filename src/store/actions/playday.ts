@@ -1,12 +1,12 @@
-import { playdayAPI, playerAPI } from '../../api/api';
+import { playdayAPI, playerAPI } from 'api/api';
 
 import { Dispatch } from 'react';
-import { AppActions } from '../../types';
+import { AppActions } from 'types';
 
-import IPlayday from '../../types/interface/IPlayday';
-import IPlaydayList from '../../types/interface/IPlaydayList';
-import IPlayer from '../../types/interface/IPlayer';
-import { newTeams } from '../../utils/newTeams';
+import IPlayday from 'types/interface/IPlayday';
+import IPlaydayList from 'types/interface/IPlaydayList';
+import IPlayer from 'types/interface/IPlayer';
+import { newTeams } from 'utils/newTeams';
 
 const playdayListRequested = (): AppActions => ({
   type: 'FETCH_PLAYDAYS_REQUEST',

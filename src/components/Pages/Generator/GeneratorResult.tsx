@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Error from '../../Error/Error';
-import Button from '../../general/Button/Button';
-import Team from '../../Team/Team';
+import Error from 'components/Error';
+import Button from 'components/general/Button';
+import Team from 'components/Team';
 
-import { TXT_RESULTS, TXT_SAVE } from '../../../const/Vars';
-import ITeam from '../../../types/interface/ITeam';
+import { TXT_RESULTS, TXT_SAVE } from 'const/Vars';
+import ITeam from 'types/interface/ITeam';
 
 interface IProps {
   result: ITeam[];

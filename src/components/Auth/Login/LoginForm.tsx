@@ -3,8 +3,8 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import InputField from '../../Form/InputField';
-import Button from '../../general/Button/Button';
+import InputField from 'components/Form/InputField';
+import Button from 'components/general/Button';
 
 import {
   TXT_FIELD_EMAIL_INVALID,
@@ -12,7 +12,7 @@ import {
   TXT_LABEL_EMAIL,
   TXT_LABEL_PASSWORD,
   TXT_LOGIN,
-} from '../../../const/Vars';
+} from 'const/Vars';
 
 interface IProps {
   onSubmit: (formData: { email: string, password: string }) => void;

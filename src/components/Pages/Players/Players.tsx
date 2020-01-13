@@ -3,9 +3,9 @@ import React from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { ROUTE_EDIT_PLAYER, ROUTE_PLAYERS } from '../../../const/Routes';
-import { TXT_EDIT } from '../../../const/Vars';
-import IPlayer from '../../../types/interface/IPlayer';
+import { ROUTE_EDIT_PLAYER, ROUTE_PLAYERS } from 'const/Routes';
+import { TXT_EDIT } from 'const/Vars';
+import IPlayer from 'types/interface/IPlayer';
 
 interface IProps {
   list: IPlayer[];

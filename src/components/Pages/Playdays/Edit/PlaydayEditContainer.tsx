@@ -1,24 +1,25 @@
 import React, { useEffect } from 'react';
 
-import * as actions from '../../../../store/actions/playday';
-import * as playerActions from '../../../../store/actions/player';
-import { AppState } from '../../../../store/store';
+import * as actions from 'store/actions/playday';
+import * as playerActions from 'store/actions/player';
+import { AppState } from 'store/store';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getAuthReselect } from '../../../../store/selectors/auth';
-import { getPlaydayReselect } from '../../../../store/selectors/playday';
-import { getPlayerFreeListReselect } from '../../../../store/selectors/player';
+import { getAuthReselect } from 'store/selectors/auth';
+import { getPlaydayReselect } from 'store/selectors/playday';
+import { getPlayerFreeListReselect } from 'store/selectors/player';
 
-import withAuthRedirect from '../../../../hoc/withAuthRedirect';
-import Spinner from '../../../Spinner/Spinner';
-import Team from '../../../Team/Team';
+import Spinner from 'components/Spinner';
+import Team from 'components/Team';
+import withAuthRedirect from 'hoc/withAuthRedirect';
+
 import PlaydayAddPlayer from './PlaydayAddPlayer';
 import PlaydayEditForm from './PlaydayEditForm';
 import PlaydayTitle from './PlaydayTitle';
 
-import IPlayday from '../../../../types/interface/IPlayday';
-import IPlayer from '../../../../types/interface/IPlayer';
+import IPlayday from 'types/interface/IPlayday';
+import IPlayer from 'types/interface/IPlayer';
 
 interface IProps {
   getPlayday: (id: string) => void;

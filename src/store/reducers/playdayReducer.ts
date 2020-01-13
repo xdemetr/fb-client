@@ -1,9 +1,9 @@
-import { PlaydayActionTypes } from '../../types/playdayActions';
-import { newTeams } from '../../utils/newTeams';
+import { PlaydayActionTypes } from 'types/playdayActions';
+import { newTeams } from 'utils/newTeams';
 
-import IPlayday from '../../types/interface/IPlayday';
-import IPlaydayList from '../../types/interface/IPlaydayList';
-import IPlayer from '../../types/interface/IPlayer';
+import IPlayday from 'types/interface/IPlayday';
+import IPlaydayList from 'types/interface/IPlaydayList';
+import IPlayer from 'types/interface/IPlayer';
 
 const updateExistPlayday = (state: any, data: { player: IPlayer, team: string }) => {
   return {

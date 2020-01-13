@@ -1,8 +1,8 @@
 import React from 'react';
-import Spinner from '../components/Spinner/Spinner';
+
+import Spinner from 'components/Spinner';
 
 const withSuspense = (Component: any) => {
-
   return (props: any) => {
     return (
       <React.Suspense fallback={<Spinner/>}>

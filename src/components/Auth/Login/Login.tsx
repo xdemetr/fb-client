@@ -2,16 +2,16 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import * as actions from '../../../store/actions/auth';
+import * as actions from 'store/actions/auth';
 import LoginForm from './LoginForm';
 
-import { getAuthReselect } from '../../../store/selectors/auth';
-import { AppState } from '../../../store/store';
+import { getAuthReselect } from 'store/selectors/auth';
+import { AppState } from 'store/store';
 
-import Error from '../../Error/Error';
-import Spinner from '../../Spinner/Spinner';
+import Error from 'components/Error';
+import Spinner from 'components/Spinner';
 
-import { TXT_PAGE_LOGIN } from '../../../const/Vars';
+import { TXT_PAGE_LOGIN } from 'const/Vars';
 
 interface IProps {
   auth: {

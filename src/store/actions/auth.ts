@@ -1,11 +1,11 @@
 import jwtDecode from 'jwt-decode';
 import { Dispatch } from 'react';
 
-import { authAPI } from '../../api/api';
-import { AppActions } from '../../types';
-import setAuthToken from '../../utils/set-auth-token';
+import { authAPI } from 'api/api';
+import { AppActions } from 'types';
+import setAuthToken from 'utils/set-auth-token';
 
-import ITokenJWT from '../../types/interface/ITokenJWT';
+import ITokenJWT from 'types/interface/ITokenJWT';
 
 const userRequested = (): AppActions => ({
   type: 'AUTH_USER_REQUEST',

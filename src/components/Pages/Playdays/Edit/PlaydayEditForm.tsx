@@ -3,11 +3,11 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { TXT_GOALS, TXT_SAVE } from '../../../../const/Vars';
-import InputField from '../../../Form/InputField';
-import Button from '../../../general/Button/Button';
+import InputField from 'components/Form/InputField';
+import Button from 'components/general/Button';
 
-import IPlayday from '../../../../types/interface/IPlayday';
+import { TXT_GOALS, TXT_SAVE } from 'const/Vars';
+import IPlayday from 'types/interface/IPlayday';
 
 interface IProps {
   onSubmit: (formData: any) => void;

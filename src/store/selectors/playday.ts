@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { AppState } from '../store';
+import { AppState } from 'store/store';
 
 const getPlaydays = (state: AppState) => {
   return state.playday.list;

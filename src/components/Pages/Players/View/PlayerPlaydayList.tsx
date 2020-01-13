@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-import { ROUTE_PLAYDAYS } from '../../../../const/Routes';
-import { TXT_LOSS, TXT_WIN } from '../../../../const/Vars';
-import { IPlayerPlayday } from '../../../../types/interface/IPlayer';
+
+import { ROUTE_PLAYDAYS } from 'const/Routes';
+import { TXT_LOSS, TXT_WIN } from 'const/Vars';
+import { IPlayerPlayday } from 'types/interface/IPlayer';
 
 interface IProps {
   playdays: IPlayerPlayday[];

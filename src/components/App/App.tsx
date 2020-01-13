@@ -1,11 +1,11 @@
 import React from 'react';
 
-import AppHeader from '../AppHeader';
-import GeneratorContainer from '../Pages/Generator/GeneratorContainer';
-import PlaydayEditContainer from '../Pages/Playdays/Edit/PlaydayEditContainer';
+import AppHeader from 'components/AppHeader';
+import { Login } from 'components/Auth';
+import GeneratorContainer from 'components/Pages/Generator/GeneratorContainer';
+import PlaydayEditContainer from 'components/Pages/Playdays/Edit/PlaydayEditContainer';
 
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { Login } from '../Auth';
 
 import {
   ROUTE_EDIT_PLAYDAY,
@@ -16,9 +16,9 @@ import {
   ROUTE_NEW_PLAYER,
   ROUTE_PLAYDAYS,
   ROUTE_PLAYERS,
-} from '../../const/Routes';
+} from 'const/Routes';
 
-import withSuspense from '../../hoc/withSuspense';
+import withSuspense from 'hoc/withSuspense';
 
 const PLAYERS_CONTAINER = React.lazy((): any => import('../Pages/Players/PlayersContainer'));
 const PLAYER_VIEW = React.lazy((): any => import('../Pages/Players/View/PlayerView'));

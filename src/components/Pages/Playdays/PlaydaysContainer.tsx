@@ -2,19 +2,19 @@ import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import * as actions from '../../../store/actions/playday';
-import { getAuthReselect } from '../../../store/selectors/auth';
-import { getPlaydayReselect, getPlaydaysLoadingReselect, getPlaydaysReselect } from '../../../store/selectors/playday';
-import { AppState } from '../../../store/store';
+import * as actions from 'store/actions/playday';
+import { getAuthReselect } from 'store/selectors/auth';
+import { getPlaydayReselect, getPlaydaysLoadingReselect, getPlaydaysReselect } from 'store/selectors/playday';
+import { AppState } from 'store/store';
 
-import Error from '../../Error/Error';
-import Spinner from '../../Spinner/Spinner';
+import Error from 'components/Error';
+import Spinner from 'components/Spinner';
 import PlaydaysDetails from './PlaydaysDetails';
 import PlaydaysList from './PlaydaysList';
 
-import { TXT_RESULTS } from '../../../const/Vars';
-import IPlayday from '../../../types/interface/IPlayday';
-import IPlaydayList from '../../../types/interface/IPlaydayList';
+import { TXT_RESULTS } from 'const/Vars';
+import IPlayday from 'types/interface/IPlayday';
+import IPlaydayList from 'types/interface/IPlaydayList';
 
 interface IProps {
   getPlaydays: () => void;

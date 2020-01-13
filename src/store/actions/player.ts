@@ -1,10 +1,10 @@
 import { Dispatch } from 'react';
 
-import { playerAPI } from '../../api/api';
-import { AppActions } from '../../types';
+import { playerAPI } from 'api/api';
+import { AppActions } from 'types';
 
-import { DEFAULT_PLAYER_IMAGE } from '../../const/Vars';
-import IPlayer from '../../types/interface/IPlayer';
+import { DEFAULT_PLAYER_IMAGE } from 'const/Vars';
+import IPlayer from 'types/interface/IPlayer';
 
 const playerListRequested = (): AppActions => ({
   type: 'FETCH_PLAYERS_REQUEST',

@@ -1,5 +1,5 @@
-import IPlayer from '../../types/interface/IPlayer';
-import { PlayerActionTypes } from '../../types/playerActions';
+import IPlayer from 'types/interface/IPlayer';
+import { PlayerActionTypes } from 'types/playerActions';
 
 interface IPlayerReducerState {
   current: IPlayer | null;

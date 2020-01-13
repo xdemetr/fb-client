@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import * as actions from '../../../../store/actions/player';
-import { getPlayerCurrentReselect, getPlayerLoadingReselect } from '../../../../store/selectors/player';
-import { AppState } from '../../../../store/store';
+import * as actions from 'store/actions/player';
+import { getPlayerCurrentReselect, getPlayerLoadingReselect } from 'store/selectors/player';
+import { AppState } from 'store/store';
 
-import Spinner from '../../../Spinner/Spinner';
+import Spinner from 'components/Spinner';
 import PlayerPlaydayList from './PlayerPlaydayList';
 
-import { TXT_LABEL_BOX } from '../../../../const/Vars';
-import IPlayer from '../../../../types/interface/IPlayer';
+import { TXT_LABEL_BOX } from 'const/Vars';
+import IPlayer from 'types/interface/IPlayer';
 
 interface IProps {
   match: any;

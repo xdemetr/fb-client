@@ -3,9 +3,10 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import IPlayer from '../../../../types/interface/IPlayer';
-import InputField from '../../../Form/InputField';
-import Button from '../../../general/Button/Button';
+import InputField from 'components/Form/InputField';
+import Button from 'components/general/Button';
+
+import IPlayer from 'types/interface/IPlayer';
 
 import {
   TXT_FIELD_REQUIRED,
@@ -15,7 +16,7 @@ import {
   TXT_LABEL_IMAGE, TXT_LABEL_LOGIN,
   TXT_LABEL_NAME,
   TXT_SAVE,
-} from '../../../../const/Vars';
+} from 'const/Vars';
 
 interface IProps {
   onSubmit: (formData: {

@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import App from './components/App';
+
+import App from 'components/App';
 
 import JwtDecode from 'jwt-decode';
-import setAuthToken from './utils/set-auth-token';
+import setAuthToken from 'utils/set-auth-token';
 
-import { logoutUser, setCurrentUser } from './store/actions/auth';
-import store from './store/store';
-import ITokenJWT from './types/interface/ITokenJWT';
+import { logoutUser, setCurrentUser } from 'store/actions/auth';
+import store from 'store/store';
+import ITokenJWT from 'types/interface/ITokenJWT';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);

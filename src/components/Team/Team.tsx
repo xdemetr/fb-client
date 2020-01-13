@@ -3,12 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Team.css';
 
-import Button from '../general/Button/Button';
+import Button from 'components/general/Button';
 
-import { ROUTE_PLAYERS } from '../../const/Routes';
-import { TXT_DELETE } from '../../const/Vars';
+import { ROUTE_PLAYERS } from 'const/Routes';
+import { TXT_DELETE } from 'const/Vars';
 
-import IPlayer from '../../types/interface/IPlayer';
+import IPlayer from 'types/interface/IPlayer';
 
 interface IProps {
   players: IPlayer[];

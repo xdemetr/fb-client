@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { TXT_FIELD_REQUIRED, TXT_LABEL_NAME } from '../../../../const/Vars';
-import IPlayday from '../../../../types/interface/IPlayday';
-import InputField from '../../../Form/InputField';
+import InputField from 'components/Form/InputField';
+
+import { TXT_FIELD_REQUIRED, TXT_LABEL_NAME } from 'const/Vars';
+import IPlayday from 'types/interface/IPlayday';
 
 interface IProps {
   current: IPlayday;

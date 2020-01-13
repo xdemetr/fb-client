@@ -1,4 +1,4 @@
-import IPlayer from '../types/interface/IPlayer';
+import IPlayer from 'types/interface/IPlayer';
 
 export const newTeams = (teams: IPlayer[][], teamNumber: string, player: IPlayer) => {
   return teams.map((team: IPlayer[], idx: number) => {

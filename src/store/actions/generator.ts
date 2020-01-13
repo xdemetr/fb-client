@@ -1,9 +1,10 @@
 import { Dispatch } from 'react';
-import { playdayAPI } from '../../api/api';
-import { AppActions } from '../../types';
 
-import IPlayer from '../../types/interface/IPlayer';
-import ITeam from '../../types/interface/ITeam';
+import { playdayAPI } from 'api/api';
+import { AppActions } from 'types';
+
+import IPlayer from 'types/interface/IPlayer';
+import ITeam from 'types/interface/ITeam';
 
 export const generatorPlayerSelected = (player: IPlayer): AppActions => ({
   player,

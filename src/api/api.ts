@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import IPlayday from '../types/interface/IPlayday';
-import IPlaydayList from '../types/interface/IPlaydayList';
-import IPlayer from '../types/interface/IPlayer';
+import IPlayday from 'types/interface/IPlayday';
+import IPlaydayList from 'types/interface/IPlaydayList';
+import IPlayer from 'types/interface/IPlayer';
 
 // axios.defaults.baseURL = 'http://localhost:5001/fb/api/';
 axios.defaults.baseURL = 'https://node.joomdesign.ru/fb/api/';

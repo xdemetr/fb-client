@@ -1,5 +1,5 @@
-import { AuthActionTypes } from '../../types/authActions';
-import ITokenJWT from '../../types/interface/ITokenJWT';
+import { AuthActionTypes } from 'types/authActions';
+import ITokenJWT from 'types/interface/ITokenJWT';
 
 interface IAuthReducerState {
   isAuth: boolean;

@@ -6,7 +6,7 @@ import generatorReducer from './reducers/generatorReducer';
 import playdayReducer from './reducers/playdayReducer';
 import playerReducer from './reducers/playerReducer';
 
-import { AppActions } from '../types';
+import { AppActions } from 'types';
 
 declare global {
   interface IWindow {
