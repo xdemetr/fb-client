@@ -1,87 +1,86 @@
-import {PlayerActionTypes} from '../../types/playerActions';
-import IPlayer from '../../types/interface/IPlayer';
+import IPlayer from 'types/interface/IPlayer';
+import { PlayerActionTypes } from 'types/playerActions';
 
-type playerReducerState = {
-  list: IPlayer[],
-  current: IPlayer | null,
-  selected: IPlayer[],
-  freePlayers: IPlayer[],
-  loading: boolean,
-  error: string
+interface IPlayerReducerState {
+  current: IPlayer | null;
+  error: string;
+  freePlayers: IPlayer[];
+  list: IPlayer[];
+  loading: boolean;
+  selected: IPlayer[];
 }
 
-const playerReducerDefaultState: playerReducerState = {
-  list: [],
+const playerReducerDefaultState: IPlayerReducerState = {
   current: null,
-  selected: [],
+  error: '',
   freePlayers: [],
+  list: [],
   loading: false,
-  error: ''
+  selected: [],
 };
 
 const playerReducer = (
-    state = playerReducerDefaultState,
-    action: PlayerActionTypes
-): playerReducerState => {
+  state = playerReducerDefaultState,
+  action: PlayerActionTypes,
+): IPlayerReducerState => {
   switch (action.type) {
-
     case 'FETCH_PLAYERS_REQUEST':
       return {
         ...state,
-        loading: true
+        loading: true,
       };
 
     case 'FETCH_PLAYERS_SUCCESS':
       return {
         ...state,
+        list: action.players,
         loading: false,
-        list: action.players
       };
 
     case 'FETCH_PLAYERS_FAILURE':
       return {
         ...state,
         error: action.error,
-        loading: false
+        loading: false,
       };
 
     case 'FETCH_PLAYER_REQUEST':
       return {
         ...state,
-        loading: true
+        loading: true,
       };
 
     case 'FETCH_PLAYER_SUCCESS':
       return {
         ...state,
         current: action.player,
-        loading: false
+        loading: false,
       };
 
     case 'FETCH_PLAYER_FAILURE':
       return {
         ...state,
+        error: action.error,
         loading: false,
-        error: action.error
       };
 
     case 'FETCH_POST_PLAYER_REQUEST':
       return {
         ...state,
-        loading: true
+        loading: true,
       };
 
     case 'FETCH_POST_PLAYER_SUCCESS':
       return {
         ...state,
+        current: action.player,
         loading: false,
-        current: action.player
       };
 
     case 'SET_FREE_PLAYERS':
       return {
         ...state,
-        freePlayers: action.players
+        freePlayers: action.players,
       };
 
     default:

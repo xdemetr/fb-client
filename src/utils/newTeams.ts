@@ -1,16 +1,19 @@
-import IPlayer from '../types/interface/IPlayer';
+import IPlayer from 'types/interface/IPlayer';
 
-export const newTeams = (teams: Array<IPlayer[]>, teamNumber: string, player: IPlayer) => {
-  return teams.map((team: Array<IPlayer>, idx: number) => {
-    if (idx === parseInt(teamNumber)) {
+export const newTeams = (teams: IPlayer[][], teamNumber: string, player: IPlayer) => {
+  return teams.map((team: IPlayer[], idx: number) => {
+
+    let newTeam = team;
+
+    if (idx === parseInt(teamNumber, 10)) {
       const exPlayer: any = team.find((pl: IPlayer) => pl._id === player._id);
       if (exPlayer) {
         const existPlayerIdx = team.findIndex((pl: IPlayer) => pl._id === exPlayer._id);
-        team = [...team.slice(0, existPlayerIdx), ...team.slice(existPlayerIdx + 1)];
+        newTeam = [...team.slice(0, existPlayerIdx), ...team.slice(existPlayerIdx + 1)];
       } else {
-        team = [...team, player]
+        newTeam = [...team, player];
       }
     }
-    return team
+    return newTeam;
   });
 };

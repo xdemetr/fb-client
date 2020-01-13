@@ -3,6 +3,7 @@ export const DEFAULT_PLAYER_IMAGE = 'https://fb.joomdesign.ru/images/def.png';
 const TXT_SITENAME = 'Футбол в спортзале';
 
 const TXT_GENERATOR = 'Генератор';
+const TXT_GENERATOR_GET_TEAMS = 'Получить составы';
 const TXT_RESULTS = 'Результаты';
 const TXT_PLAYERS = 'Игроки';
 const TXT_ADD_PLAYER = 'Добавить игрока';
@@ -17,17 +18,16 @@ const TXT_SELECT = 'Выбрать';
 const TXT_GOALS = 'Голы';
 const TXT_WIN = 'Победа';
 const TXT_LOSS = 'Поражение';
+const TXT_RESET = 'Сбросить';
 
-
-//pages
+// pages
 const TXT_PAGE_LOGIN = 'Авторизация';
 const TXT_PAGE_GENERATOR = 'Генератор команд';
 const TXT_PAGE_PLAYERS = 'Игроки';
 const TXT_PAGE_ADD_PLAYER = 'Добавить игрока';
 const TXT_PAGE_EDIT_PLAYER = 'Редактировать игрока';
 
-
-//forms
+// forms
 const TXT_FIELD_REQUIRED = 'Обязательное поле';
 const TXT_FIELD_EMAIL_INVALID = 'Эл.почта указана неверно';
 const TXT_LABEL_EMAIL = 'Эл.почта';
@@ -41,10 +41,10 @@ const TXT_LABEL_BOX_3 = 'Третья';
 const TXT_LABEL_DAMAGE = 'Травма';
 const TXT_LABEL_IMAGE = 'Изображение';
 
-
 export {
   TXT_SITENAME,
   TXT_GENERATOR,
+  TXT_GENERATOR_GET_TEAMS,
   TXT_RESULTS,
   TXT_PLAYERS,
   TXT_ADD_PLAYER,
@@ -58,6 +58,7 @@ export {
   TXT_GOALS,
   TXT_WIN,
   TXT_LOSS,
+  TXT_RESET,
   TXT_PAGE_LOGIN,
   TXT_PAGE_GENERATOR,
   TXT_PAGE_PLAYERS,
@@ -74,5 +75,5 @@ export {
   TXT_LABEL_BOX_2,
   TXT_LABEL_BOX_3,
   TXT_LABEL_DAMAGE,
-  TXT_LABEL_IMAGE
-}
+  TXT_LABEL_IMAGE,
+};

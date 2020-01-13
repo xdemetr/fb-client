@@ -1,54 +1,54 @@
 import IPlayer from './interface/IPlayer';
 
-type playerListRequested = {
-  type: 'FETCH_PLAYERS_REQUEST'
+interface IPlayerListRequested {
+  type: 'FETCH_PLAYERS_REQUEST';
 }
 
-type playerListLoaded = {
-  type: 'FETCH_PLAYERS_SUCCESS',
-  players: IPlayer[]
+interface IPlayerListLoaded {
+  type: 'FETCH_PLAYERS_SUCCESS';
+  players: IPlayer[];
 }
 
-type playerListError = {
-  type: 'FETCH_PLAYERS_FAILURE',
-  error: string
+interface IPlayerListError {
+  type: 'FETCH_PLAYERS_FAILURE';
+  error: string;
 }
 
-type playerRequested = {
-  type: 'FETCH_PLAYER_REQUEST'
+interface IPlayerRequested {
+  type: 'FETCH_PLAYER_REQUEST';
 }
 
-type playerLoaded = {
-  type: 'FETCH_PLAYER_SUCCESS',
-  player: IPlayer
+interface IPlayerLoaded {
+  type: 'FETCH_PLAYER_SUCCESS';
+  player: IPlayer;
 }
 
-type playerError = {
-  type: 'FETCH_PLAYER_FAILURE',
-  error: string
+interface IPlayerError {
+  type: 'FETCH_PLAYER_FAILURE';
+  error: string;
 }
 
-type playerPostRequested = {
-  type: 'FETCH_POST_PLAYER_REQUEST'
+interface IPlayerPostRequested {
+  type: 'FETCH_POST_PLAYER_REQUEST';
 }
 
-type playerPostSuccess = {
-  type: 'FETCH_POST_PLAYER_SUCCESS',
-  player: IPlayer | null
+interface IPlayerPostSuccess {
+  type: 'FETCH_POST_PLAYER_SUCCESS';
+  player: IPlayer | null;
 }
 
-type playersSetFree = {
-  type: 'SET_FREE_PLAYERS',
-  players: IPlayer[]
+interface IPlayersSetFree {
+  type: 'SET_FREE_PLAYERS';
+  players: IPlayer[];
 }
 
 export type PlayerActionTypes =
-    | playerListRequested
-    | playerListLoaded
-    | playerListError
-    | playerRequested
-    | playerLoaded
-    | playerError
-    | playerPostRequested
-    | playerPostSuccess
-    | playersSetFree
+  | IPlayerListRequested
+  | IPlayerListLoaded
+  | IPlayerListError
+  | IPlayerRequested
+  | IPlayerLoaded
+  | IPlayerError
+  | IPlayerPostRequested
+  | IPlayerPostSuccess
+  | IPlayersSetFree;

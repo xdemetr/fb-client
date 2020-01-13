@@ -1,32 +1,43 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {ROUTE_PLAYDAYS} from '../../../const/Routes';
+
 import cnames from 'classnames';
 
-type Props = {
-  list: Array<{ _id: string, name: string }>
-  current: string
+import { ROUTE_PLAYDAYS } from 'const/Routes';
+import { Link } from 'react-router-dom';
+
+interface IListItem {
+  _id: string;
+  name: string;
 }
 
-const PlaydaysList: React.FC<Props> = ({list, current}) => {
+interface IProps {
+  list: IListItem[];
+  current: string;
+}
 
-  if (!list.length) return null;
+const PlaydaysList: React.FC<IProps> = ({ list, current }) => {
 
-  const items = list.map(({_id, name}) => {
+  if (!list.length) {
+    return null;
+  }
+
+  const items = list.map(({ _id, name }) => {
     return (
-        <Link
-            to={`${ROUTE_PLAYDAYS}${_id}`}
-            className={cnames('list-group-item list-group-item-action', {'active': _id === current})}
-            key={_id}>
-          {name}
-        </Link>
-    )
+      <Link
+        to={`${ROUTE_PLAYDAYS}${_id}`}
+        /* tslint:disable-next-line:max-line-length */
+        className={cnames('list-group-item list-group-item-action', { active: _id === current })}
+        key={_id}
+      >
+        {name}
+      </Link>
+    );
   });
 
   return (
-      <ul className="list-group">
-        {items}
-      </ul>
+    <ul className="list-group">
+      {items}
+    </ul>
   );
 };
 

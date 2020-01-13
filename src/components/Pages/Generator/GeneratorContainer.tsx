@@ -1,80 +1,88 @@
-import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
-import {getPlayerListReselect} from '../../../store/selectors/player';
-import Spinner from '../../Spinner/Spinner';
-import GeneratorResult from './GeneratorResult';
-import {getAuthReselect} from '../../../store/selectors/auth';
-import {
-  generatorPlayerSelected,
-  generatorPlayersReset,
-  generatorRun,
-  generatorSaveResult
-} from '../../../store/actions/generator';
-import {
-  getGeneratorErrors,
-  getGeneratorResultReselect,
-  getSelectedPlayersReselect
-} from '../../../store/selectors/generator';
-import {getPlayers} from '../../../store/actions/player';
-import {AppState} from '../../../store/store';
-import IPlayer from '../../../types/interface/IPlayer';
-import ITeam from '../../../types/interface/ITeam';
-import Button from '../../general/Button/Button';
-import {TXT_PAGE_GENERATOR} from '../../../const/Vars';
+import React, { useEffect } from 'react';
 
-type Props = {
+import * as generatorActions from 'store/actions/generator';
+import * as playerActions from 'store/actions/player';
+
+import { connect } from 'react-redux';
+import { getAuthReselect } from 'store/selectors/auth';
+import { getGeneratorErrors, getGeneratorResultReselect, getSelectedPlayersReselect } from 'store/selectors/generator';
+import { getPlayerListReselect } from 'store/selectors/player';
+import { AppState } from 'store/store';
+
+import Button from 'components/general/Button';
+import Spinner from 'components/Spinner';
+import GeneratorResult from './GeneratorResult';
+
+import IPlayer from 'types/interface/IPlayer';
+import ITeam from 'types/interface/ITeam';
+
+import { TXT_GENERATOR_GET_TEAMS, TXT_PAGE_GENERATOR, TXT_RESET } from 'const/Vars';
+
+interface IProps {
   auth: {
-    isAuth: boolean
-  }
-  list: IPlayer[]
-  selected: IPlayer[]
-  result: ITeam[]
-  errors?: string
-  generatorPlayerSelected: (player: IPlayer) => void
-  generatorPlayersReset: () => void
-  generatorRun: (teams: Array<any>) => void
-  generatorSaveResult: (result: ITeam[]) => void
-  getPlayers: () => void
+    isAuth: boolean;
+  };
+  list: IPlayer[];
+  selected: IPlayer[];
+  result: ITeam[];
+  errors?: string;
+  generatorPlayerSelected: (player: IPlayer) => void;
+  generatorPlayersReset: () => void;
+  generatorRun: (teams: any[]) => void;
+  generatorSaveResult: (result: ITeam[]) => void;
+  getPlayers: () => void;
 }
 
-const GeneratorContainer: React.FC<Props> = (
-    {
-      auth,
-      list, selected, result, errors,
-      generatorPlayerSelected, generatorPlayersReset, generatorRun, generatorSaveResult,
-      getPlayers
-    }) => {
+const GeneratorContainer: React.FC<IProps> = (
+  {
+    auth,
+    list, selected, result, errors,
+    generatorPlayerSelected, generatorPlayersReset, generatorRun, generatorSaveResult,
+    getPlayers,
+  }) => {
 
-  useEffect(() => {
-    getPlayers()
-  }, [getPlayers]);
+  useEffect(
+    () => {
+      getPlayers();
+    },
+    [getPlayers]);
 
-  if (!list) return <Spinner/>;
+  if (!list) {
+    return <Spinner/>;
+  }
 
   const playerList = list.map((player) => {
-    const {_id: id, name, damage} = player;
-    const selectedClass = selected.find((pl) => pl._id === id) ? 'bg-success text-white' : '';
+    const { _id: id, name, damage } = player;
+    const selectedClass = selected.find(pl => pl._id === id) ? 'bg-success text-white' : '';
     const damageClass = damage ? 'card-muted' : '';
 
     return (
-        <div key={id} className="col-6 col-md-3 mb-3" onClick={() => generatorPlayerSelected(player)}>
-          <div className={`card p-2 ${selectedClass} ${damageClass}`}>
-            {name}
-          </div>
+      <div
+        key={id}
+        className="col-6 col-md-3 mb-3"
+        onClick={() => generatorPlayerSelected(player)}
+      >
+        <div className={`card p-2 ${selectedClass} ${damageClass}`}>
+          {name}
         </div>
-    )
+      </div>
+    );
   });
 
   const SelectedCount = () => {
-    if (!selected.length) return null;
-    return <span className="badge badge-pill badge-info ml-2">{selected.length}</span>
+    if (!selected.length) {
+      return null;
+    }
+    return <span className="badge badge-pill badge-info ml-2">{selected.length}</span>;
   };
 
   const BtnGroup = () => {
-    return <div className="btn-group-lg btn-group">
-      <Button onClick={onGenerateClick}>Получить составы</Button>
-      <Button mod={'outline-primary'} onClick={generatorPlayersReset}>Сбросить</Button>
-    </div>
+    return (
+      <div className="btn-group-lg btn-group">
+        <Button onClick={onGenerateClick}>{TXT_GENERATOR_GET_TEAMS}</Button>
+        <Button mod={'outline-primary'} onClick={generatorPlayersReset}>{TXT_RESET}</Button>
+      </div>
+    );
   };
 
   const onSaveResult = () => {
@@ -90,77 +98,84 @@ const GeneratorContainer: React.FC<Props> = (
 
     const playerToTeam = (team: IPlayer[], box1: IPlayer[], box2: IPlayer[], box3: IPlayer[]) => {
       let random = 0;
-      let list = box1;
+      let startList = box1;
 
-      if (list.length < 1) {
-        list = box2;
+      if (startList.length < 1) {
+        startList = box2;
       }
-      if (list.length < 1) {
-        list = box3;
+      if (startList.length < 1) {
+        startList = box3;
       }
-      if (list.length > 0) {
-        random = getRandomInt(0, (list.length));
-        team.push(list[random]);
-        list.splice(random, 1);
+      if (startList.length > 0) {
+        random = getRandomInt(0, (startList.length));
+        team.push(startList[random]);
+        startList.splice(random, 1);
       }
       return team;
     };
 
-    let box1 = players.filter((e) => e.box === 1);
-    let box2 = players.filter((e) => e.box === 2);
-    let box3 = players.filter((e) => e.box === 3);
+    const resBox1 = players.filter(e => e.box === 1);
+    const resBox2 = players.filter(e => e.box === 2);
+    const resBox3 = players.filter(e => e.box === 3);
 
     let team1: IPlayer[] = [];
     let team2: IPlayer[] = [];
     let team3: IPlayer[] = [];
 
     players.map(() => {
-      team1 = playerToTeam(team1, box1, box2, box3);
-      team2 = playerToTeam(team2, box1, box2, box3);
+      team1 = playerToTeam(team1, resBox1, resBox2, resBox3);
+      team2 = playerToTeam(team2, resBox1, resBox2, resBox3);
 
       if (players.length >= 15) {
-        team3 = playerToTeam(team3, box1, box2, box3);
+        team3 = playerToTeam(team3, resBox1, resBox2, resBox3);
       }
 
       return [team1, team2, team3];
     });
 
-    generatorRun([team1, team2, team3])
+    generatorRun([team1, team2, team3]);
   };
 
   return (
-      <div className="generator-page">
-        <h1 className="d-flex">
-          {TXT_PAGE_GENERATOR}
-          <SelectedCount/>
-        </h1>
+    <div className="generator-page">
+      <h1 className="d-flex">
+        {TXT_PAGE_GENERATOR}
+        <SelectedCount/>
+      </h1>
 
-        <div className="row">
-          {playerList}
-        </div>
-
-        <BtnGroup/>
-
-        <GeneratorResult
-            auth={auth}
-            errors={errors}
-            result={result}
-            onSaveResult={onSaveResult}/>
+      <div className="row">
+        {playerList}
       </div>
-  )
+
+      <BtnGroup/>
+
+      <GeneratorResult
+        auth={auth}
+        errors={errors}
+        result={result}
+        onSaveResult={onSaveResult}
+      />
+    </div>
+  );
 };
 
 const mapStateToProps = (state: AppState) => ({
-  list: getPlayerListReselect(state),
-  selected: getSelectedPlayersReselect(state),
-  result: getGeneratorResultReselect(state),
+  auth: getAuthReselect(state),
   errors: getGeneratorErrors(state),
-  auth: getAuthReselect(state)
+  list: getPlayerListReselect(state),
+  result: getGeneratorResultReselect(state),
+  selected: getSelectedPlayersReselect(state),
 });
 
 const mapDispatchToProps = {
-  getPlayers, generatorRun,
-  generatorPlayerSelected, generatorPlayersReset, generatorSaveResult,
+  generatorPlayerSelected: generatorActions.generatorPlayerSelected,
+  generatorPlayersReset: generatorActions.generatorPlayersReset,
+  generatorRun: generatorActions.generatorRun,
+  generatorSaveResult: generatorActions.generatorSaveResult,
+  getPlayers: playerActions.getPlayers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(GeneratorContainer));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(React.memo(GeneratorContainer));

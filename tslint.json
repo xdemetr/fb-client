@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier",
+    "tslint-config-airbnb",
+    "tslint-react"
+  ],
+  "rules": {
+    "jsx-no-lambda": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
+    ],
+    "import-name": false,
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace",
+      "log"
+    ]
+  },
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es6"
+  }
+}

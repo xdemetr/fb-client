@@ -1,8 +1,12 @@
 import React from 'react';
-import AppHeader from '../AppHeader';
-import {Redirect, Route, Switch} from 'react-router-dom';
-import {Login} from '../Auth';
-import withSuspense from '../../hoc/withSuspense';
+
+import AppHeader from 'components/AppHeader';
+import { Login } from 'components/Auth';
+import GeneratorContainer from 'components/Pages/Generator/GeneratorContainer';
+import PlaydayEditContainer from 'components/Pages/Playdays/Edit/PlaydayEditContainer';
+
+import { Redirect, Route, Switch } from 'react-router-dom';
+
 import {
   ROUTE_EDIT_PLAYDAY,
   ROUTE_EDIT_PLAYER,
@@ -11,38 +15,37 @@ import {
   ROUTE_LOGIN,
   ROUTE_NEW_PLAYER,
   ROUTE_PLAYDAYS,
-  ROUTE_PLAYERS
-} from '../../const/Routes';
-import GeneratorContainer from '../Pages/Generator/GeneratorContainer';
-import PlaydayEditContainer from '../Pages/Playdays/Edit/PlaydayEditContainer';
+  ROUTE_PLAYERS,
+} from 'const/Routes';
 
-const PlayersContainer = React.lazy((): any => import('../Pages/Players/PlayersContainer'));
-const PlayerView = React.lazy((): any => import('../Pages/Players/View/PlayerView'));
-const PostPlayer = React.lazy((): any => import('../Pages/Players/PostPlayer/PostPlayer'));
-const PlaydaysContainer = React.lazy((): any => import('../Pages/Playdays/PlaydaysContainer'));
+import withSuspense from 'hoc/withSuspense';
 
+const PLAYERS_CONTAINER = React.lazy((): any => import('../Pages/Players/PlayersContainer'));
+const PLAYER_VIEW = React.lazy((): any => import('../Pages/Players/View/PlayerView'));
+const POST_PLAYER = React.lazy((): any => import('../Pages/Players/PostPlayer/PostPlayer'));
+const PLAYDAYS_CONTAINER = React.lazy((): any => import('../Pages/Playdays/PlaydaysContainer'));
 const App: React.FC<{}> = () => {
   return (
-      <div className="app">
-        <AppHeader/>
+    <div className="app">
+      <AppHeader/>
 
-        <div className="container">
-          <Switch>
-            <Route path={ROUTE_LOGIN} render={() => <Login/>}/>
+      <div className="container">
+        <Switch>
+          <Route path={ROUTE_LOGIN} component={Login}/>
 
-            <Route path={ROUTE_GENERATOR} render={() => <GeneratorContainer/>}/>
-            <Route path={ROUTE_PLAYERS} exact render={withSuspense(PlayersContainer)}/>
-            <Route path={`${ROUTE_PLAYERS}:handle?`} render={withSuspense(PlayerView)}/>
-            <Route path={`${ROUTE_PLAYDAYS}:id?`} render={withSuspense(PlaydaysContainer)}/>
-            <Route path={`${ROUTE_EDIT_PLAYDAY}:id?`} render={withSuspense(PlaydayEditContainer)}/>
+          <Route path={ROUTE_GENERATOR} component={GeneratorContainer}/>
+          <Route path={ROUTE_PLAYERS} exact={true} component={withSuspense(PLAYERS_CONTAINER)}/>
+          <Route path={`${ROUTE_PLAYERS}:handle?`} component={withSuspense(PLAYER_VIEW)}/>
+          <Route path={`${ROUTE_PLAYDAYS}:id?`} component={withSuspense(PLAYDAYS_CONTAINER)}/>
+          <Route path={`${ROUTE_EDIT_PLAYDAY}:id?`} component={withSuspense(PlaydayEditContainer)}/>
 
-            <Route path={`${ROUTE_EDIT_PLAYER}:id`} render={withSuspense(PostPlayer)}/>
-            <Route path={ROUTE_NEW_PLAYER} render={withSuspense(PostPlayer)}/>
+          <Route path={`${ROUTE_EDIT_PLAYER}:id`} component={withSuspense(POST_PLAYER)}/>
+          <Route path={ROUTE_NEW_PLAYER} component={withSuspense(POST_PLAYER)}/>
 
-            <Redirect from={ROUTE_HOME} to={ROUTE_GENERATOR}/>
-          </Switch>
-        </div>
+          <Redirect from={ROUTE_HOME} to={ROUTE_GENERATOR}/>
+        </Switch>
       </div>
+    </div>
   );
 };
 
