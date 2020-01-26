@@ -50,7 +50,7 @@ const PlaydayEditForm: React.FC<IProps> = ({ onSubmit, current }) => {
 
         <div className="row">
           <div className="col-12 text-center">
-            <Button>{TXT_SAVE}</Button>
+            <Button type="submit">{TXT_SAVE}</Button>
           </div>
         </div>
       </form>
