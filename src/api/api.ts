@@ -29,19 +29,19 @@ export const authAPI = {
 };
 
 export const playerAPI = {
-  getPlayerList(): Promise<any> {
+  getPlayerList(): Promise<{ data: IPlayer[] }> {
     return axios.get('players');
   },
-  getPlayer(id: string): Promise<any> {
+  getPlayer(id: string): Promise<{ data: IPlayer }> {
     return axios.get(`players/${id}`);
   },
-  getPlayerByHandle(handle: string): Promise<any> {
+  getPlayerByHandle(handle: string): Promise<{data: IPlayer}> {
     return axios.get(`players/handle/${handle}`);
   },
-  addPlayer(player: IPlayer): Promise<any> {
+  addPlayer(player: IPlayer): Promise<{data: IPlayer}> {
     return axios.post('players', player);
   },
-  updatePlayer(id: string, data: IPlayer): Promise<any> {
+  updatePlayer(id: string, data: IPlayer): Promise<{data: IPlayer}> {
     return axios.put(`players/${id}`, data);
   },
   deletePlayer(id: string): Promise<any> {

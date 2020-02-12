@@ -11,11 +11,12 @@ import PostPlayerForm from './PostPlayerForm';
 
 import { TXT_DELETE, TXT_PAGE_ADD_PLAYER, TXT_PAGE_EDIT_PLAYER } from 'const/Vars';
 import withAuthRedirect from 'hoc/withAuthRedirect';
+import { IPlayerFormData } from 'types/interface/IPlayerFormData';
 
 interface IProps {
   history: any;
-  postPlayer: (formData: any, history: any) => void;
-  updatePlayer: (id: string, formData: any, history: any) => void;
+  postPlayer: (formData: IPlayerFormData, history: any) => void;
+  updatePlayer: (id: string, formData: IPlayerFormData, history: any) => void;
   deletePlayer: (id: string, history: any) => void;
   current: any;
   getCurrentPlayer: (id: string) => void;
@@ -41,7 +42,7 @@ const PostPlayer: React.FC<IProps> = (
     },
     [getCurrentPlayer, resetCurrentPlayer, id]);
 
-  const onSubmit = (formData: any) => {
+  const onSubmit = (formData: IPlayerFormData) => {
     if (!id) {
       postPlayer(formData, history);
     } else {

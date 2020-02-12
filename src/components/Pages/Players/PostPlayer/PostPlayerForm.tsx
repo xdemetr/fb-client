@@ -17,15 +17,10 @@ import {
   TXT_LABEL_NAME,
   TXT_SAVE,
 } from 'const/Vars';
+import { IPlayerFormData } from 'types/interface/IPlayerFormData';
 
 interface IProps {
-  onSubmit: (formData: {
-    name: string;
-    handle: string;
-    image?: string;
-    box?: number;
-    damage?: boolean;
-  }) => void;
+  onSubmit: (formData: IPlayerFormData) => void;
   current: IPlayer;
 }
 
