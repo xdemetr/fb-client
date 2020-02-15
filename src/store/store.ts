@@ -8,12 +8,6 @@ import playerReducer from './reducers/playerReducer';
 
 import { AppActions } from 'types';
 
-declare global {
-  interface IWindow {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
-
 const reducers = combineReducers({
   auth: authReducer,
   generator: generatorReducer,
@@ -21,7 +15,8 @@ const reducers = combineReducers({
   player: playerReducer,
 });
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// tslint:disable-next-line:max-line-length
+const composeEnhancers = ((window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__())  || compose;
 
 export type AppState = ReturnType<typeof reducers>;
 
@@ -29,7 +24,7 @@ const store = createStore(
   reducers,
   compose(
     applyMiddleware(thunk as ThunkMiddleware<AppState, AppActions>),
-    // composeEnhancers()
+    composeEnhancers,
   ),
 );
 
