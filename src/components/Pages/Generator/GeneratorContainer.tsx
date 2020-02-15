@@ -6,9 +6,10 @@ import * as playerActions from 'store/actions/player';
 import { connect } from 'react-redux';
 import { getAuthReselect } from 'store/selectors/auth';
 import { getGeneratorErrors, getGeneratorResultReselect, getSelectedPlayersReselect } from 'store/selectors/generator';
-import { getPlayerListReselect } from 'store/selectors/player';
+import { getPlayerErrorReselect, getPlayerListReselect } from 'store/selectors/player';
 import { AppState } from 'store/store';
 
+import Error from 'components/Error';
 import Button from 'components/general/Button';
 import Spinner from 'components/Spinner';
 import GeneratorResult from './GeneratorResult';
@@ -25,6 +26,7 @@ interface IProps {
   list: IPlayer[];
   selected: IPlayer[];
   result: ITeam[];
+  error?: string;
   errors?: string;
   generatorPlayerSelected: (player: IPlayer) => void;
   generatorPlayersReset: () => void;
@@ -36,7 +38,7 @@ interface IProps {
 const GeneratorContainer: React.FC<IProps> = (
   {
     auth,
-    list, selected, result, errors,
+    list, selected, result, error, errors,
     generatorPlayerSelected, generatorPlayersReset, generatorRun, generatorSaveResult,
     getPlayers,
   }) => {
@@ -49,6 +51,10 @@ const GeneratorContainer: React.FC<IProps> = (
 
   if (!list) {
     return <Spinner/>;
+  }
+
+  if (error) {
+    return <Error message={error}/>;
   }
 
   const playerList = list.map((player) => {
@@ -161,6 +167,7 @@ const GeneratorContainer: React.FC<IProps> = (
 
 const mapStateToProps = (state: AppState) => ({
   auth: getAuthReselect(state),
+  error: getPlayerErrorReselect(state),
   errors: getGeneratorErrors(state),
   list: getPlayerListReselect(state),
   result: getGeneratorResultReselect(state),
