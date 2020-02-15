@@ -43,8 +43,12 @@ export const loginUser = (
     localStorage.setItem('jwtToken', token);
     setAuthToken(token);
     dispatch(userLoaded(jwtDecode(token)));
-  } catch (e) {
-    dispatch(userError(e.response.data.message));
+  } catch (error) {
+    if (error.response) {
+      dispatch(userError(error.response.data.message));
+    } else {
+      dispatch(userError(error.message));
+    }
   }
 };
 
