@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import * as actions from 'store/actions/playday';
 import { getAuthReselect } from 'store/selectors/auth';
-import { getPlaydayReselect, getPlaydaysLoadingReselect, getPlaydaysReselect } from 'store/selectors/playday';
+import {
+  getPlaydayReselect,
+  getPlaydaysErrorReselect,
+  getPlaydaysLoadingReselect,
+  getPlaydaysReselect,
+} from 'store/selectors/playday';
 import { AppState } from 'store/store';
 
 import Error from 'components/Error';
@@ -77,6 +82,7 @@ const PlaydaysContainer: React.FC<IProps> = (
 const mapStateToProps = (state: AppState) => ({
   auth: getAuthReselect(state),
   current: getPlaydayReselect(state),
+  error: getPlaydaysErrorReselect(state),
   list: getPlaydaysReselect(state),
   loading: getPlaydaysLoadingReselect(state),
 });

@@ -54,6 +54,7 @@ const playdayReducer = (
       return {
         ...state,
         error: action.error,
+        loading: false,
       };
 
     case 'FETCH_PLAYDAY_REQUEST':
