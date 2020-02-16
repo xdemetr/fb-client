@@ -6,39 +6,39 @@ import { AppActions } from 'types';
 import { DEFAULT_PLAYER_IMAGE } from 'const/Vars';
 import IPlayer from 'types/interface/IPlayer';
 
-const playerListRequested = (): AppActions => ({
+export const playerListRequested = (): AppActions => ({
   type: 'FETCH_PLAYERS_REQUEST',
 });
 
-const playerListLoaded = (players: IPlayer[]): AppActions => ({
+export const playerListLoaded = (players: IPlayer[]): AppActions => ({
   players,
   type: 'FETCH_PLAYERS_SUCCESS',
 });
 
-const playerListError = (error: string): AppActions => ({
+export const playerListError = (error: string): AppActions => ({
   error,
   type: 'FETCH_PLAYERS_FAILURE',
 });
 
-const playerRequested = (): AppActions => ({
+export const playerRequested = (): AppActions => ({
   type: 'FETCH_PLAYER_REQUEST',
 });
 
-const playerLoaded = (player: IPlayer): AppActions => ({
+export const playerLoaded = (player: IPlayer): AppActions => ({
   player,
   type: 'FETCH_PLAYER_SUCCESS',
 });
 
-const playerPostRequested = (): AppActions => ({
+export const playerPostRequested = (): AppActions => ({
   type: 'FETCH_POST_PLAYER_REQUEST',
 });
 
-const playerPostSuccess = (player: IPlayer | null): AppActions => ({
+export const playerPostSuccess = (player: IPlayer | null): AppActions => ({
   player,
   type: 'FETCH_POST_PLAYER_SUCCESS',
 });
 
-const playersSetFree = (players: IPlayer[]): AppActions => ({
+export const playersSetFree = (players: IPlayer[]): AppActions => ({
   players,
   type: 'SET_FREE_PLAYERS',
 });
