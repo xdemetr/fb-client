@@ -17,7 +17,7 @@ import GeneratorResult from './GeneratorResult';
 import IPlayer from 'types/interface/IPlayer';
 import ITeam from 'types/interface/ITeam';
 
-import { TXT_GENERATOR_GET_TEAMS, TXT_PAGE_GENERATOR, TXT_RESET } from 'const/Vars';
+import { GENERATOR_MIN_SIZE, TXT_GENERATOR_GET_TEAMS, TXT_PAGE_GENERATOR, TXT_RESET } from 'const/Vars';
 
 interface IProps {
   auth: {
@@ -85,8 +85,20 @@ const GeneratorContainer: React.FC<IProps> = (
   const BtnGroup = () => {
     return (
       <div className="btn-group-lg btn-group">
-        <Button onClick={onGenerateClick}>{TXT_GENERATOR_GET_TEAMS}</Button>
-        <Button mod={'outline-primary'} onClick={generatorPlayersReset}>{TXT_RESET}</Button>
+        <Button
+          disabled={selected.length >= GENERATOR_MIN_SIZE ? false : true}
+          onClick={onGenerateClick}
+        >
+          {TXT_GENERATOR_GET_TEAMS}
+        </Button>
+
+        <Button
+          mod={'outline-primary'}
+          onClick={generatorPlayersReset}
+          disabled={selected.length >= GENERATOR_MIN_SIZE ? false : true}
+        >
+          {TXT_RESET}
+        </Button>
       </div>
     );
   };

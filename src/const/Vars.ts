@@ -2,6 +2,8 @@ export const DEFAULT_PLAYER_IMAGE = 'https://fb.joomdesign.ru/images/def.png';
 
 const TXT_SITENAME = 'Футбол в спортзале';
 
+const GENERATOR_MIN_SIZE = 6;
+
 const TXT_GENERATOR = 'Генератор';
 const TXT_GENERATOR_GET_TEAMS = 'Получить составы';
 const TXT_RESULTS = 'Результаты';
@@ -42,6 +44,7 @@ const TXT_LABEL_DAMAGE = 'Травма';
 const TXT_LABEL_IMAGE = 'Изображение';
 
 export {
+  GENERATOR_MIN_SIZE,
   TXT_SITENAME,
   TXT_GENERATOR,
   TXT_GENERATOR_GET_TEAMS,

@@ -11,6 +11,7 @@ interface IProps {
   onClick?: () => void;
   title?: string;
   props?: any;
+  disabled?: boolean;
 }
 
 const Button: React.FC<IProps> = (
@@ -22,6 +23,7 @@ const Button: React.FC<IProps> = (
     wide,
     className,
     onClick,
+    disabled,
     ...props
   }) => {
   const TAG = href ? 'a' : 'button';
@@ -33,6 +35,7 @@ const Button: React.FC<IProps> = (
       onClick={onClick}
       title={title}
       className={cn('btn', mod && `btn-${mod}`, wide && 'w-100', className)}
+      disabled={disabled}
     >
       {props.children}
     </TAG>
