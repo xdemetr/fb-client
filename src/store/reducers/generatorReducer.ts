@@ -22,25 +22,16 @@ const updateSelected = (state: any, player: IPlayer) => {
   };
 };
 
-interface IGeneratorReducerState {
-  error: string;
-  loading: boolean;
-  result: ITeam[];
-  selected: IPlayer[];
-}
-
-const generatorReducerDefaultState: IGeneratorReducerState = {
+const initialState = {
   error: '',
   loading: false,
-  result: [],
-  selected: [],
+  result: [] as ITeam[] | [],
+  selected: [] as IPlayer[] | [],
 };
 
-const generatorReducer = (
-  state = generatorReducerDefaultState,
-  action: GeneratorActionTypes,
-): IGeneratorReducerState => {
+type InitialStateType = typeof initialState;
 
+const generatorReducer = (state = initialState, action: GeneratorActionTypes): InitialStateType => {
   switch (action.type) {
     case 'GENERATOR_PLAYER_SELECT':
       return updateSelected(state, action.player);

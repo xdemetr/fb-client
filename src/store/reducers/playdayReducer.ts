@@ -15,27 +15,17 @@ const updateExistPlayday = (state: any, data: { player: IPlayer, team: string })
   };
 };
 
-interface IPlaydayReducerState {
-  current: IPlayday | null;
-  error: string;
-  freePlayers: IPlayer[];
-  list: IPlaydayList[];
-  loading: boolean;
-}
-
-const playdayReducerDefaultState: IPlaydayReducerState = {
-  current: null,
+const initialState = {
+  current: null as IPlayday | null,
   error: '',
-  freePlayers: [],
-  list: [],
+  freePlayers: [] as IPlayer[] | [],
+  list: [] as IPlaydayList[] | [],
   loading: false,
 };
 
-const playdayReducer = (
-  state = playdayReducerDefaultState,
-  action: PlaydayActionTypes,
-): IPlaydayReducerState => {
+type InitialStateType = typeof initialState;
 
+const playdayReducer = (state = initialState, action: PlaydayActionTypes): InitialStateType => {
   switch (action.type) {
     case 'FETCH_PLAYDAYS_REQUEST':
       return {

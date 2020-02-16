@@ -1,28 +1,18 @@
 import IPlayer from 'types/interface/IPlayer';
 import { PlayerActionTypes } from 'types/playerActions';
 
-interface IPlayerReducerState {
-  current: IPlayer | null;
-  error: string;
-  freePlayers: IPlayer[];
-  list: IPlayer[];
-  loading: boolean;
-  selected: IPlayer[];
-}
-
-const playerReducerDefaultState: IPlayerReducerState = {
-  current: null,
+const initialState = {
+  current: null as IPlayer | null,
   error: '',
-  freePlayers: [],
-  list: [],
+  freePlayers: [] as IPlayer[] | [],
+  list: [] as IPlayer[] | [],
   loading: false,
-  selected: [],
+  selected: null as IPlayer[] | null,
 };
 
-const playerReducer = (
-  state = playerReducerDefaultState,
-  action: PlayerActionTypes,
-): IPlayerReducerState => {
+type InitialStateType = typeof initialState;
+
+const playerReducer = (state = initialState, action: PlayerActionTypes): InitialStateType => {
   switch (action.type) {
     case 'FETCH_PLAYERS_REQUEST':
       return {

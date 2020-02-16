@@ -1,24 +1,16 @@
 import { AuthActionTypes } from 'types/authActions';
 import ITokenJWT from 'types/interface/ITokenJWT';
 
-interface IAuthReducerState {
-  isAuth: boolean;
-  user: ITokenJWT | null;
-  loading: boolean;
-  error?: string;
-}
-
-const authReducerDefaultState: IAuthReducerState = {
+const initialState = {
   error: '',
   isAuth: false,
   loading: false,
-  user: null,
+  user: null as ITokenJWT | null,
 };
 
-const authReducer = (
-  state = authReducerDefaultState,
-  action: AuthActionTypes,
-): IAuthReducerState => {
+type InitialStateType = typeof initialState;
+
+const authReducer = (state = initialState, action: AuthActionTypes): InitialStateType => {
   switch (action.type) {
     case 'AUTH_USER_REQUEST':
       return {
