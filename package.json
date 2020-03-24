@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "homepage": "https://xdemetr.github.io/fb-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,7 +28,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "tslint 'src/**/*.{ts,tsx,js}'"
+    "lint": "tslint 'src/**/*.{ts,tsx,js}'",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,7 +48,6 @@
     ]
   },
   "devDependencies": {
-    "tslint": "^5.20.1",
     "@types/classnames": "^2.2.9",
     "@types/jest": "^24.0.21",
     "@types/jwt-decode": "^2.2.1",
@@ -54,6 +56,8 @@
     "@types/react-dom": "^16.9.3",
     "@types/react-redux": "^7.1.5",
     "@types/react-router-dom": "^5.1.2",
-    "@types/yup": "^0.26.24"
+    "@types/yup": "^0.26.24",
+    "gh-pages": "^2.2.0",
+    "tslint": "^5.20.1"
   }
 }
