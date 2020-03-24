@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/fb-client/static/css/main.9ecbf1b0.chunk.css",
-    "main.js": "/fb-client/static/js/main.94b86dfd.chunk.js",
-    "main.js.map": "/fb-client/static/js/main.94b86dfd.chunk.js.map",
+    "main.js": "/fb-client/static/js/main.a664887b.chunk.js",
+    "main.js.map": "/fb-client/static/js/main.a664887b.chunk.js.map",
     "runtime-main.js": "/fb-client/static/js/runtime-main.638abdfd.js",
     "runtime-main.js.map": "/fb-client/static/js/runtime-main.638abdfd.js.map",
     "static/js/2.8b4b2ea9.chunk.js": "/fb-client/static/js/2.8b4b2ea9.chunk.js",
@@ -16,7 +16,7 @@
     "static/js/6.e52ed013.chunk.js": "/fb-client/static/js/6.e52ed013.chunk.js",
     "static/js/6.e52ed013.chunk.js.map": "/fb-client/static/js/6.e52ed013.chunk.js.map",
     "index.html": "/fb-client/index.html",
-    "precache-manifest.488ecf2d2b66299603ecb16b8afa7bc4.js": "/fb-client/precache-manifest.488ecf2d2b66299603ecb16b8afa7bc4.js",
+    "precache-manifest.c052fd83c2f3b32602d9b8ec20e34a4e.js": "/fb-client/precache-manifest.c052fd83c2f3b32602d9b8ec20e34a4e.js",
     "service-worker.js": "/fb-client/service-worker.js",
     "static/css/main.9ecbf1b0.chunk.css.map": "/fb-client/static/css/main.9ecbf1b0.chunk.css.map",
     "static/media/logo.svg": "/fb-client/static/media/logo.761182ff.svg"
@@ -25,6 +25,6 @@
     "static/js/runtime-main.638abdfd.js",
     "static/js/2.8b4b2ea9.chunk.js",
     "static/css/main.9ecbf1b0.chunk.css",
-    "static/js/main.94b86dfd.chunk.js"
+    "static/js/main.a664887b.chunk.js"
   ]
 }
